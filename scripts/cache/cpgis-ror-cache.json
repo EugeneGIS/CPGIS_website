@@ -1,0 +1,4214 @@
+{
+  "the Department of Biology, University of Toronto": {
+    "matched": true,
+    "canonical_name": "University of Toronto",
+    "city": "Toronto",
+    "country": "Canada",
+    "latitude": 43.70643,
+    "longitude": -79.39864,
+    "ror_id": "https://ror.org/03dbr7087"
+  },
+  "the Institute of earth surface dynamics, University of Lausanne": {
+    "matched": true,
+    "canonical_name": "University of Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/019whta54"
+  },
+  "the Institute for Geoinformatics, University of Münster": {
+    "matched": true,
+    "canonical_name": "University of Münster",
+    "city": "Münster",
+    "country": "Germany",
+    "latitude": 51.96236,
+    "longitude": 7.62571,
+    "ror_id": "https://ror.org/00pd74e08"
+  },
+  "the Woods Institute for the Environment, Stanford University": {
+    "matched": true,
+    "canonical_name": "Stanford University",
+    "city": "Stanford",
+    "country": "United States",
+    "latitude": 37.42411,
+    "longitude": -122.16608,
+    "ror_id": "https://ror.org/00f54p054"
+  },
+  "the Department of Geo-information Processing, University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the School of Architecture and Built Environment , KTH Royal Institute of Technology": {
+    "matched": true,
+    "canonical_name": "KTH Royal Institute of Technology",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.32938,
+    "longitude": 18.06871,
+    "ror_id": "https://ror.org/026vcq606"
+  },
+  "the Department of Technology and Innovation, University of Southern Denmark": {
+    "matched": true,
+    "canonical_name": "University of Southern Denmark",
+    "city": "Odense",
+    "country": "Denmark",
+    "latitude": 55.39594,
+    "longitude": 10.38831,
+    "ror_id": "https://ror.org/03yrrjy16"
+  },
+  "the Department of Applied Earth Sciences, University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the School of Natural Resources and the Environment, The University of Arizona": {
+    "matched": true,
+    "canonical_name": "University of Arizona",
+    "city": "Tucson",
+    "country": "United States",
+    "latitude": 32.22174,
+    "longitude": -110.92648,
+    "ror_id": "https://ror.org/03m2x1q45"
+  },
+  "the Department of Geography, University of Victoria": {
+    "matched": true,
+    "canonical_name": "Victoria University",
+    "city": "Kampala",
+    "country": "Uganda",
+    "latitude": 0.31628,
+    "longitude": 32.58219,
+    "ror_id": "https://ror.org/01rrz9s51"
+  },
+  "School of Architecture, Texas A&M University": {
+    "matched": true,
+    "canonical_name": "Texas A&M University",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.62798,
+    "longitude": -96.33441,
+    "ror_id": "https://ror.org/01f5ytq51"
+  },
+  "the Institute for Space and Space Park Leicester, University of Leicester": {
+    "matched": true,
+    "canonical_name": "University of Leicester",
+    "city": "Leicester",
+    "country": "United Kingdom",
+    "latitude": 52.6386,
+    "longitude": -1.13169,
+    "ror_id": "https://ror.org/04h699437"
+  },
+  "the School of Agriculture, Food and Ecosystem Sciences, The University of Melbourne": {
+    "matched": true,
+    "canonical_name": "The University of Melbourne",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.814,
+    "longitude": 144.96332,
+    "ror_id": "https://ror.org/01ej9dk98"
+  },
+  "College of Medicine and the Center for Health Equity Transformation, University of Kentucky": {
+    "matched": true,
+    "canonical_name": "University of Kentucky",
+    "city": "Lexington",
+    "country": "United States",
+    "latitude": 37.98869,
+    "longitude": -84.47772,
+    "ror_id": "https://ror.org/02k3smh20"
+  },
+  "the Department of City and Regional Planning at University of California, Berkeley": {
+    "matched": true,
+    "canonical_name": "University of California, Berkeley",
+    "city": "Berkeley",
+    "country": "United States",
+    "latitude": 37.87159,
+    "longitude": -122.27275,
+    "ror_id": "https://ror.org/01an7q238"
+  },
+  "the Department of Zoology, University of Cambridge": {
+    "matched": true,
+    "canonical_name": "University of Cambridge",
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "latitude": 52.2,
+    "longitude": 0.11667,
+    "ror_id": "https://ror.org/013meh722"
+  },
+  "the Department of Building and Environmental technology, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Department of Earth and Planetary Sciences, University of California, Santa Cruz": {
+    "matched": true,
+    "canonical_name": "University of California, Santa Cruz",
+    "city": "Santa Cruz",
+    "country": "United States",
+    "latitude": 36.97412,
+    "longitude": -122.0308,
+    "ror_id": "https://ror.org/03s65by71"
+  },
+  "the Department of Earth, Environmental, and Planetary Sciences, Washington University in St. Louis": {
+    "matched": true,
+    "canonical_name": "Washington University in St. Louis",
+    "city": "St Louis",
+    "country": "United States",
+    "latitude": 38.62727,
+    "longitude": -90.19789,
+    "ror_id": "https://ror.org/01yc7t268"
+  },
+  "the School of Geographical & Earth Sciences, University of Glasgow": {
+    "matched": true,
+    "canonical_name": "University of Glasgow",
+    "city": "Glasgow",
+    "country": "United Kingdom",
+    "latitude": 55.86515,
+    "longitude": -4.25763,
+    "ror_id": "https://ror.org/00vtgdb53"
+  },
+  "the Faculty of Architecture and the Built Environment, Delft University of Technology": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the School of Geography and the Earth and Life Institute, Université catholique de Louvain": {
+    "matched": true,
+    "canonical_name": "UCLouvain",
+    "city": "Louvain-la-Neuve",
+    "country": "Belgium",
+    "latitude": 50.66829,
+    "longitude": 4.61443,
+    "ror_id": "https://ror.org/02495e989"
+  },
+  "the Department of Geography, University of Zurich": {
+    "matched": true,
+    "canonical_name": "University of Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/02crff812"
+  },
+  "the Department of Geography, University of Colorado Boulder": {
+    "matched": true,
+    "canonical_name": "University of Colorado Boulder",
+    "city": "Boulder",
+    "country": "United States",
+    "latitude": 40.01499,
+    "longitude": -105.27055,
+    "ror_id": "https://ror.org/02ttsq026"
+  },
+  "the Research Unit of Land Change Science, Swiss Federal Institute for Forest, Snow and Landscape Research": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute for Forest, Snow and Landscape Research",
+    "city": "Birmensdorf",
+    "country": "Switzerland",
+    "latitude": 47.35515,
+    "longitude": 8.44256,
+    "ror_id": "https://ror.org/04bs5yc70"
+  },
+  "the Professorship of Forest Ecology, Eidgenössische Technische Hochschule Zürich (ETH Zurich)": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the Urban Demography Laboratory, Ecole Polytechnique Fédérale de Lausanne": {
+    "matched": true,
+    "canonical_name": "École Polytechnique Fédérale de Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/02s376052"
+  },
+  "the Civil Engineering and Technology for Human-Oriented Sustainability Lab, Ecole Polytechnique Fédérale de Lausanne": {
+    "matched": true,
+    "canonical_name": "École Polytechnique Fédérale de Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/02s376052"
+  },
+  "the Department of Geography and Resource Management, The Chinese University of Hong Kong": {
+    "matched": true,
+    "canonical_name": "Chinese University of Hong Kong",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "latitude": 22.27832,
+    "longitude": 114.17469,
+    "ror_id": "https://ror.org/00t33hh48"
+  },
+  "the School of Computing and Information Science, The University of Maine": {
+    "matched": true,
+    "canonical_name": "University of Maine",
+    "city": "Orono",
+    "country": "United States",
+    "latitude": 44.88312,
+    "longitude": -68.67198,
+    "ror_id": "https://ror.org/01adr0w49"
+  },
+  "the Department of Forestry and Wood Technology, Linnaeus University": {
+    "matched": true,
+    "canonical_name": "Linnaeus University",
+    "city": "Vaxjo",
+    "country": "Sweden",
+    "latitude": 56.87767,
+    "longitude": 14.80906,
+    "ror_id": "https://ror.org/00j9qag85"
+  },
+  "the Department of Geography & Geospatial Sciences, South Dakota State University": {
+    "matched": true,
+    "canonical_name": "South Dakota State University",
+    "city": "Brookings",
+    "country": "United States",
+    "latitude": 44.31136,
+    "longitude": -96.79839,
+    "ror_id": "https://ror.org/015jmes13"
+  },
+  "the School of Geographical Sciences and Urban Planning, Arizona State University": {
+    "matched": true,
+    "canonical_name": "Arizona State University",
+    "city": "Tempe",
+    "country": "United States",
+    "latitude": 33.41477,
+    "longitude": -111.90931,
+    "ror_id": "https://ror.org/03efmqc40"
+  },
+  "the Department of Physical Geography and Ecosystem Science, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Urban Planning Research Group, University of Amsterdam": {
+    "matched": true,
+    "canonical_name": "University of Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/04dkp9463"
+  },
+  "the School for Environment and Sustainability, University of Michigan": {
+    "matched": true,
+    "canonical_name": "University of Michigan",
+    "city": "Ann Arbor",
+    "country": "United States",
+    "latitude": 42.27756,
+    "longitude": -83.74088,
+    "ror_id": "https://ror.org/00jmfr291"
+  },
+  "the Department of Geography, Indiana University, Bloomington": {
+    "matched": true,
+    "canonical_name": "Indiana University",
+    "city": "Bloomington",
+    "country": "United States",
+    "latitude": 39.16533,
+    "longitude": -86.52639,
+    "ror_id": "https://ror.org/01kg8sb98"
+  },
+  "the Department of Geography, University of Florida": {
+    "matched": true,
+    "canonical_name": "University of Florida",
+    "city": "Gainesville",
+    "country": "United States",
+    "latitude": 29.65163,
+    "longitude": -82.32483,
+    "ror_id": "https://ror.org/02y3ad647"
+  },
+  "the ECOSPHERE Research Group, University of Antwerp": {
+    "matched": true,
+    "canonical_name": "University of Antwerp",
+    "city": "Antwerp",
+    "country": "Belgium",
+    "latitude": 51.22047,
+    "longitude": 4.40026,
+    "ror_id": "https://ror.org/008x57b05"
+  },
+  "the Ecosystem Management group, ETH Zurich": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the School of Geography, University College Dublin": {
+    "matched": true,
+    "canonical_name": "UCD Foundation",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.33306,
+    "longitude": -6.24889,
+    "ror_id": "https://ror.org/02yc19841"
+  },
+  "the Department of Anthropology & Geography, Colorado State University": {
+    "matched": true,
+    "canonical_name": "Colorado State University",
+    "city": "Fort Collins",
+    "country": "United States",
+    "latitude": 40.58526,
+    "longitude": -105.08442,
+    "ror_id": "https://ror.org/03k1gpj17"
+  },
+  "the Department of Geography & Environment, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Department of Geosciences, Auburn University": {
+    "matched": true,
+    "canonical_name": "Auburn University",
+    "city": "Auburn",
+    "country": "United States",
+    "latitude": 32.60986,
+    "longitude": -85.48078,
+    "ror_id": "https://ror.org/02v80fc35"
+  },
+  "the Department of Biology, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Aarhus University",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.15674,
+    "longitude": 10.21076,
+    "ror_id": "https://ror.org/01aj84f44"
+  },
+  "the Department of Building and Environmental Technology, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the School of Science, RMIT University": {
+    "matched": true,
+    "canonical_name": "RMIT University",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.814,
+    "longitude": 144.96332,
+    "ror_id": "https://ror.org/04ttjf776"
+  },
+  "the Department of Built Environment, North Carolina Agricultural and Technical State University": {
+    "matched": true,
+    "canonical_name": "North Carolina Agricultural and Technical State University",
+    "city": "Greensboro",
+    "country": "United States",
+    "latitude": 36.07264,
+    "longitude": -79.79198,
+    "ror_id": "https://ror.org/02aze4h65"
+  },
+  "the Department of Land Economy, University of Cambridge": {
+    "matched": true,
+    "canonical_name": "University of Cambridge",
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "latitude": 52.2,
+    "longitude": 0.11667,
+    "ror_id": "https://ror.org/013meh722"
+  },
+  "the Institute of Biodiversity and Ecosystem Dynamics, University of Amsterdam": {
+    "matched": true,
+    "canonical_name": "University of Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/04dkp9463"
+  },
+  "the Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder": {
+    "matched": true,
+    "canonical_name": "Cooperative Institute for Research in Environmental Sciences",
+    "city": "Boulder",
+    "country": "United States",
+    "latitude": 40.01499,
+    "longitude": -105.27055,
+    "ror_id": "https://ror.org/00bdqav06"
+  },
+  "the Center for Marine Science, University of North Carolina Wilmington": {
+    "matched": true,
+    "canonical_name": "University of North Carolina Wilmington",
+    "city": "Wilmington",
+    "country": "United States",
+    "latitude": 34.23556,
+    "longitude": -77.94604,
+    "ror_id": "https://ror.org/02t0qr014"
+  },
+  "the Department of Geography and Earth Sciences, University of North Carolina Charlotte": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Charlotte",
+    "city": "Charlotte",
+    "country": "United States",
+    "latitude": 35.22709,
+    "longitude": -80.84313,
+    "ror_id": "https://ror.org/04dawnj30"
+  },
+  "the Department of Environmental Research and Innovation, Luxembourg Institute of Science and Technology": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Science and Technology",
+    "city": "Belvaux",
+    "country": "Luxembourg",
+    "latitude": 49.51014,
+    "longitude": 5.92414,
+    "ror_id": "https://ror.org/01t178j62"
+  },
+  "the Department of Urban Development and Mobility, Luxembourg Insititue of Socio-Economic Research": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Department of Physical Geography and Ecosystem Science and the Centre for Advanced Middle Eastern Studies, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Network Science Institute, Northeastern University": {
+    "matched": true,
+    "canonical_name": "Universidad del Noreste",
+    "city": "Tampico",
+    "country": "Mexico",
+    "latitude": 22.28519,
+    "longitude": -97.87777,
+    "ror_id": "https://ror.org/02ahky613"
+  },
+  "the School of Environment and Natural Resources, The Ohio State University": {
+    "matched": true,
+    "canonical_name": "The Ohio State University",
+    "city": "Columbus",
+    "country": "United States",
+    "latitude": 39.96118,
+    "longitude": -82.99879,
+    "ror_id": "https://ror.org/00rs6vg23"
+  },
+  "the Department of Earth, Environmental and Geographic Science, The University of British Columbia": {
+    "matched": true,
+    "canonical_name": "University of British Columbia",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.24966,
+    "longitude": -123.11934,
+    "ror_id": "https://ror.org/03rmrcq20"
+  },
+  "the O’Neill School of Public and Environmental Affairs, Indiana University": {
+    "matched": true,
+    "canonical_name": "Indiana University",
+    "city": "Bloomington",
+    "country": "United States",
+    "latitude": 39.16533,
+    "longitude": -86.52639,
+    "ror_id": "https://ror.org/01kg8sb98"
+  },
+  "the Department of Archaeology, Conservation and History, University of Oslo": {
+    "matched": true,
+    "canonical_name": "University of Oslo",
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.91273,
+    "longitude": 10.74609,
+    "ror_id": "https://ror.org/01xtthb56"
+  },
+  "the Institute Pierre Simon Laplace": {
+    "matched": true,
+    "canonical_name": "Institut Pierre-Simon Laplace",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02haar591"
+  },
+  "the Global Diagnostic Modelling Group, The Max Planck Institute for Biogeochemistry": {
+    "matched": true,
+    "canonical_name": "Max Planck Institute for Biogeochemistry",
+    "city": "Jena",
+    "country": "Germany",
+    "latitude": 50.92878,
+    "longitude": 11.5899,
+    "ror_id": "https://ror.org/051yxp643"
+  },
+  "the Earth Observation and Remote Sensing Lab, University of California Merced": {
+    "matched": true,
+    "canonical_name": "University of California, Merced",
+    "city": "Merced",
+    "country": "United States",
+    "latitude": 37.30216,
+    "longitude": -120.48297,
+    "ror_id": "https://ror.org/00d9ah105"
+  },
+  "the Department of Geography, Virginia Tech": {
+    "matched": true,
+    "canonical_name": "Virginia Tech",
+    "city": "Blacksburg",
+    "country": "United States",
+    "latitude": 37.22957,
+    "longitude": -80.41394,
+    "ror_id": "https://ror.org/02smfhw86"
+  },
+  "the School of Architecture, Civil and Environmental Engineering, École Polytechnique Fédérale de Lausanne (EPFL)": {
+    "matched": true,
+    "canonical_name": "École Polytechnique Fédérale de Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/02s376052"
+  },
+  "the Department of Geography, University of South Carolina": {
+    "matched": true,
+    "canonical_name": "University of South Carolina",
+    "city": "Columbia",
+    "country": "United States",
+    "latitude": 34.00071,
+    "longitude": -81.03481,
+    "ror_id": "https://ror.org/02b6qw903"
+  },
+  "the Institute of Coastal Systems, Helmholtz-Zentrum Hereon in Geesthacht": {
+    "matched": true,
+    "canonical_name": "Helmholtz-Zentrum Hereon",
+    "city": "Geesthacht",
+    "country": "Germany",
+    "latitude": 53.43575,
+    "longitude": 10.3779,
+    "ror_id": "https://ror.org/03qjp1d79"
+  },
+  "the Institute of Geography and Sustainability, University of Lausanne": {
+    "matched": true,
+    "canonical_name": "University of Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/019whta54"
+  },
+  "the Environmental Computational Science and Earth Observation Laboratory, École Polytechnique Fédérale de Lausanne (EPFL)": {
+    "matched": true,
+    "canonical_name": "École Polytechnique Fédérale de Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/02s376052"
+  },
+  "the Department of geography, The University of Connecticut": {
+    "matched": true,
+    "canonical_name": "University of Connecticut",
+    "city": "Storrs",
+    "country": "United States",
+    "latitude": 41.80843,
+    "longitude": -72.24952,
+    "ror_id": "https://ror.org/02der9h97"
+  },
+  "the Department of Geography and the Environment, University of North Texas": {
+    "matched": true,
+    "canonical_name": "University of North Texas",
+    "city": "Denton",
+    "country": "United States",
+    "latitude": 33.21484,
+    "longitude": -97.13307,
+    "ror_id": "https://ror.org/00v97ad02"
+  },
+  "the Department of Geography, Florida State University": {
+    "matched": true,
+    "canonical_name": "Florida State University",
+    "city": "Tallahassee",
+    "country": "United States",
+    "latitude": 30.43826,
+    "longitude": -84.28073,
+    "ror_id": "https://ror.org/05g3dte14"
+  },
+  "the Department of Urbanism, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Water Systems and Global Change Group, Wageningen University and Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the College of Arts and Sciences, University of South Carolina": {
+    "matched": true,
+    "canonical_name": "University of South Carolina",
+    "city": "Columbia",
+    "country": "United States",
+    "latitude": 34.00071,
+    "longitude": -81.03481,
+    "ror_id": "https://ror.org/02b6qw903"
+  },
+  "the Urban Studies Working Group, University of Vienna": {
+    "matched": true,
+    "canonical_name": "University of Vienna",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.20849,
+    "longitude": 16.37208,
+    "ror_id": "https://ror.org/03prydq77"
+  },
+  "the School of Geography, Geology and the Environment, University of Leicester": {
+    "matched": true,
+    "canonical_name": "University of Leicester",
+    "city": "Leicester",
+    "country": "United Kingdom",
+    "latitude": 52.6386,
+    "longitude": -1.13169,
+    "ror_id": "https://ror.org/04h699437"
+  },
+  "the Department of Business Development and Technology, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Aarhus University",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.15674,
+    "longitude": 10.21076,
+    "ror_id": "https://ror.org/01aj84f44"
+  },
+  "the Group of Urban Productive Ecosystems, Technical University of Munich": {
+    "matched": true,
+    "canonical_name": "Technical University of Munich",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/02kkvpp62"
+  },
+  "the Department of Technology, Management and Economics, Technical University of Denmark": {
+    "matched": true,
+    "canonical_name": "Technical University of Denmark",
+    "city": "Kongens Lyngby",
+    "country": "Denmark",
+    "latitude": 55.77044,
+    "longitude": 12.50378,
+    "ror_id": "https://ror.org/04qtj9h94"
+  },
+  "the Department of Built Environment, Aalto University": {
+    "matched": true,
+    "canonical_name": "Aalto University",
+    "city": "Espoo",
+    "country": "Finland",
+    "latitude": 60.2052,
+    "longitude": 24.6522,
+    "ror_id": "https://ror.org/020hwjq30"
+  },
+  "the UMR 6266 IDEES Center, French National Centre for Scientific Research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the School of Geography, University of Leeds": {
+    "matched": true,
+    "canonical_name": "University of Leeds",
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "latitude": 53.79648,
+    "longitude": -1.54785,
+    "ror_id": "https://ror.org/024mrxd33"
+  },
+  "the Division of the Environmental Health Sciences, The Ohio State University": {
+    "matched": true,
+    "canonical_name": "The Ohio State University",
+    "city": "Columbus",
+    "country": "United States",
+    "latitude": 39.96118,
+    "longitude": -82.99879,
+    "ror_id": "https://ror.org/00rs6vg23"
+  },
+  "the Department of Geodesy, Helmholtz Centre Potsdam – GFZ German Research Centre for Geosciences": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Laboratory of Geo-information Science and Remote Sensing, Wageningen University and Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the School of Forest Sciences, University of Eastern Finland": {
+    "matched": true,
+    "canonical_name": "University of Eastern Finland",
+    "city": "Joensuu",
+    "country": "Finland",
+    "latitude": 62.60118,
+    "longitude": 29.76316,
+    "ror_id": "https://ror.org/00cyydd11"
+  },
+  "School of Geography and Environmental Science, University of Southampton": {
+    "matched": true,
+    "canonical_name": "University of Southampton",
+    "city": "Southampton",
+    "country": "United Kingdom",
+    "latitude": 50.90395,
+    "longitude": -1.40428,
+    "ror_id": "https://ror.org/01ryk1543"
+  },
+  "the Department of Forest resource management, Swedish University of Agricultural Sciences": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Department of Biology, University of Oxford": {
+    "matched": true,
+    "canonical_name": "University of Oxford",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.75222,
+    "longitude": -1.25596,
+    "ror_id": "https://ror.org/052gg0110"
+  },
+  "the Faculty of Civil Engineering & Geosciences, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "Cornell Mui Ho Center for Cities, Cornell University": {
+    "matched": true,
+    "canonical_name": "Cornell University",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.44063,
+    "longitude": -76.49661,
+    "ror_id": "https://ror.org/05bnh6r87"
+  },
+  "the Copernicus Institute of Sustainable Development, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the Department of Environmental Health, Boston University": {
+    "matched": true,
+    "canonical_name": "Boston University",
+    "city": "Boston",
+    "country": "United States",
+    "latitude": 42.35843,
+    "longitude": -71.05977,
+    "ror_id": "https://ror.org/05qwgg493"
+  },
+  "the Department of Earth and Atmospheric Sciences, University of Alberta": {
+    "matched": true,
+    "canonical_name": "University of Alberta",
+    "city": "Edmonton",
+    "country": "Canada",
+    "latitude": 53.55014,
+    "longitude": -113.46871,
+    "ror_id": "https://ror.org/0160cpw27"
+  },
+  "the Laboratory of City, Mobility, Transport, University Gustave Eiffel": {
+    "matched": true,
+    "canonical_name": "Université Gustave Eiffel",
+    "city": "Champs-sur-Marne",
+    "country": "France",
+    "latitude": 48.85,
+    "longitude": 2.6,
+    "ror_id": "https://ror.org/03x42jk29"
+  },
+  "the OpenGeoHub foundation": {
+    "matched": true,
+    "canonical_name": "Fondation Segré",
+    "city": "Geneva",
+    "country": "Switzerland",
+    "latitude": 46.20222,
+    "longitude": 6.14569,
+    "ror_id": "https://ror.org/0001paf45"
+  },
+  "the Research Institute for Sustainability, Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Department of Geodesy, Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Urban Nature Team, Finnish Environment Institute": {
+    "matched": true,
+    "canonical_name": "Finnish Environment Institute",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.16952,
+    "longitude": 24.93545,
+    "ror_id": "https://ror.org/013nat269"
+  },
+  "the Inverse Modelling Group, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Stanford Urban Resilience Initiative, Stanford University": {
+    "matched": true,
+    "canonical_name": "Stanford University",
+    "city": "Stanford",
+    "country": "United States",
+    "latitude": 37.42411,
+    "longitude": -122.16608,
+    "ror_id": "https://ror.org/00f54p054"
+  },
+  "the Department of Geoscience, Ecole normale supérieure (ENS)": {
+    "matched": true,
+    "canonical_name": "École Normale Supérieure",
+    "city": "Bujumbura",
+    "country": "Burundi",
+    "latitude": -3.38193,
+    "longitude": 29.36142,
+    "ror_id": "https://ror.org/01dp7jr64"
+  },
+  "the Section of Meteorology and Remote Sensing, Technical University of Denmark (DTU)": {
+    "matched": true,
+    "canonical_name": "Technical University of Denmark",
+    "city": "Kongens Lyngby",
+    "country": "Denmark",
+    "latitude": 55.77044,
+    "longitude": 12.50378,
+    "ror_id": "https://ror.org/04qtj9h94"
+  },
+  "the Department of Geoscience and Geography, University of Helsinki": {
+    "matched": true,
+    "canonical_name": "University of Helsinki",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.16952,
+    "longitude": 24.93545,
+    "ror_id": "https://ror.org/040af2s02"
+  },
+  "the Department of Physical Geography, Stockholm University": {
+    "matched": true,
+    "canonical_name": "Stockholm University",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.32938,
+    "longitude": 18.06871,
+    "ror_id": "https://ror.org/05f0yaq80"
+  },
+  "the Institute for Climate and Carbon Neutrality and the Department of Geography, The University of Hong Kong": {
+    "matched": true,
+    "canonical_name": "University of Hong Kong",
+    "city": "Pok Fu Lam",
+    "country": "Hong Kong",
+    "latitude": 22.26861,
+    "longitude": 114.12924,
+    "ror_id": "https://ror.org/02zhqgq86"
+  },
+  "the Department of Population and Public Health, University of Southern California": {
+    "matched": true,
+    "canonical_name": "University of Southern California",
+    "city": "Los Angeles",
+    "country": "United States",
+    "latitude": 34.05223,
+    "longitude": -118.24368,
+    "ror_id": "https://ror.org/03taz7m60"
+  },
+  "the City College of New York": {
+    "matched": true,
+    "canonical_name": "City College of New York",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.71427,
+    "longitude": -74.00597,
+    "ror_id": "https://ror.org/00wmhkr98"
+  },
+  "the King Abdullah University of Science and Technology": {
+    "matched": true,
+    "canonical_name": "King Abdullah University of Science and Technology",
+    "city": "Jeddah",
+    "country": "Saudi Arabia",
+    "latitude": 21.49012,
+    "longitude": 39.18624,
+    "ror_id": "https://ror.org/01q3tbs38"
+  },
+  "the Crowther Lab, Federal Institute of Technology Zurich (ETH Zurich)": {
+    "matched": true,
+    "canonical_name": "Ceres Laboratory",
+    "city": "Villeneuve-de-Berg",
+    "country": "France",
+    "latitude": 44.55699,
+    "longitude": 4.50215,
+    "ror_id": "https://ror.org/048r71s66"
+  },
+  "the Department of Geoscience and Remote Sensing, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the School of Architecture and Planning, University at Buffalo": {
+    "matched": true,
+    "canonical_name": "School of Planning and Architecture Delhi",
+    "city": "New Delhi",
+    "country": "India",
+    "latitude": 28.62137,
+    "longitude": 77.2148,
+    "ror_id": "https://ror.org/04y57vd64"
+  },
+  "the Image, City, and Environment Laboratory, French national center for scientific research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the Department of Geosciences and Geography, University of Helsinki": {
+    "matched": true,
+    "canonical_name": "University of Helsinki",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.16952,
+    "longitude": 24.93545,
+    "ror_id": "https://ror.org/040af2s02"
+  },
+  "the School of Geography and Environmental Science, University of Southampton": {
+    "matched": true,
+    "canonical_name": "University of Southampton",
+    "city": "Southampton",
+    "country": "United Kingdom",
+    "latitude": 50.90395,
+    "longitude": -1.40428,
+    "ror_id": "https://ror.org/01ryk1543"
+  },
+  "the Department of System Solution, Fraunhofer Institute for High-Speed Dynamics (Fraunhofer Ernst-Mach-Institut)": {
+    "matched": true,
+    "canonical_name": "Fraunhofer Institute for High-Speed Dynamics, Ernst-Mach-Institut",
+    "city": "Freiburg im Breisgau",
+    "country": "Germany",
+    "latitude": 47.9959,
+    "longitude": 7.85222,
+    "ror_id": "https://ror.org/00csq2k70"
+  },
+  "the Department of Atmospheric and Oceanic Sciences, McGill University": {
+    "matched": true,
+    "canonical_name": "McGill University",
+    "city": "Montreal",
+    "country": "Canada",
+    "latitude": 45.50884,
+    "longitude": -73.58781,
+    "ror_id": "https://ror.org/01pxwe438"
+  },
+  "the Faculty of Technology, Policy and Management, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Spatial Evolutionary Ecology Group and Dynamic Macroecology Group, Swiss Federal Institute for Forest, Snow and Landscape Research (WSL)": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute for Forest, Snow and Landscape Research",
+    "city": "Birmensdorf",
+    "country": "Switzerland",
+    "latitude": 47.35515,
+    "longitude": 8.44256,
+    "ror_id": "https://ror.org/04bs5yc70"
+  },
+  "the Faculty of Architecture and the Built Environment, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Department of Geography, Dartmouth College": {
+    "matched": true,
+    "canonical_name": "Dartmouth College",
+    "city": "Hanover",
+    "country": "United States",
+    "latitude": 43.70229,
+    "longitude": -72.28954,
+    "ror_id": "https://ror.org/049s0rh22"
+  },
+  "the Department of Geography and Environmental Studies, University of Colorado Colorado Springs": {
+    "matched": true,
+    "canonical_name": "University of Colorado Colorado Springs",
+    "city": "Colorado Springs",
+    "country": "United States",
+    "latitude": 38.83388,
+    "longitude": -104.82136,
+    "ror_id": "https://ror.org/054spjc55"
+  },
+  "the Remote Sensing and Geospatial Analysis Research Group, University of Canterbury": {
+    "matched": true,
+    "canonical_name": "University of Canterbury",
+    "city": "Christchurch",
+    "country": "New Zealand",
+    "latitude": -43.53333,
+    "longitude": 172.63333,
+    "ror_id": "https://ror.org/03y7q9t39"
+  },
+  "the Adloc Cooperative Agriculture And Research Center, Prairie View A&M University": {
+    "matched": true,
+    "canonical_name": "Prairie View A&M University",
+    "city": "Prairie View",
+    "country": "United States",
+    "latitude": 30.09327,
+    "longitude": -95.98773,
+    "ror_id": "https://ror.org/0449kf092"
+  },
+  "the Department of Biogeochemical Integration, Max Planck Institute for Biogeochemistry": {
+    "matched": true,
+    "canonical_name": "Max Planck Institute for Biogeochemistry",
+    "city": "Jena",
+    "country": "Germany",
+    "latitude": 50.92878,
+    "longitude": 11.5899,
+    "ror_id": "https://ror.org/051yxp643"
+  },
+  "the Department of Ecoscience, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Aarhus University",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.15674,
+    "longitude": 10.21076,
+    "ror_id": "https://ror.org/01aj84f44"
+  },
+  "the Department of Environment, Ghent University": {
+    "matched": true,
+    "canonical_name": "Ghent University",
+    "city": "Ghent",
+    "country": "Belgium",
+    "latitude": 51.05,
+    "longitude": 3.71667,
+    "ror_id": "https://ror.org/00cv9y106"
+  },
+  "the GEOLOC laboratory, University Gustave Eiffel": {
+    "matched": true,
+    "canonical_name": "Université Gustave Eiffel",
+    "city": "Champs-sur-Marne",
+    "country": "France",
+    "latitude": 48.85,
+    "longitude": 2.6,
+    "ror_id": "https://ror.org/03x42jk29"
+  },
+  "the Group of Hydrology and Climate Impacts in Mountain Regions, Swiss WSL Institute for Snow and Avalanche Research SLF": {
+    "matched": true,
+    "canonical_name": "WSL Institute for Snow and Avalanche Research SLF",
+    "city": "Davos",
+    "country": "Switzerland",
+    "latitude": 46.80429,
+    "longitude": 9.83723,
+    "ror_id": "https://ror.org/04pzmmv39"
+  },
+  "the Department of Physical Geography, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the School of Architecture and Built Environment, KTH Royal Institute of Technology": {
+    "matched": true,
+    "canonical_name": "KTH Royal Institute of Technology",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.32938,
+    "longitude": 18.06871,
+    "ror_id": "https://ror.org/026vcq606"
+  },
+  "the CNRS@CREATE (French National Centre for Scientific Research)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the Geospatial Data, Analytics and Modelling Group, Newcastle University": {
+    "matched": true,
+    "canonical_name": "University of Newcastle Australia",
+    "city": "Newcastle",
+    "country": "Australia",
+    "latitude": -32.92953,
+    "longitude": 151.7801,
+    "ror_id": "https://ror.org/00eae9z71"
+  },
+  "the Department of Architecture, National University of Singapore": {
+    "matched": true,
+    "canonical_name": "National University of Singapore",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.28967,
+    "longitude": 103.85007,
+    "ror_id": "https://ror.org/01tgyzw49"
+  },
+  "the School of Geography and Sustainable Development, University of St. Andrews": {
+    "matched": true,
+    "canonical_name": "University of St Andrews",
+    "city": "St Andrews",
+    "country": "United Kingdom",
+    "latitude": 56.33871,
+    "longitude": -2.79902,
+    "ror_id": "https://ror.org/02wn5qz54"
+  },
+  "the Research Unit of Sensor and Remote Sensing, The French National Research Institute for Agriculture, Food, and Environment (INRAE)": {
+    "matched": true,
+    "canonical_name": "National Agricultural Research Institute",
+    "city": "Banjul",
+    "country": "The Gambia",
+    "latitude": 13.45274,
+    "longitude": -16.57803,
+    "ror_id": "https://ror.org/025xz1z61"
+  },
+  "the Lancaster Medical School, Lancaster University": {
+    "matched": true,
+    "canonical_name": "Lancaster University Ghana",
+    "city": "Accra",
+    "country": "Ghana",
+    "latitude": 5.55602,
+    "longitude": -0.1969,
+    "ror_id": "https://ror.org/01g3dya06"
+  },
+  "the Leibniz Centre for Agricultural Landscape Research (ZALF)": {
+    "matched": true,
+    "canonical_name": "Leibniz Centre for Agricultural Landscape Research",
+    "city": "Müncheberg",
+    "country": "Germany",
+    "latitude": 52.50704,
+    "longitude": 14.13716,
+    "ror_id": "https://ror.org/01ygyzs83"
+  },
+  "the Department of Geography, Geomatics and Environment": {
+    "matched": true,
+    "canonical_name": "Departement Omgeving",
+    "city": "Brussels",
+    "country": "Belgium",
+    "latitude": 50.85045,
+    "longitude": 4.34878,
+    "ror_id": "https://ror.org/0558ewf28"
+  },
+  "the Institute of Geography and Regional Science, University of Graz": {
+    "matched": true,
+    "canonical_name": "University of Graz",
+    "city": "Graz",
+    "country": "Austria",
+    "latitude": 47.06667,
+    "longitude": 15.45,
+    "ror_id": "https://ror.org/01faaaf77"
+  },
+  "the Faculty of Forestry, University of British Columbia": {
+    "matched": true,
+    "canonical_name": "University of British Columbia",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.24966,
+    "longitude": -123.11934,
+    "ror_id": "https://ror.org/03rmrcq20"
+  },
+  "the Faculty of Geo-Information Science and Earth Observation (ITC), University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the Department of Forest and Conservation Sciences, The University of British Columbia": {
+    "matched": true,
+    "canonical_name": "University of British Columbia",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.24966,
+    "longitude": -123.11934,
+    "ror_id": "https://ror.org/03rmrcq20"
+  },
+  "the Earth Systems and Global Change group, Wageningen University and Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Department of Environmental Science, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Aarhus University",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.15674,
+    "longitude": 10.21076,
+    "ror_id": "https://ror.org/01aj84f44"
+  },
+  "the Department of Business and Management Science, Norwegian School of Economics (NHH)": {
+    "matched": true,
+    "canonical_name": "Norwegian School of Economics",
+    "city": "Bergen",
+    "country": "Norway",
+    "latitude": 60.39299,
+    "longitude": 5.32415,
+    "ror_id": "https://ror.org/04v53s997"
+  },
+  "the Department of City and Regional Planning, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Luxembourg Institute of Socio-Economic Research (LISER)": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Institute of Food and Agricultural Sciences, University of Florida": {
+    "matched": true,
+    "canonical_name": "University of Florida",
+    "city": "Gainesville",
+    "country": "United States",
+    "latitude": 29.65163,
+    "longitude": -82.32483,
+    "ror_id": "https://ror.org/02y3ad647"
+  },
+  "the Vulnerability Assessment, Risk Management & Adaptive Planning Division, United Nations University": {
+    "matched": true,
+    "canonical_name": "United Nations University",
+    "city": "Tokyo",
+    "country": "Japan",
+    "latitude": 35.6895,
+    "longitude": 139.69171,
+    "ror_id": "https://ror.org/01cdrde68"
+  },
+  "the Land-Ecosystem Modelling Group, Karlsruhe Institute of Technology": {
+    "matched": true,
+    "canonical_name": "Karlsruhe Institute of Technology",
+    "city": "Karlsruhe",
+    "country": "Germany",
+    "latitude": 49.00937,
+    "longitude": 8.40444,
+    "ror_id": "https://ror.org/04t3en479"
+  },
+  "the School of Interdisciplinary Arts and Sciences, University of Washington Bothell": {
+    "matched": true,
+    "canonical_name": "University of Washington",
+    "city": "Seattle",
+    "country": "United States",
+    "latitude": 47.60621,
+    "longitude": -122.33207,
+    "ror_id": "https://ror.org/00cvxb145"
+  },
+  "the Chalmers University of Technology": {
+    "matched": true,
+    "canonical_name": "Chalmers University of Technology",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.70716,
+    "longitude": 11.96679,
+    "ror_id": "https://ror.org/040wg7k59"
+  },
+  "the School of Earth and Environment, University of Canterbury": {
+    "matched": true,
+    "canonical_name": "University of Canterbury",
+    "city": "Christchurch",
+    "country": "New Zealand",
+    "latitude": -43.53333,
+    "longitude": 172.63333,
+    "ror_id": "https://ror.org/03y7q9t39"
+  },
+  "the Senior Scientist in Climate Dynamics and Modeling, University of Vienna": {
+    "matched": true,
+    "canonical_name": "University of Vienna",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.20849,
+    "longitude": 16.37208,
+    "ror_id": "https://ror.org/03prydq77"
+  },
+  "the Department of Resource Economics and Environmental Sociology, University of Alberta": {
+    "matched": true,
+    "canonical_name": "University of Alberta",
+    "city": "Edmonton",
+    "country": "Canada",
+    "latitude": 53.55014,
+    "longitude": -113.46871,
+    "ror_id": "https://ror.org/0160cpw27"
+  },
+  "the Fenner School of Environment and Society, Australian National University": {
+    "matched": true,
+    "canonical_name": "Australian National University",
+    "city": "Canberra",
+    "country": "Australia",
+    "latitude": -35.28346,
+    "longitude": 149.12807,
+    "ror_id": "https://ror.org/019wvm592"
+  },
+  "the School of Geosciences, University of Edinburgh": {
+    "matched": true,
+    "canonical_name": "University of Edinburgh",
+    "city": "Edinburgh",
+    "country": "United Kingdom",
+    "latitude": 55.95206,
+    "longitude": -3.19648,
+    "ror_id": "https://ror.org/01nrxwf90"
+  },
+  "the Centre for Urban Research and the Social and Global Studies Centre, RMIT University": {
+    "matched": true,
+    "canonical_name": "RMIT University",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.814,
+    "longitude": 144.96332,
+    "ror_id": "https://ror.org/04ttjf776"
+  },
+  "the Department of Aerospace and Geodesy, Technical University of Munich": {
+    "matched": true,
+    "canonical_name": "Technical University of Munich",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/02kkvpp62"
+  },
+  "the Department of Life and Environmental Sciences, Bournemouth University": {
+    "matched": true,
+    "canonical_name": "Bournemouth University",
+    "city": "Poole",
+    "country": "United Kingdom",
+    "latitude": 50.71429,
+    "longitude": -1.98458,
+    "ror_id": "https://ror.org/05wwcw481"
+  },
+  "the Urban Systems Institute, The University of Hong Kong": {
+    "matched": true,
+    "canonical_name": "University of Hong Kong",
+    "city": "Pok Fu Lam",
+    "country": "Hong Kong",
+    "latitude": 22.26861,
+    "longitude": 114.12924,
+    "ror_id": "https://ror.org/02zhqgq86"
+  },
+  "the Department of Geosciences, University of Oslo": {
+    "matched": true,
+    "canonical_name": "University of Oslo",
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.91273,
+    "longitude": 10.74609,
+    "ror_id": "https://ror.org/01xtthb56"
+  },
+  "the School of Project Management, University of Sydney": {
+    "matched": true,
+    "canonical_name": "The University of Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/0384j8v12"
+  },
+  "the Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam": {
+    "matched": true,
+    "canonical_name": "Institute for Biodiversity",
+    "city": "Regensburg",
+    "country": "Germany",
+    "latitude": 49.01513,
+    "longitude": 12.10161,
+    "ror_id": "https://ror.org/01n8ggb71"
+  },
+  "the Department of Biostatistics, Harvard University": {
+    "matched": true,
+    "canonical_name": "Harvard University",
+    "city": "Cambridge",
+    "country": "United States",
+    "latitude": 42.3751,
+    "longitude": -71.10561,
+    "ror_id": "https://ror.org/03vek6s52"
+  },
+  "the college of Earth, Ocean and Atmospheric Science, Oregon State University": {
+    "matched": true,
+    "canonical_name": "Oregon State University",
+    "city": "Corvallis",
+    "country": "United States",
+    "latitude": 44.56457,
+    "longitude": -123.26204,
+    "ror_id": "https://ror.org/00ysfqy60"
+  },
+  "the Norwegian Institute for Nature Research": {
+    "matched": true,
+    "canonical_name": "Norwegian Institute for Nature Research",
+    "city": "Trondheim",
+    "country": "Norway",
+    "latitude": 63.43049,
+    "longitude": 10.39506,
+    "ror_id": "https://ror.org/04aha0598"
+  },
+  "the Institute of Geodesy, Technische Universität Graz (TU Graz)": {
+    "matched": true,
+    "canonical_name": "Graz University of Technology",
+    "city": "Graz",
+    "country": "Austria",
+    "latitude": 47.06733,
+    "longitude": 15.44197,
+    "ror_id": "https://ror.org/00d7xrm67"
+  },
+  "the Department of Information Technology, Uppsala University": {
+    "matched": true,
+    "canonical_name": "Uppsala University",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/048a87296"
+  },
+  "the Faculty of Science, Leiden University": {
+    "matched": true,
+    "canonical_name": "Leiden University",
+    "city": "Leiden",
+    "country": "The Netherlands",
+    "latitude": 52.15833,
+    "longitude": 4.49306,
+    "ror_id": "https://ror.org/027bh9e22"
+  },
+  "the Department of Human Geography and Spatial Planning, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the Lee Kong Chian School of Medicine, Nanyang Technological University": {
+    "matched": true,
+    "canonical_name": "Nanyang Technological University",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.28967,
+    "longitude": 103.85007,
+    "ror_id": "https://ror.org/02e7b5302"
+  },
+  "the Department of Environmental Science and Engineering, Harvard University": {
+    "matched": true,
+    "canonical_name": "Harvard University",
+    "city": "Cambridge",
+    "country": "United States",
+    "latitude": 42.3751,
+    "longitude": -71.10561,
+    "ror_id": "https://ror.org/03vek6s52"
+  },
+  "the Department of Civil and Urban Engineering and C2SMART Center, New York University": {
+    "matched": true,
+    "canonical_name": "New York University",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.71427,
+    "longitude": -74.00597,
+    "ror_id": "https://ror.org/0190ak572"
+  },
+  "the UMR ESPACE-DEV, Institut de Recherche pour le Développement, France": {
+    "matched": true,
+    "canonical_name": "UMR Espace-Dev",
+    "city": "Montpellier",
+    "country": "France",
+    "latitude": 43.61093,
+    "longitude": 3.87635,
+    "ror_id": "https://ror.org/01z485314"
+  },
+  "the School of Geography, Earth and Atmospheric Sciences, The University of Melbourne": {
+    "matched": true,
+    "canonical_name": "The University of Melbourne",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.814,
+    "longitude": 144.96332,
+    "ror_id": "https://ror.org/01ej9dk98"
+  },
+  "the Department of Agroecology, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Agroécologie",
+    "city": "Dijon",
+    "country": "France",
+    "latitude": 47.31667,
+    "longitude": 5.01667,
+    "ror_id": "https://ror.org/00mkad321"
+  },
+  "the Department of Civil Engineering and Environmental Sciences, Western Norway University of Applied Sciences": {
+    "matched": true,
+    "canonical_name": "Western Norway University of Applied Sciences",
+    "city": "Bergen",
+    "country": "Norway",
+    "latitude": 60.39299,
+    "longitude": 5.32415,
+    "ror_id": "https://ror.org/05phns765"
+  },
+  "the Purdue University Libraries": {
+    "matched": true,
+    "canonical_name": "Purdue University West Lafayette",
+    "city": "West Lafayette",
+    "country": "United States",
+    "latitude": 40.42587,
+    "longitude": -86.90807,
+    "ror_id": "https://ror.org/02dqehb95"
+  },
+  "the Department of Civil and Environmental Engineering, University of Nevada, Reno": {
+    "matched": true,
+    "canonical_name": "University of Nevada, Reno",
+    "city": "Reno",
+    "country": "United States",
+    "latitude": 39.52963,
+    "longitude": -119.8138,
+    "ror_id": "https://ror.org/01keh0577"
+  },
+  "the School of Geography, Planning and Spatial Sciences, University of Tasmania": {
+    "matched": true,
+    "canonical_name": "University of Tasmania",
+    "city": "Hobart",
+    "country": "Australia",
+    "latitude": -42.87936,
+    "longitude": 147.32941,
+    "ror_id": "https://ror.org/01nfmeh72"
+  },
+  "the Leibniz Centre for Agricultural Landscape Research": {
+    "matched": true,
+    "canonical_name": "Leibniz Centre for Agricultural Landscape Research",
+    "city": "Müncheberg",
+    "country": "Germany",
+    "latitude": 52.50704,
+    "longitude": 14.13716,
+    "ror_id": "https://ror.org/01ygyzs83"
+  },
+  "the Terner Center for Housing Innovation, University of California, Berkeley": {
+    "matched": true,
+    "canonical_name": "University of California, Berkeley",
+    "city": "Berkeley",
+    "country": "United States",
+    "latitude": 37.87159,
+    "longitude": -122.27275,
+    "ror_id": "https://ror.org/01an7q238"
+  },
+  "the Luxembourg Institute of Socio-Economic Research": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Institute for Transport Studies, University of Leeds": {
+    "matched": true,
+    "canonical_name": "University of Leeds",
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "latitude": 53.79648,
+    "longitude": -1.54785,
+    "ror_id": "https://ror.org/024mrxd33"
+  },
+  "the Water and Environmental Engineering research group, Aalto University": {
+    "matched": true,
+    "canonical_name": "Aalto University",
+    "city": "Espoo",
+    "country": "Finland",
+    "latitude": 60.2052,
+    "longitude": 24.6522,
+    "ror_id": "https://ror.org/020hwjq30"
+  },
+  "the Potsdam Institute for Climate Impact Research (PIK), Germany": {
+    "matched": true,
+    "canonical_name": "Potsdam Institute for Climate Impact Research",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/03e8s1d88"
+  },
+  "the Department of Civil, Environmental and Geomatic Engineering, University College London": {
+    "matched": true,
+    "canonical_name": "MRC Clinical Trials Unit at UCL",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "ror_id": "https://ror.org/001mm6w73"
+  },
+  "the Earth Systems and global Change Group, Wageningen University & Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Laboratory of Oceanic, Continental Environments and Paleoenvironments, The French National Centre for Scientific Research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the Geoscience Department, Virginia Polytechnic Institute and State University": {
+    "matched": true,
+    "canonical_name": "Virginia Tech",
+    "city": "Blacksburg",
+    "country": "United States",
+    "latitude": 37.22957,
+    "longitude": -80.41394,
+    "ror_id": "https://ror.org/02smfhw86"
+  },
+  "the Research Department of Climate Resilience, Potsdam Institute for Climate Impact Research": {
+    "matched": true,
+    "canonical_name": "Potsdam Institute for Climate Impact Research",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/03e8s1d88"
+  },
+  "the Department of Geography, The University of Manchester": {
+    "matched": true,
+    "canonical_name": "University of Manchester",
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "latitude": 53.48095,
+    "longitude": -2.23743,
+    "ror_id": "https://ror.org/027m9bs27"
+  },
+  "the Environmental Sensing and Modelling RDI Unit, Luxembourg Institute of Science and Technology": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Science and Technology",
+    "city": "Belvaux",
+    "country": "Luxembourg",
+    "latitude": 49.51014,
+    "longitude": 5.92414,
+    "ror_id": "https://ror.org/01t178j62"
+  },
+  "the School of Earth Sciences and Byrd Polar and Climate Research Center, The Ohio State University": {
+    "matched": true,
+    "canonical_name": "The Ohio State University",
+    "city": "Columbus",
+    "country": "United States",
+    "latitude": 39.96118,
+    "longitude": -82.99879,
+    "ror_id": "https://ror.org/00rs6vg23"
+  },
+  "the Simulation and Data Lab, Forschungszentrum Jülich": {
+    "matched": true,
+    "canonical_name": "Forschungszentrum Jülich",
+    "city": "Jülich",
+    "country": "Germany",
+    "latitude": 50.92149,
+    "longitude": 6.36267,
+    "ror_id": "https://ror.org/02nv7yv05"
+  },
+  "the School of Environmental and Life Sciences, The University of Newcastle Australia": {
+    "matched": true,
+    "canonical_name": "University of Newcastle Australia",
+    "city": "Newcastle",
+    "country": "Australia",
+    "latitude": -32.92953,
+    "longitude": 151.7801,
+    "ror_id": "https://ror.org/00eae9z71"
+  },
+  "the Department of Geography and Geology, University of Turku": {
+    "matched": true,
+    "canonical_name": "University of Turku",
+    "city": "Turku",
+    "country": "Finland",
+    "latitude": 60.45148,
+    "longitude": 22.26869,
+    "ror_id": "https://ror.org/05vghhr25"
+  },
+  "the Department of Biology, University of Turku": {
+    "matched": true,
+    "canonical_name": "University of Turku",
+    "city": "Turku",
+    "country": "Finland",
+    "latitude": 60.45148,
+    "longitude": 22.26869,
+    "ror_id": "https://ror.org/05vghhr25"
+  },
+  "the Department of Geography, King’s College London": {
+    "matched": true,
+    "canonical_name": "King's College London",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "ror_id": "https://ror.org/0220mzb33"
+  },
+  "the Department of Geography, University of Innsbruck": {
+    "matched": true,
+    "canonical_name": "Universität Innsbruck",
+    "city": "Innsbruck",
+    "country": "Austria",
+    "latitude": 47.26266,
+    "longitude": 11.39454,
+    "ror_id": "https://ror.org/054pv6659"
+  },
+  "the Department of Forest Resource Management, The Swedish University of Agricultural Sciences": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Department of Organismic and Evolutionary Biology, Harvard University": {
+    "matched": true,
+    "canonical_name": "Harvard University",
+    "city": "Cambridge",
+    "country": "United States",
+    "latitude": 42.3751,
+    "longitude": -71.10561,
+    "ror_id": "https://ror.org/03vek6s52"
+  },
+  "the Precision Agriculture Laboratory, University of Sydney": {
+    "matched": true,
+    "canonical_name": "The University of Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/0384j8v12"
+  },
+  "the Division of Coastal Sciences, The University of Southern Mississippi": {
+    "matched": true,
+    "canonical_name": "University of Southern Mississippi",
+    "city": "Hattiesburg",
+    "country": "United States",
+    "latitude": 31.32712,
+    "longitude": -89.29034,
+    "ror_id": "https://ror.org/0270vfa57"
+  },
+  "Department of Built Environment, Aalto University": {
+    "matched": true,
+    "canonical_name": "Aalto University",
+    "city": "Espoo",
+    "country": "Finland",
+    "latitude": 60.2052,
+    "longitude": 24.6522,
+    "ror_id": "https://ror.org/020hwjq30"
+  },
+  "the Department of Biogeochemical Processes, Max Planck Institute for Biogeochemistry": {
+    "matched": true,
+    "canonical_name": "Max Planck Institute for Biogeochemistry",
+    "city": "Jena",
+    "country": "Germany",
+    "latitude": 50.92878,
+    "longitude": 11.5899,
+    "ror_id": "https://ror.org/051yxp643"
+  },
+  "the Department of Information Services and Computing, Helmholtz-Zentrum Dresden-Rossendorf": {
+    "matched": true,
+    "canonical_name": "Helmholtz-Zentrum Dresden-Rossendorf",
+    "city": "Dresden",
+    "country": "Germany",
+    "latitude": 51.05089,
+    "longitude": 13.73832,
+    "ror_id": "https://ror.org/01zy2cs03"
+  },
+  "the Department of Environmental Science, Stockholm University": {
+    "matched": true,
+    "canonical_name": "Stockholm University",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.32938,
+    "longitude": 18.06871,
+    "ror_id": "https://ror.org/05f0yaq80"
+  },
+  "the Institute of Agriculture and Natural Resources, University of Nebraska-Lincoln": {
+    "matched": true,
+    "canonical_name": "University of Nebraska–Lincoln",
+    "city": "Lincoln",
+    "country": "United States",
+    "latitude": 40.8,
+    "longitude": -96.66696,
+    "ror_id": "https://ror.org/043mer456"
+  },
+  "the Swiss Federal Institute of Aquatic Science and Technology": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute of Aquatic Science and Technology",
+    "city": "Dübendorf",
+    "country": "Switzerland",
+    "latitude": 47.39724,
+    "longitude": 8.61872,
+    "ror_id": "https://ror.org/00pc48d59"
+  },
+  "the Faculty of Health and Environmental Sciences, Auckland University of Technology": {
+    "matched": true,
+    "canonical_name": "Auckland University of Technology",
+    "city": "Auckland",
+    "country": "New Zealand",
+    "latitude": -36.84853,
+    "longitude": 174.76349,
+    "ror_id": "https://ror.org/01zvqw119"
+  },
+  "the College of Humanities & Earth and Social Sciences, University of North Carolina, Charlotte": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Charlotte",
+    "city": "Charlotte",
+    "country": "United States",
+    "latitude": 35.22709,
+    "longitude": -80.84313,
+    "ror_id": "https://ror.org/04dawnj30"
+  },
+  "the Faculty of Social Sciences, University of Stirling": {
+    "matched": true,
+    "canonical_name": "University of Stirling",
+    "city": "Stirling",
+    "country": "United Kingdom",
+    "latitude": 56.11903,
+    "longitude": -3.93682,
+    "ror_id": "https://ror.org/045wgfr59"
+  },
+  "the Bartlett Centre for Advanced Spatial Analysis, University College London": {
+    "matched": true,
+    "canonical_name": "MRC Clinical Trials Unit at UCL",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "ror_id": "https://ror.org/001mm6w73"
+  },
+  "the Department of Water Management, Delft University of Technology (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Resource-Efficient Cropping Systems Working Group, Leibniz Centre for Agricultural Landscape Research": {
+    "matched": true,
+    "canonical_name": "Leibniz Centre for Agricultural Landscape Research",
+    "city": "Müncheberg",
+    "country": "Germany",
+    "latitude": 52.50704,
+    "longitude": 14.13716,
+    "ror_id": "https://ror.org/01ygyzs83"
+  },
+  "the Department of Meteorology and Geophysics, University of Vienna": {
+    "matched": true,
+    "canonical_name": "National Institute of Meteorology",
+    "city": "Tunis",
+    "country": "Tunisia",
+    "latitude": 36.81897,
+    "longitude": 10.16579,
+    "ror_id": "https://ror.org/03m6sha91"
+  },
+  "the Discipline of Botany, Trinity College Dublin": {
+    "matched": true,
+    "canonical_name": "Trinity College Dublin",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.33306,
+    "longitude": -6.24889,
+    "ror_id": "https://ror.org/02tyrky19"
+  },
+  "the Department of Earth Science, University of Cambridge": {
+    "matched": true,
+    "canonical_name": "University of Cambridge",
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "latitude": 52.2,
+    "longitude": 0.11667,
+    "ror_id": "https://ror.org/013meh722"
+  },
+  "the Section for Geohazards and Earth Observation, Geological Survey of Norway": {
+    "matched": true,
+    "canonical_name": "Geological Survey of Norway",
+    "city": "Trondheim",
+    "country": "Norway",
+    "latitude": 63.43049,
+    "longitude": 10.39506,
+    "ror_id": "https://ror.org/036dwbr90"
+  },
+  "the Aircraft Center for Earth Studies, University of Miami": {
+    "matched": true,
+    "canonical_name": "University of Miami",
+    "city": "Coral Gables",
+    "country": "United States",
+    "latitude": 25.72149,
+    "longitude": -80.26838,
+    "ror_id": "https://ror.org/02dgjyy92"
+  },
+  "the Division of Urban Design and Planning, Chalmers University of Technology": {
+    "matched": true,
+    "canonical_name": "Chalmers University of Technology",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.70716,
+    "longitude": 11.96679,
+    "ror_id": "https://ror.org/040wg7k59"
+  },
+  "the Department F.-A. Forel for environmental and aquatic sciences, University of Geneva": {
+    "matched": true,
+    "canonical_name": "University of Geneva",
+    "city": "Geneva",
+    "country": "Switzerland",
+    "latitude": 46.20222,
+    "longitude": 6.14569,
+    "ror_id": "https://ror.org/01swzsf04"
+  },
+  "the Bartlett School of Architecture, University College London": {
+    "matched": true,
+    "canonical_name": "MRC Clinical Trials Unit at UCL",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "ror_id": "https://ror.org/001mm6w73"
+  },
+  "the Department of Geography and Planning, The University of Liverpool": {
+    "matched": true,
+    "canonical_name": "University of Liverpool",
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "latitude": 53.41058,
+    "longitude": -2.97794,
+    "ror_id": "https://ror.org/04xs57h96"
+  },
+  "the Group of Economic and Social History, University of Groningen": {
+    "matched": true,
+    "canonical_name": "University of Groningen",
+    "city": "Groningen",
+    "country": "The Netherlands",
+    "latitude": 53.21917,
+    "longitude": 6.56667,
+    "ror_id": "https://ror.org/012p63287"
+  },
+  "the Department of Urban and Rural Development, The Swedish University of Agricultural Sciences": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Center for Environmental Science, University of Maryland": {
+    "matched": true,
+    "canonical_name": "University of Maryland, College Park",
+    "city": "College Park",
+    "country": "United States",
+    "latitude": 38.98067,
+    "longitude": -76.93692,
+    "ror_id": "https://ror.org/047s2c258"
+  },
+  "the School of Ecology, University of Leeds": {
+    "matched": true,
+    "canonical_name": "University of Leeds",
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "latitude": 53.79648,
+    "longitude": -1.54785,
+    "ror_id": "https://ror.org/024mrxd33"
+  },
+  "Research Group of Quantitative Spatial Science, University of Bristol": {
+    "matched": true,
+    "canonical_name": "University of Bristol",
+    "city": "Bristol",
+    "country": "United Kingdom",
+    "latitude": 51.45523,
+    "longitude": -2.59665,
+    "ror_id": "https://ror.org/0524sp257"
+  },
+  "the Faculty of Environmental Sciences and Natural Resource Management, Norwegian University of Life Sciences": {
+    "matched": true,
+    "canonical_name": "Norwegian University of Life Sciences",
+    "city": "Ås",
+    "country": "Norway",
+    "latitude": 59.66472,
+    "longitude": 10.79465,
+    "ror_id": "https://ror.org/04a1mvv97"
+  },
+  "the Centre for Environmental and Climate Science, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Department of Geography, University of Utah": {
+    "matched": true,
+    "canonical_name": "University of Utah",
+    "city": "Salt Lake City",
+    "country": "United States",
+    "latitude": 40.76078,
+    "longitude": -111.89105,
+    "ror_id": "https://ror.org/03r0ha626"
+  },
+  "the Laboratory of Geo-Information Science and Remote Sensing, Wageningen University & Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Department of Geography, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Department of Plant Science, University of Cambridge": {
+    "matched": true,
+    "canonical_name": "University of Cambridge",
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "latitude": 52.2,
+    "longitude": 0.11667,
+    "ror_id": "https://ror.org/013meh722"
+  },
+  "the Forestry Research Group, The University of Sydney": {
+    "matched": true,
+    "canonical_name": "The University of Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/0384j8v12"
+  },
+  "the Department of Environmental and Life Sciences, Karlstad University": {
+    "matched": true,
+    "canonical_name": "Karlstad University",
+    "city": "Karlstad",
+    "country": "Sweden",
+    "latitude": 59.3793,
+    "longitude": 13.50357,
+    "ror_id": "https://ror.org/05s754026"
+  },
+  "the Coastal Ecology Section, The Alfred Wegener Institute Helmholtz Centre for Polar and Marine Research": {
+    "matched": true,
+    "canonical_name": "Coastal Land Trust",
+    "city": "Wilmington",
+    "country": "United States",
+    "latitude": 34.23556,
+    "longitude": -77.94604,
+    "ror_id": "https://ror.org/03qkxep52"
+  },
+  "the Department of Natural Resources and Environment, Cornell University": {
+    "matched": true,
+    "canonical_name": "Department of Environment and Natural Resources",
+    "city": "Koronadal",
+    "country": "Philippines",
+    "latitude": 6.50306,
+    "longitude": 124.84694,
+    "ror_id": "https://ror.org/018zm7341"
+  },
+  "the Department of Forest, Rangeland and Fire Sciences, University of Idaho": {
+    "matched": true,
+    "canonical_name": "University of Idaho",
+    "city": "Moscow",
+    "country": "United States",
+    "latitude": 46.73239,
+    "longitude": -117.00017,
+    "ror_id": "https://ror.org/03hbp5t65"
+  },
+  "the Department of Urbanism, Technische Universiteit Delft (TU Delft)": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Soil Geography and Landscape Group, Wageningen University & Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Department of Water Resources, University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the School of Geography, University of Nottingham": {
+    "matched": true,
+    "canonical_name": "University of Nottingham",
+    "city": "Nottingham",
+    "country": "United Kingdom",
+    "latitude": 52.9536,
+    "longitude": -1.15047,
+    "ror_id": "https://ror.org/01ee9ar58"
+  },
+  "the Environmental Change Institute, University of Oxford": {
+    "matched": true,
+    "canonical_name": "University of Oxford",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.75222,
+    "longitude": -1.25596,
+    "ror_id": "https://ror.org/052gg0110"
+  },
+  "the Climate Service Center Germany, Helmholtz-Zentrum Hereon": {
+    "matched": true,
+    "canonical_name": "Helmholtz-Zentrum Hereon",
+    "city": "Geesthacht",
+    "country": "Germany",
+    "latitude": 53.43575,
+    "longitude": 10.3779,
+    "ror_id": "https://ror.org/03qjp1d79"
+  },
+  "the Department of Economics, Finance, and Entrepreneurship, Aston University": {
+    "matched": true,
+    "canonical_name": "Aston University",
+    "city": "Birmingham",
+    "country": "United Kingdom",
+    "latitude": 52.48142,
+    "longitude": -1.89983,
+    "ror_id": "https://ror.org/05j0ve876"
+  },
+  "the Department of Geography & Sustainability at the University of Tennessee, Knoxville": {
+    "matched": true,
+    "canonical_name": "University of Tennessee at Knoxville",
+    "city": "Knoxville",
+    "country": "United States",
+    "latitude": 35.96064,
+    "longitude": -83.92074,
+    "ror_id": "https://ror.org/020f3ap87"
+  },
+  "the Professorship of Earth Observation for Ecosystem Management, Technical University of Munich": {
+    "matched": true,
+    "canonical_name": "Technical University of Munich",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/02kkvpp62"
+  },
+  "the Institute of Environmental Science, Leiden University": {
+    "matched": true,
+    "canonical_name": "Leiden University",
+    "city": "Leiden",
+    "country": "The Netherlands",
+    "latitude": 52.15833,
+    "longitude": 4.49306,
+    "ror_id": "https://ror.org/027bh9e22"
+  },
+  "the School of Food Science & Nutrition, University of Leeds": {
+    "matched": true,
+    "canonical_name": "University of Leeds",
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "latitude": 53.79648,
+    "longitude": -1.54785,
+    "ror_id": "https://ror.org/024mrxd33"
+  },
+  "the German Cancer Research Center (DKFZ), University Medicine Mannheim": {
+    "matched": true,
+    "canonical_name": "German Cancer Research Center",
+    "city": "Heidelberg",
+    "country": "Germany",
+    "latitude": 49.40768,
+    "longitude": 8.69079,
+    "ror_id": "https://ror.org/04cdgtt98"
+  },
+  "the Department of Urban Development and Mobility, Luxembourg Institute of Socio-Economic Research (LISER)": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Department of Physical Geography, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the Department of Geography, University of Manchester": {
+    "matched": true,
+    "canonical_name": "University of Manchester",
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "latitude": 53.48095,
+    "longitude": -2.23743,
+    "ror_id": "https://ror.org/027m9bs27"
+  },
+  "the Institute for Earth Observation, Eurac Research": {
+    "matched": true,
+    "canonical_name": "Eurac Research",
+    "city": "Bolzano",
+    "country": "Italy",
+    "latitude": 46.49067,
+    "longitude": 11.33982,
+    "ror_id": "https://ror.org/01xt1w755"
+  },
+  "the Department of Geography, The University of Hong Kong": {
+    "matched": true,
+    "canonical_name": "University of Hong Kong",
+    "city": "Pok Fu Lam",
+    "country": "Hong Kong",
+    "latitude": 22.26861,
+    "longitude": 114.12924,
+    "ror_id": "https://ror.org/02zhqgq86"
+  },
+  "the Department of Biological Sciences, University of Bergen": {
+    "matched": true,
+    "canonical_name": "Department of Biological Sciences",
+    "city": "Moscow",
+    "country": "Russia",
+    "latitude": 55.75222,
+    "longitude": 37.61556,
+    "ror_id": "https://ror.org/038rjvd86"
+  },
+  "the Geospatial Data Science Group, University of Glasgow": {
+    "matched": true,
+    "canonical_name": "University of Glasgow",
+    "city": "Glasgow",
+    "country": "United Kingdom",
+    "latitude": 55.86515,
+    "longitude": -4.25763,
+    "ror_id": "https://ror.org/00vtgdb53"
+  },
+  "the Department of Hydrology & Atmospheric Science, The University of Arizona": {
+    "matched": true,
+    "canonical_name": "University of Arizona",
+    "city": "Tucson",
+    "country": "United States",
+    "latitude": 32.22174,
+    "longitude": -110.92648,
+    "ror_id": "https://ror.org/03m2x1q45"
+  },
+  "the Department of Ecology and Evolutionary Biology, Yale University": {
+    "matched": true,
+    "canonical_name": "Yale University",
+    "city": "New Haven",
+    "country": "United States",
+    "latitude": 41.30815,
+    "longitude": -72.92816,
+    "ror_id": "https://ror.org/03v76x132"
+  },
+  "the Chair Group of Model-based Environmental Exposure Science, Augsburg University": {
+    "matched": true,
+    "canonical_name": "University of Augsburg",
+    "city": "Augsburg",
+    "country": "Germany",
+    "latitude": 48.37154,
+    "longitude": 10.89851,
+    "ror_id": "https://ror.org/03p14d497"
+  },
+  "the Department of Urban Development and Mobility, Luxembourg Institute of Socio-Economic Research": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Courant Institute of Mathematical Sciences and the Center for Data Science, New York University": {
+    "matched": true,
+    "canonical_name": "New York University",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.71427,
+    "longitude": -74.00597,
+    "ror_id": "https://ror.org/0190ak572"
+  },
+  "the Department of Earth and Environmental Science, University of Pennsylvania": {
+    "matched": true,
+    "canonical_name": "University of Pennsylvania",
+    "city": "Philadelphia",
+    "country": "United States",
+    "latitude": 39.95238,
+    "longitude": -75.16362,
+    "ror_id": "https://ror.org/00b30xv10"
+  },
+  "the the Asian School of the Environment and the College of Computing and Data Science, Nanyang Technological University": {
+    "matched": true,
+    "canonical_name": "Nanyang Technological University",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.28967,
+    "longitude": 103.85007,
+    "ror_id": "https://ror.org/02e7b5302"
+  },
+  "the Department of Geography, University of Liverpool": {
+    "matched": true,
+    "canonical_name": "University of Liverpool",
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "latitude": 53.41058,
+    "longitude": -2.97794,
+    "ror_id": "https://ror.org/04xs57h96"
+  },
+  "the Department of Evolutionary Biology and Environmental Studies of University of Zurich and the Department of Aquatic Ecology of Swiss Federal Institute of Aquatic Science and Technology (Eawag)": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute of Aquatic Science and Technology",
+    "city": "Dübendorf",
+    "country": "Switzerland",
+    "latitude": 47.39724,
+    "longitude": 8.61872,
+    "ror_id": "https://ror.org/00pc48d59"
+  },
+  "the Department of Earth and Planetray Sciences, Eidgenössische Technische Hochschule Zürich (ETH Zurich)": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the Department of urban and regional planning, University of Florida": {
+    "matched": true,
+    "canonical_name": "University of Florida",
+    "city": "Gainesville",
+    "country": "United States",
+    "latitude": 29.65163,
+    "longitude": -82.32483,
+    "ror_id": "https://ror.org/02y3ad647"
+  },
+  "the School of Architecture, Planning and Environmental Policy, University College Dublin": {
+    "matched": true,
+    "canonical_name": "UCD Foundation",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.33306,
+    "longitude": -6.24889,
+    "ror_id": "https://ror.org/02yc19841"
+  },
+  "the Department of Geography, University of Montréal": {
+    "matched": true,
+    "canonical_name": "Université de Montréal",
+    "city": "Montreal",
+    "country": "Canada",
+    "latitude": 45.50884,
+    "longitude": -73.58781,
+    "ror_id": "https://ror.org/0161xgx34"
+  },
+  "the Campus Centre of Biodiversity and Sustainable Land Use, University of Göttingen": {
+    "matched": true,
+    "canonical_name": "University of Göttingen",
+    "city": "Göttingen",
+    "country": "Germany",
+    "latitude": 51.53443,
+    "longitude": 9.93228,
+    "ror_id": "https://ror.org/01y9bpm73"
+  },
+  "the Geographical Analysis @GeogAnalysis": {
+    "matched": true,
+    "canonical_name": "Geographical Association",
+    "city": "Sheffield",
+    "country": "United Kingdom",
+    "latitude": 53.38297,
+    "longitude": -1.4659,
+    "ror_id": "https://ror.org/058n53b84"
+  },
+  "the Institute of Computer Science, University of St. Gallen": {
+    "matched": true,
+    "canonical_name": "Institute of Computer Science",
+    "city": "Warsaw",
+    "country": "Poland",
+    "latitude": 52.22977,
+    "longitude": 21.01178,
+    "ror_id": "https://ror.org/003fvp964"
+  },
+  "the Institute of Environmental Physics, University of Bremen": {
+    "matched": true,
+    "canonical_name": "University of Bremen",
+    "city": "Bremen",
+    "country": "Germany",
+    "latitude": 53.07582,
+    "longitude": 8.80717,
+    "ror_id": "https://ror.org/04ers2y35"
+  },
+  "the Department of Biological Systems Engineering, Virginia Tech": {
+    "matched": true,
+    "canonical_name": "Virginia Tech",
+    "city": "Blacksburg",
+    "country": "United States",
+    "latitude": 37.22957,
+    "longitude": -80.41394,
+    "ror_id": "https://ror.org/02smfhw86"
+  },
+  "the Section of Remote Sensing and Geoinformatics, Helmholtz Centre Potsdam – GFZ German Research Centre for Geosciences": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Department of Spatial Economics, Free University of Amsterdam (VU Amsterdam)": {
+    "matched": true,
+    "canonical_name": "Vrije Universiteit Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/008xxew50"
+  },
+  "the Department of Earth, Environmental and Geographical Sciences, University of North Carolina, Charlotte": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Charlotte",
+    "city": "Charlotte",
+    "country": "United States",
+    "latitude": 35.22709,
+    "longitude": -80.84313,
+    "ror_id": "https://ror.org/04dawnj30"
+  },
+  "the Department of Geography, University of Alabama": {
+    "matched": true,
+    "canonical_name": "University of Alabama",
+    "city": "Tuscaloosa",
+    "country": "United States",
+    "latitude": 33.20984,
+    "longitude": -87.56917,
+    "ror_id": "https://ror.org/03xrrjk67"
+  },
+  "the Working Group of Ecosystem Modelling, Leibniz Centre for Agricultural Landscape Research (ZALF)": {
+    "matched": true,
+    "canonical_name": "Leibniz Centre for Agricultural Landscape Research",
+    "city": "Müncheberg",
+    "country": "Germany",
+    "latitude": 52.50704,
+    "longitude": 14.13716,
+    "ror_id": "https://ror.org/01ygyzs83"
+  },
+  "the Area @RGS_IBG": {
+    "matched": true,
+    "canonical_name": "Craigavon Area Hospital",
+    "city": "Craigavon",
+    "country": "United Kingdom",
+    "latitude": 54.44709,
+    "longitude": -6.387,
+    "ror_id": "https://ror.org/03cngf009"
+  },
+  "the Department of Transformation Pathways, Potsdam Institute for Climate Impact Research (PIK)": {
+    "matched": true,
+    "canonical_name": "Pathways Behavioral Services",
+    "city": "Waterloo",
+    "country": "United States",
+    "latitude": 42.49276,
+    "longitude": -92.34296,
+    "ror_id": "https://ror.org/00frxwd04"
+  },
+  "the Department of Earth and Environmental Sciences, KU Leuven": {
+    "matched": true,
+    "canonical_name": "KU Leuven",
+    "city": "Leuven",
+    "country": "Belgium",
+    "latitude": 50.87959,
+    "longitude": 4.70093,
+    "ror_id": "https://ror.org/05f950310"
+  },
+  "the Nijmegen School of Management, Radboud University": {
+    "matched": true,
+    "canonical_name": "Radford University",
+    "city": "Radford",
+    "country": "United States",
+    "latitude": 37.13179,
+    "longitude": -80.57645,
+    "ror_id": "https://ror.org/04647g470"
+  },
+  "the Bureau of Economic Geology, The University of Texas at Austin": {
+    "matched": true,
+    "canonical_name": "The University of Texas at Austin",
+    "city": "Austin",
+    "country": "United States",
+    "latitude": 30.26715,
+    "longitude": -97.74306,
+    "ror_id": "https://ror.org/00hj54h04"
+  },
+  "the Department of City and Regional Planning, Cornell University": {
+    "matched": true,
+    "canonical_name": "Cornell University",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.44063,
+    "longitude": -76.49661,
+    "ror_id": "https://ror.org/05bnh6r87"
+  },
+  "the Department of Geography, University of Wisconsin-Madison": {
+    "matched": true,
+    "canonical_name": "University of Wisconsin–Madison",
+    "city": "Madison",
+    "country": "United States",
+    "latitude": 43.07305,
+    "longitude": -89.40123,
+    "ror_id": "https://ror.org/01y2jtd41"
+  },
+  "the School of Architecture, Planning & Landscape, Newcastle University": {
+    "matched": true,
+    "canonical_name": "University of Newcastle Australia",
+    "city": "Newcastle",
+    "country": "Australia",
+    "latitude": -32.92953,
+    "longitude": 151.7801,
+    "ror_id": "https://ror.org/00eae9z71"
+  },
+  "the Western’s Engineering Innovation Hub, Western Sydney University": {
+    "matched": true,
+    "canonical_name": "The University of Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/0384j8v12"
+  },
+  "the School of Social Sciences, Western Sydney University": {
+    "matched": true,
+    "canonical_name": "The University of Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/0384j8v12"
+  },
+  "the Department of Biology and School of Geography and the Environment": {
+    "matched": true,
+    "canonical_name": "Département Santé des Plantes et Environnement",
+    "city": "Biot",
+    "country": "France",
+    "latitude": 43.62852,
+    "longitude": 7.0953,
+    "ror_id": "https://ror.org/0455v8x20"
+  },
+  "the Section of Geometry and Surveying, University of Innsbruck": {
+    "matched": true,
+    "canonical_name": "Universität Innsbruck",
+    "city": "Innsbruck",
+    "country": "Austria",
+    "latitude": 47.26266,
+    "longitude": 11.39454,
+    "ror_id": "https://ror.org/054pv6659"
+  },
+  "the Ecosystem and modeling group, Natural Resources Institute Finland": {
+    "matched": true,
+    "canonical_name": "Natural Resources Institute Finland",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.16952,
+    "longitude": 24.93545,
+    "ror_id": "https://ror.org/02hb7bm88"
+  },
+  "the School of Geography and the Environment, University of Oxford": {
+    "matched": true,
+    "canonical_name": "University of Oxford",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.75222,
+    "longitude": -1.25596,
+    "ror_id": "https://ror.org/052gg0110"
+  },
+  "the Princeton Precision Health Initiative, Princeton University": {
+    "matched": true,
+    "canonical_name": "Princeton University",
+    "city": "Princeton",
+    "country": "United States",
+    "latitude": 40.34872,
+    "longitude": -74.65905,
+    "ror_id": "https://ror.org/00hx57361"
+  },
+  "the College of Architecture, Art, and Planning, Cornell University": {
+    "matched": true,
+    "canonical_name": "Cornell University",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.44063,
+    "longitude": -76.49661,
+    "ror_id": "https://ror.org/05bnh6r87"
+  },
+  "the Institute of Crop Science and Resource Conservation, University of Bonn": {
+    "matched": true,
+    "canonical_name": "University of Bonn",
+    "city": "Bonn",
+    "country": "Germany",
+    "latitude": 50.73438,
+    "longitude": 7.09549,
+    "ror_id": "https://ror.org/041nas322"
+  },
+  "the Department of Ecohydrology and Biogeochemistry, Leibniz-Institute of Freshwater Ecology and Inland Fisheries": {
+    "matched": true,
+    "canonical_name": "Leibniz Institute of Freshwater Ecology and Inland Fisheries",
+    "city": "Berlin",
+    "country": "Germany",
+    "latitude": 52.52437,
+    "longitude": 13.41053,
+    "ror_id": "https://ror.org/01nftxb06"
+  },
+  "the Urban Geographies Program Group, University of Amsterdam": {
+    "matched": true,
+    "canonical_name": "University of Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/04dkp9463"
+  },
+  "the Laboratory of Geo-information Science and Remote Sensing, Wageningen University & Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Department of Geography, Ghent University": {
+    "matched": true,
+    "canonical_name": "Ghent University",
+    "city": "Ghent",
+    "country": "Belgium",
+    "latitude": 51.05,
+    "longitude": 3.71667,
+    "ror_id": "https://ror.org/00cv9y106"
+  },
+  "the School of Environment, Education & Development, The University of Manchester": {
+    "matched": true,
+    "canonical_name": "University of Manchester",
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "latitude": 53.48095,
+    "longitude": -2.23743,
+    "ror_id": "https://ror.org/027m9bs27"
+  },
+  "the Chair Group of Big Geospatial Data Management, Technical University of Munich": {
+    "matched": true,
+    "canonical_name": "Technical University of Munich",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/02kkvpp62"
+  },
+  "the Institute of Silviculture and Forest Protection, Dresden University of Technology": {
+    "matched": true,
+    "canonical_name": "Technische Universität Dresden",
+    "city": "Dresden",
+    "country": "Germany",
+    "latitude": 51.05089,
+    "longitude": 13.73832,
+    "ror_id": "https://ror.org/042aqky30"
+  },
+  "the Department of Geography, University College Cork, Ireland": {
+    "matched": true,
+    "canonical_name": "University College Cork",
+    "city": "Cork",
+    "country": "Ireland",
+    "latitude": 51.89797,
+    "longitude": -8.47061,
+    "ror_id": "https://ror.org/03265fv13"
+  },
+  "the City Futures Research Centre, The University of New South Wales": {
+    "matched": true,
+    "canonical_name": "UNSW Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/03r8z3t63"
+  },
+  "the Lineberger Compr Cancer Center, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Department of Land Surveying and Geo-Informatics, The Hong Kong Polytechnic University": {
+    "matched": true,
+    "canonical_name": "Hong Kong Polytechnic University",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "latitude": 22.27832,
+    "longitude": 114.17469,
+    "ror_id": "https://ror.org/0030zas98"
+  },
+  "the Department of Civil and Environmental Engineering, Norwegian University of Science and Technology": {
+    "matched": true,
+    "canonical_name": "Norwegian University of Science and Technology",
+    "city": "Trondheim",
+    "country": "Norway",
+    "latitude": 63.43049,
+    "longitude": 10.39506,
+    "ror_id": "https://ror.org/05xg72x27"
+  },
+  "the Remote Sensing Research Team, VTT Technical Research Centre of Finland": {
+    "matched": true,
+    "canonical_name": "VTT Technical Research Centre of Finland",
+    "city": "Espoo",
+    "country": "Finland",
+    "latitude": 60.2052,
+    "longitude": 24.6522,
+    "ror_id": "https://ror.org/04b181w54"
+  },
+  "the Department of Aquatic Resources, Swedish University of Agricultural Sciences": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Forest Resources Management Group, ETH Zurich": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the Department of Forest and Conservation Sciences, University of British Columbia": {
+    "matched": true,
+    "canonical_name": "University of British Columbia",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.24966,
+    "longitude": -123.11934,
+    "ror_id": "https://ror.org/03rmrcq20"
+  },
+  "the Department of Sustainable Development, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the Department of Fish and Wildlife Conservation, Virginia Polytechnic Institute and State University": {
+    "matched": true,
+    "canonical_name": "Virginia Tech",
+    "city": "Blacksburg",
+    "country": "United States",
+    "latitude": 37.22957,
+    "longitude": -80.41394,
+    "ror_id": "https://ror.org/02smfhw86"
+  },
+  "the Institute of Geography, University of Augsburg": {
+    "matched": true,
+    "canonical_name": "Institute of Geography",
+    "city": "Almaty",
+    "country": "Kazakhstan",
+    "latitude": 43.25,
+    "longitude": 76.91667,
+    "ror_id": "https://ror.org/01h85cx24"
+  },
+  "the Department of Geography, Maynooth University": {
+    "matched": true,
+    "canonical_name": "National University of Ireland, Maynooth",
+    "city": "Maynooth",
+    "country": "Ireland",
+    "latitude": 53.385,
+    "longitude": -6.59361,
+    "ror_id": "https://ror.org/048nfjm95"
+  },
+  "the Department of History, University of Antwerp": {
+    "matched": true,
+    "canonical_name": "University of Antwerp",
+    "city": "Antwerp",
+    "country": "Belgium",
+    "latitude": 51.22047,
+    "longitude": 4.40026,
+    "ror_id": "https://ror.org/008x57b05"
+  },
+  "the Department of Geography, University of Bayreuth": {
+    "matched": true,
+    "canonical_name": "University of Bayreuth",
+    "city": "Bayreuth",
+    "country": "Germany",
+    "latitude": 49.94782,
+    "longitude": 11.57893,
+    "ror_id": "https://ror.org/0234wmv40"
+  },
+  "the Department of Geodesy, German Research Centre for Geosciences (GFZ)": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the School of Earth, Atmosphere & Environment, Monash University": {
+    "matched": true,
+    "canonical_name": "Monash University",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.814,
+    "longitude": 144.96332,
+    "ror_id": "https://ror.org/02bfwt286"
+  },
+  "the French Geological Survey": {
+    "matched": true,
+    "canonical_name": "Bureau de Recherches Géologiques et Minières",
+    "city": "Orléans",
+    "country": "France",
+    "latitude": 47.90289,
+    "longitude": 1.90389,
+    "ror_id": "https://ror.org/05hnb7x64"
+  },
+  "the Alpine Ecology Laboratory, Savoie Mont Blanc University": {
+    "matched": true,
+    "canonical_name": "Université Savoie Mont Blanc",
+    "city": "Chambéry",
+    "country": "France",
+    "latitude": 45.56628,
+    "longitude": 5.92079,
+    "ror_id": "https://ror.org/04gqg1a07"
+  },
+  "the Department of Scientific Computing Core, The Center for Advanced Systems Understanding": {
+    "matched": true,
+    "canonical_name": "Center for Advanced Systems Understanding",
+    "city": "Görlitz",
+    "country": "Germany",
+    "latitude": 51.15518,
+    "longitude": 14.98853,
+    "ror_id": "https://ror.org/042b69396"
+  },
+  "the Department of Mechanical Engineering, Eindhoven University of Technology": {
+    "matched": true,
+    "canonical_name": "Eindhoven University of Technology",
+    "city": "Eindhoven",
+    "country": "The Netherlands",
+    "latitude": 51.44083,
+    "longitude": 5.47778,
+    "ror_id": "https://ror.org/02c2kyt77"
+  },
+  "the Research Unit of Environment City Society, The French National Centre for Scientific Research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the Department of Geography, Geomatics and Environment, University of Toronto, Mississauga": {
+    "matched": true,
+    "canonical_name": "University of Toronto",
+    "city": "Toronto",
+    "country": "Canada",
+    "latitude": 43.70643,
+    "longitude": -79.39864,
+    "ror_id": "https://ror.org/03dbr7087"
+  },
+  "the Section of Earth System Modelling, German Helmholtz Centre for Geosciences (GFZ)": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Department of Biological and Environmental Sciences, University of Gothenburg": {
+    "matched": true,
+    "canonical_name": "University of Gothenburg",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.70716,
+    "longitude": 11.96679,
+    "ror_id": "https://ror.org/01tm6cn81"
+  },
+  "the Faculty of Earth Sciences, Geography and Astronomy, University of Vienna": {
+    "matched": true,
+    "canonical_name": "University of Vienna",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.20849,
+    "longitude": 16.37208,
+    "ror_id": "https://ror.org/03prydq77"
+  },
+  "the Section of Hydrology, German Helmholtz Centre for Geosciences (GFZ)": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Department of Urban development and Mobility, The Luxembourg Institute of Socio-Economic Research (LISER)": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Socio-Economic Research",
+    "city": "Esch-sur-Alzette",
+    "country": "Luxembourg",
+    "latitude": 49.49583,
+    "longitude": 5.98056,
+    "ror_id": "https://ror.org/040jf9322"
+  },
+  "the Institute of Geodesy, Graz University of Technology (TU Graz)": {
+    "matched": true,
+    "canonical_name": "Graz University of Technology",
+    "city": "Graz",
+    "country": "Austria",
+    "latitude": 47.06733,
+    "longitude": 15.44197,
+    "ror_id": "https://ror.org/00d7xrm67"
+  },
+  "the Department of Geodesy and Geoinformation, Vienna University of Technology (TU Wien)": {
+    "matched": true,
+    "canonical_name": "TU Wien",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.20849,
+    "longitude": 16.37208,
+    "ror_id": "https://ror.org/04d836q62"
+  },
+  "the Division of Geological and Planetary Sciences and Resnick Sustainability Institute, California Institute of Technology": {
+    "matched": true,
+    "canonical_name": "California Institute of Technology",
+    "city": "Pasadena",
+    "country": "United States",
+    "latitude": 34.14778,
+    "longitude": -118.14452,
+    "ror_id": "https://ror.org/05dxps055"
+  },
+  "the Earth Observation and Machine Learning for Agro-environmental Challenges Research Team, Université Côte d'Azur": {
+    "matched": true,
+    "canonical_name": "Université Côte d'Azur",
+    "city": "Nice",
+    "country": "France",
+    "latitude": 43.70313,
+    "longitude": 7.26608,
+    "ror_id": "https://ror.org/019tgvf94"
+  },
+  "the Research Unit of Coastline, Environment, Remote sensing, Geomatics, The French National Centre for Scientific Research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Geomatics (Norway)",
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.91273,
+    "longitude": 10.74609,
+    "ror_id": "https://ror.org/05vtg7207"
+  },
+  "the Department of Public Health, The Ohio State University": {
+    "matched": true,
+    "canonical_name": "The Ohio State University",
+    "city": "Columbus",
+    "country": "United States",
+    "latitude": 39.96118,
+    "longitude": -82.99879,
+    "ror_id": "https://ror.org/00rs6vg23"
+  },
+  "the Institute of Environmental Geoscience and Observatory of Science, Grenoble Alpes University": {
+    "matched": true,
+    "canonical_name": "Université Grenoble Alpes",
+    "city": "Saint-Martin-d'Hères",
+    "country": "France",
+    "latitude": 45.1787,
+    "longitude": 5.76281,
+    "ror_id": "https://ror.org/02rx3b187"
+  },
+  "the Department of Water Resource, University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the Department of Marine Observations, The Leibniz Institute for Baltic Sea Research (IOW)": {
+    "matched": true,
+    "canonical_name": "Maine Department of Education",
+    "city": "Augusta",
+    "country": "United States",
+    "latitude": 44.31062,
+    "longitude": -69.77949,
+    "ror_id": "https://ror.org/029nxc858"
+  },
+  "the School of Built Environment and School of Engineering, University of New South Wales": {
+    "matched": true,
+    "canonical_name": "UNSW Sydney",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.86785,
+    "longitude": 151.20732,
+    "ror_id": "https://ror.org/03r8z3t63"
+  },
+  "the School of Forest, Fisheries, and Geomatics Sciences, University of Florida": {
+    "matched": true,
+    "canonical_name": "University of Florida",
+    "city": "Gainesville",
+    "country": "United States",
+    "latitude": 29.65163,
+    "longitude": -82.32483,
+    "ror_id": "https://ror.org/02y3ad647"
+  },
+  "the Eric and Wendy Schmidt Center for Data Science & Environment, University of California, Berkeley": {
+    "matched": true,
+    "canonical_name": "University of California, Berkeley",
+    "city": "Berkeley",
+    "country": "United States",
+    "latitude": 37.87159,
+    "longitude": -122.27275,
+    "ror_id": "https://ror.org/01an7q238"
+  },
+  "the Department of Environmental Systems Science, Swiss federal institute of technology Zurich (ETH Zurich)": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the Department of Earth Science, University of Gotherburg": {
+    "matched": true,
+    "canonical_name": "Department of Earth Sciences",
+    "city": "Moscow",
+    "country": "Russia",
+    "latitude": 55.75222,
+    "longitude": 37.61556,
+    "ror_id": "https://ror.org/0554h7e84"
+  },
+  "the Center for Advanced Infrastructure and Transportation, Rutgers University": {
+    "matched": true,
+    "canonical_name": "Rutgers Sexual and Reproductive Health and Rights",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/00rcvgx40"
+  },
+  "the Department of Ecology and Environmental Science, Umeå University": {
+    "matched": true,
+    "canonical_name": "Umeå University",
+    "city": "Umeå",
+    "country": "Sweden",
+    "latitude": 63.82842,
+    "longitude": 20.25972,
+    "ror_id": "https://ror.org/05kb8h459"
+  },
+  "the Department of Biology, University of Southern Denmark": {
+    "matched": true,
+    "canonical_name": "University of Southern Denmark",
+    "city": "Odense",
+    "country": "Denmark",
+    "latitude": 55.39594,
+    "longitude": 10.38831,
+    "ror_id": "https://ror.org/03yrrjy16"
+  },
+  "the Department of Epidemiology, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Faculty of Spatial Sciences, University of Groningen": {
+    "matched": true,
+    "canonical_name": "University of Groningen",
+    "city": "Groningen",
+    "country": "The Netherlands",
+    "latitude": 53.21917,
+    "longitude": 6.56667,
+    "ror_id": "https://ror.org/012p63287"
+  },
+  "the Department of Biological & Agricultural Engineering, Texas A&M University": {
+    "matched": true,
+    "canonical_name": "Texas A&M University",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.62798,
+    "longitude": -96.33441,
+    "ror_id": "https://ror.org/01f5ytq51"
+  },
+  "the ​​Nouvelle-Aquitaine Bordeaux Centre, French National Research Institute for Agriculture, Food, and Environment (INRAE)": {
+    "matched": true,
+    "canonical_name": "Centre Nouvelle Aquitaine-Bordeaux",
+    "city": "Bordeaux",
+    "country": "France",
+    "latitude": 44.84124,
+    "longitude": -0.58046,
+    "ror_id": "https://ror.org/00tebkv94"
+  },
+  "the Department of Landscape Architecture & Urban Planning, Texas A&M University": {
+    "matched": true,
+    "canonical_name": "Texas A&M University",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.62798,
+    "longitude": -96.33441,
+    "ror_id": "https://ror.org/01f5ytq51"
+  },
+  "the Research Domain of Climate Economics and Policy, Potsdam Institute for Climate Impact Research (PIK)": {
+    "matched": true,
+    "canonical_name": "Potsdam Institute for Climate Impact Research",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/03e8s1d88"
+  },
+  "the Institute of Analytical Sociology, Linköping University": {
+    "matched": true,
+    "canonical_name": "Linköping University",
+    "city": "Linköping",
+    "country": "Sweden",
+    "latitude": 58.41086,
+    "longitude": 15.62157,
+    "ror_id": "https://ror.org/05ynxx418"
+  },
+  "the Department of Marine Observations, Leibniz Institute for Baltic Sea Research (IOW)": {
+    "matched": true,
+    "canonical_name": "Maine Department of Education",
+    "city": "Augusta",
+    "country": "United States",
+    "latitude": 44.31062,
+    "longitude": -69.77949,
+    "ror_id": "https://ror.org/029nxc858"
+  },
+  "the Department of Electrical and Computer Engineering, Aarhus University": {
+    "matched": true,
+    "canonical_name": "Aarhus University",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.15674,
+    "longitude": 10.21076,
+    "ror_id": "https://ror.org/01aj84f44"
+  },
+  "the Department of Digital Humanities and Social Studies, Friedrich-Alexander-Universität Erlangen-Nürnberg": {
+    "matched": true,
+    "canonical_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
+    "city": "Erlangen",
+    "country": "Germany",
+    "latitude": 49.59099,
+    "longitude": 11.00783,
+    "ror_id": "https://ror.org/00f7hpc57"
+  },
+  "the Earth Science Department, Barcelona Supercomputing Center - Centro Nacional de Supercomputación (BSC-CNS)": {
+    "matched": true,
+    "canonical_name": "Barcelona Supercomputing Center",
+    "city": "Barcelona",
+    "country": "Spain",
+    "latitude": 41.38879,
+    "longitude": 2.15899,
+    "ror_id": "https://ror.org/05sd8tv96"
+  },
+  "the Department of Environmental Economics, Vrije Universiteit Amsterdam": {
+    "matched": true,
+    "canonical_name": "Vrije Universiteit Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/008xxew50"
+  },
+  "the Department of Geography, Ludwig Maximilian University of Munich": {
+    "matched": true,
+    "canonical_name": "Ludwig-Maximilians-Universität München",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/05591te55"
+  },
+  "the School of Geography and the Environment, Oxford University": {
+    "matched": true,
+    "canonical_name": "University of Oxford",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.75222,
+    "longitude": -1.25596,
+    "ror_id": "https://ror.org/052gg0110"
+  },
+  "the Department of Human Geography, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Department of Geoinformatics, University of Salzburg": {
+    "matched": true,
+    "canonical_name": "University of Salzburg",
+    "city": "Salzburg",
+    "country": "Austria",
+    "latitude": 47.79941,
+    "longitude": 13.04399,
+    "ror_id": "https://ror.org/05gs8cd61"
+  },
+  "the College of Design, Construction and Planning, University of Florida": {
+    "matched": true,
+    "canonical_name": "University of Florida",
+    "city": "Gainesville",
+    "country": "United States",
+    "latitude": 29.65163,
+    "longitude": -82.32483,
+    "ror_id": "https://ror.org/02y3ad647"
+  },
+  "the School of Informatics, Computing and Cyber Systems, Northern Arizona University": {
+    "matched": true,
+    "canonical_name": "Northern Arizona University",
+    "city": "Flagstaff",
+    "country": "United States",
+    "latitude": 35.19807,
+    "longitude": -111.65127,
+    "ror_id": "https://ror.org/0272j5188"
+  },
+  "the Land Change Science Research Unit, Swiss Federal Institute for Forest, Snow and Landscape Research WSL": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute for Forest, Snow and Landscape Research",
+    "city": "Birmensdorf",
+    "country": "Switzerland",
+    "latitude": 47.35515,
+    "longitude": 8.44256,
+    "ror_id": "https://ror.org/04bs5yc70"
+  },
+  "the Department of Economic Geography, University of Groningen": {
+    "matched": true,
+    "canonical_name": "University of Groningen",
+    "city": "Groningen",
+    "country": "The Netherlands",
+    "latitude": 53.21917,
+    "longitude": 6.56667,
+    "ror_id": "https://ror.org/012p63287"
+  },
+  "the Department of Hydrology, Geological Survey of Denmark and Greenland": {
+    "matched": true,
+    "canonical_name": "Geological Survey of Denmark and Greenland",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "latitude": 55.67594,
+    "longitude": 12.56553,
+    "ror_id": "https://ror.org/01b40r146"
+  },
+  "the Department of Earth and Environmental Sciences, Katholieke Universiteit Leuven (KU Leuven)": {
+    "matched": true,
+    "canonical_name": "KU Leuven",
+    "city": "Leuven",
+    "country": "Belgium",
+    "latitude": 50.87959,
+    "longitude": 4.70093,
+    "ror_id": "https://ror.org/05f950310"
+  },
+  "the School of Life Sciences, Technical University of Munich": {
+    "matched": true,
+    "canonical_name": "Technical University of Munich",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.13743,
+    "longitude": 11.57549,
+    "ror_id": "https://ror.org/02kkvpp62"
+  },
+  "the Institute for the Environment, The University of North Carolina at Chapel Hill": {
+    "matched": true,
+    "canonical_name": "University of North Carolina at Chapel Hill",
+    "city": "Chapel Hill",
+    "country": "United States",
+    "latitude": 35.9132,
+    "longitude": -79.05584,
+    "ror_id": "https://ror.org/0130frc33"
+  },
+  "the Department of Ecology & Conservation Biology": {
+    "matched": true,
+    "canonical_name": "Department of Environment and Conservation",
+    "city": "St. John's",
+    "country": "Canada",
+    "latitude": 47.56494,
+    "longitude": -52.70931,
+    "ror_id": "https://ror.org/00y19mj60"
+  },
+  "the Institute of Geodesy, Graz University of Technology": {
+    "matched": true,
+    "canonical_name": "Graz University of Technology",
+    "city": "Graz",
+    "country": "Austria",
+    "latitude": 47.06733,
+    "longitude": 15.44197,
+    "ror_id": "https://ror.org/00d7xrm67"
+  },
+  "the Department of Civil and Environment Engineering, University of Massachusetts Amherst": {
+    "matched": true,
+    "canonical_name": "University of Massachusetts Amherst",
+    "city": "Amherst Center",
+    "country": "United States",
+    "latitude": 42.37537,
+    "longitude": -72.51925,
+    "ror_id": "https://ror.org/0072zz521"
+  },
+  "the Department of Physics, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the School of Public Health, Imperial College London": {
+    "matched": true,
+    "canonical_name": "Imperial College London",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.50853,
+    "longitude": -0.12574,
+    "ror_id": "https://ror.org/041kmwe10"
+  },
+  "the Centre for Climate Resilience, University of Augsburg": {
+    "matched": true,
+    "canonical_name": "University of Augsburg",
+    "city": "Augsburg",
+    "country": "Germany",
+    "latitude": 48.37154,
+    "longitude": 10.89851,
+    "ror_id": "https://ror.org/03p14d497"
+  },
+  "the Department of Soil and Crop Sciences, Texas A&M University": {
+    "matched": true,
+    "canonical_name": "Texas A&M University",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.62798,
+    "longitude": -96.33441,
+    "ror_id": "https://ror.org/01f5ytq51"
+  },
+  "the Department of Environmental and Occupational Health, Drexel University": {
+    "matched": true,
+    "canonical_name": "Drexel University",
+    "city": "Philadelphia",
+    "country": "United States",
+    "latitude": 39.95238,
+    "longitude": -75.16362,
+    "ror_id": "https://ror.org/04bdffz58"
+  },
+  "the Department of Computer Science, Maynooth University": {
+    "matched": true,
+    "canonical_name": "National University of Ireland, Maynooth",
+    "city": "Maynooth",
+    "country": "Ireland",
+    "latitude": 53.385,
+    "longitude": -6.59361,
+    "ror_id": "https://ror.org/048nfjm95"
+  },
+  "the Earth Observatory of Singapore, Nanyang Technological University": {
+    "matched": true,
+    "canonical_name": "Earth Observatory of Singapore",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.28967,
+    "longitude": 103.85007,
+    "ror_id": "https://ror.org/01167a838"
+  },
+  "the Department of Geoinformation, Helmholtz Centre Potsdam - German Research Centre for Geosciences (GFZ)": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Centre for Environmental Intelligence, University of Exeter": {
+    "matched": true,
+    "canonical_name": "University of Exeter",
+    "city": "Exeter",
+    "country": "United Kingdom",
+    "latitude": 50.7236,
+    "longitude": -3.52751,
+    "ror_id": "https://ror.org/03yghzc09"
+  },
+  "the National Institute of Aquatic Resources, Technical University of Denmark": {
+    "matched": true,
+    "canonical_name": "Technical University of Denmark",
+    "city": "Kongens Lyngby",
+    "country": "Denmark",
+    "latitude": 55.77044,
+    "longitude": 12.50378,
+    "ror_id": "https://ror.org/04qtj9h94"
+  },
+  "the Brightlands Institute for Smart Society, Maastricht University": {
+    "matched": true,
+    "canonical_name": "Maastricht University",
+    "city": "Maastricht",
+    "country": "The Netherlands",
+    "latitude": 50.84833,
+    "longitude": 5.68889,
+    "ror_id": "https://ror.org/02jz4aj89"
+  },
+  "the Land Change Science Research Unit, Swiss Federal Institute for Forest, Snow and Landscape Research (WSL)": {
+    "matched": true,
+    "canonical_name": "Swiss Federal Institute for Forest, Snow and Landscape Research",
+    "city": "Birmensdorf",
+    "country": "Switzerland",
+    "latitude": 47.35515,
+    "longitude": 8.44256,
+    "ror_id": "https://ror.org/04bs5yc70"
+  },
+  "the Microwave Sensing, Signals and Systems Group, Delft University of Technology": {
+    "matched": true,
+    "canonical_name": "Delft University of Technology",
+    "city": "Delft",
+    "country": "The Netherlands",
+    "latitude": 52.00667,
+    "longitude": 4.35556,
+    "ror_id": "https://ror.org/02e2c7k09"
+  },
+  "the Department of Electrical Engineering and Computer Science, University of Kansas": {
+    "matched": true,
+    "canonical_name": "University of Kansas",
+    "city": "Lawrence",
+    "country": "United States",
+    "latitude": 38.97167,
+    "longitude": -95.23525,
+    "ror_id": "https://ror.org/001tmjg57"
+  },
+  "the School of Environmental and Forest Sciences, University of Washington": {
+    "matched": true,
+    "canonical_name": "University of Washington",
+    "city": "Seattle",
+    "country": "United States",
+    "latitude": 47.60621,
+    "longitude": -122.33207,
+    "ror_id": "https://ror.org/00cvxb145"
+  },
+  "the School of Geography, Development & Environment, The University of Arizona": {
+    "matched": true,
+    "canonical_name": "University of Arizona",
+    "city": "Tucson",
+    "country": "United States",
+    "latitude": 32.22174,
+    "longitude": -110.92648,
+    "ror_id": "https://ror.org/03m2x1q45"
+  },
+  "the School of Biological and Marine Sciences, University of Plymouth": {
+    "matched": true,
+    "canonical_name": "Plymouth State University",
+    "city": "Plymouth",
+    "country": "United States",
+    "latitude": 43.75702,
+    "longitude": -71.68813,
+    "ror_id": "https://ror.org/00fpz4c36"
+  },
+  "the Department of Urban Planning and Design, The University of Hong Kong": {
+    "matched": true,
+    "canonical_name": "University of Hong Kong",
+    "city": "Pok Fu Lam",
+    "country": "Hong Kong",
+    "latitude": 22.26861,
+    "longitude": 114.12924,
+    "ror_id": "https://ror.org/02zhqgq86"
+  },
+  "the Department of Civil Engineering and Management, The University of Manchester": {
+    "matched": true,
+    "canonical_name": "University of Manchester",
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "latitude": 53.48095,
+    "longitude": -2.23743,
+    "ror_id": "https://ror.org/027m9bs27"
+  },
+  "the School of Environment, Coventry University": {
+    "matched": true,
+    "canonical_name": "Coventry University",
+    "city": "Coventry",
+    "country": "United Kingdom",
+    "latitude": 52.40656,
+    "longitude": -1.51217,
+    "ror_id": "https://ror.org/01tgmhj36"
+  },
+  "the Department of Civil Engineering and Management, University of Twente": {
+    "matched": true,
+    "canonical_name": "University of Twente",
+    "city": "Enschede",
+    "country": "The Netherlands",
+    "latitude": 52.21833,
+    "longitude": 6.89583,
+    "ror_id": "https://ror.org/006hf6230"
+  },
+  "the Research Group of Biogeodymaics modelling, Leibniz Centre for Tropical Marine Research (ZMT)": {
+    "matched": true,
+    "canonical_name": "Open Modeling Foundation",
+    "city": "Tempe",
+    "country": "United States",
+    "latitude": 33.41477,
+    "longitude": -111.90931,
+    "ror_id": "https://ror.org/01p0n4966"
+  },
+  "the Department of Earth Sciences, Uppsala University": {
+    "matched": true,
+    "canonical_name": "Uppsala University",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/048a87296"
+  },
+  "the Chair Group of Economic and Social History, University of Groningen": {
+    "matched": true,
+    "canonical_name": "University of Groningen",
+    "city": "Groningen",
+    "country": "The Netherlands",
+    "latitude": 53.21917,
+    "longitude": 6.56667,
+    "ror_id": "https://ror.org/012p63287"
+  },
+  "the Scientific Computing and Imaging Institute, The University of Utah": {
+    "matched": true,
+    "canonical_name": "University of Utah",
+    "city": "Salt Lake City",
+    "country": "United States",
+    "latitude": 40.76078,
+    "longitude": -111.89105,
+    "ror_id": "https://ror.org/03r0ha626"
+  },
+  "the Centre for Crop and Disease Management, Curtin University": {
+    "matched": true,
+    "canonical_name": "Curtin University",
+    "city": "Perth",
+    "country": "Australia",
+    "latitude": -31.95224,
+    "longitude": 115.8614,
+    "ror_id": "https://ror.org/02n415q13"
+  },
+  "the School of Earth Sciences, The Ohio State University": {
+    "matched": true,
+    "canonical_name": "The Ohio State University",
+    "city": "Columbus",
+    "country": "United States",
+    "latitude": 39.96118,
+    "longitude": -82.99879,
+    "ror_id": "https://ror.org/00rs6vg23"
+  },
+  "the Department of Geography at Binghamton University, State University of New York": {
+    "matched": true,
+    "canonical_name": "Binghamton University",
+    "city": "Binghamton",
+    "country": "United States",
+    "latitude": 42.09869,
+    "longitude": -75.91797,
+    "ror_id": "https://ror.org/008rmbt77"
+  },
+  "the School of Economic, Political and Policy Sciences, The University of Texas at Dallas": {
+    "matched": true,
+    "canonical_name": "The University of Texas at Dallas",
+    "city": "Richardson",
+    "country": "United States",
+    "latitude": 32.94818,
+    "longitude": -96.72972,
+    "ror_id": "https://ror.org/049emcs32"
+  },
+  "the New Zealand Institute for Bioeconomy Science": {
+    "matched": true,
+    "canonical_name": "Bioeconomy Science Institute",
+    "city": "Lincoln",
+    "country": "New Zealand",
+    "latitude": -36.8582,
+    "longitude": 174.62019,
+    "ror_id": "https://ror.org/03j13xx78"
+  },
+  "the Department of Sustainability and Planning, Aalborg University": {
+    "matched": true,
+    "canonical_name": "Aalborg University",
+    "city": "Aalborg",
+    "country": "Denmark",
+    "latitude": 57.048,
+    "longitude": 9.9187,
+    "ror_id": "https://ror.org/04m5j1k67"
+  },
+  "the Faculty of Chemistry and Earth Sciences, Friedrich Schiller University Jena": {
+    "matched": true,
+    "canonical_name": "Friedrich Schiller University Jena",
+    "city": "Jena",
+    "country": "Germany",
+    "latitude": 50.92878,
+    "longitude": 11.5899,
+    "ror_id": "https://ror.org/05qpz1x62"
+  },
+  "the Institute for Social Science Research, University of Queensland": {
+    "matched": true,
+    "canonical_name": "The University of Queensland",
+    "city": "Brisbane",
+    "country": "Australia",
+    "latitude": -27.46794,
+    "longitude": 153.02809,
+    "ror_id": "https://ror.org/00rqy9422"
+  },
+  "the Department of Built Environment, Eindhoven University of Technology": {
+    "matched": true,
+    "canonical_name": "Eindhoven University of Technology",
+    "city": "Eindhoven",
+    "country": "The Netherlands",
+    "latitude": 51.44083,
+    "longitude": 5.47778,
+    "ror_id": "https://ror.org/02c2kyt77"
+  },
+  "the College of Agriculture and Life Sciences, Cornell University": {
+    "matched": true,
+    "canonical_name": "Cornell University",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.44063,
+    "longitude": -76.49661,
+    "ror_id": "https://ror.org/05bnh6r87"
+  },
+  "the Department of Geography and Sustainable Development, University of Miami": {
+    "matched": true,
+    "canonical_name": "University of Miami",
+    "city": "Coral Gables",
+    "country": "United States",
+    "latitude": 25.72149,
+    "longitude": -80.26838,
+    "ror_id": "https://ror.org/02dgjyy92"
+  },
+  "the Applied Spatial Research Team, Wageningen University & Research": {
+    "matched": true,
+    "canonical_name": "Wageningen University & Research",
+    "city": "Wageningen",
+    "country": "The Netherlands",
+    "latitude": 51.97,
+    "longitude": 5.66667,
+    "ror_id": "https://ror.org/04qw24q55"
+  },
+  "the Ecosystem Modelling Working Group, Leibniz Centre for Agricultural Landscape Research (ZALF)": {
+    "matched": true,
+    "canonical_name": "Leibniz Centre for Agricultural Landscape Research",
+    "city": "Müncheberg",
+    "country": "Germany",
+    "latitude": 52.50704,
+    "longitude": 14.13716,
+    "ror_id": "https://ror.org/01ygyzs83"
+  },
+  "the Department of Earth and Ocean Sciences, University of North Carolina Wilmington": {
+    "matched": true,
+    "canonical_name": "University of North Carolina Wilmington",
+    "city": "Wilmington",
+    "country": "United States",
+    "latitude": 34.23556,
+    "longitude": -77.94604,
+    "ror_id": "https://ror.org/02t0qr014"
+  },
+  "the Japan International Research Center for Agricultural Sciences (JIRCAS)": {
+    "matched": true,
+    "canonical_name": "Japan International Research Center for Agricultural Sciences",
+    "city": "Tsukuba",
+    "country": "Japan",
+    "latitude": 36.08333,
+    "longitude": 140.11667,
+    "ror_id": "https://ror.org/005pdtr14"
+  },
+  "the Department of Crop Production Ecology, The Swedish University of Agricultural Sciences": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Department of Wildlife, Fisheries, and Conservation Biology, University of Maine": {
+    "matched": true,
+    "canonical_name": "University of Maine",
+    "city": "Orono",
+    "country": "United States",
+    "latitude": 44.88312,
+    "longitude": -68.67198,
+    "ror_id": "https://ror.org/01adr0w49"
+  },
+  "the Department of Remote Sensing, Helmholtz Centre for Environmental Research (UFZ)": {
+    "matched": true,
+    "canonical_name": "Helmholtz Centre for Environmental Research",
+    "city": "Leipzig",
+    "country": "Germany",
+    "latitude": 51.33962,
+    "longitude": 12.37129,
+    "ror_id": "https://ror.org/000h6jb29"
+  },
+  "the Just Transformations to Sustainability Initiative, University of Notre Dame": {
+    "matched": true,
+    "canonical_name": "University of Notre Dame",
+    "city": "Notre Dame",
+    "country": "United States",
+    "latitude": 41.70019,
+    "longitude": -86.23793,
+    "ror_id": "https://ror.org/00mkhxb43"
+  },
+  "the Professorship Group of Hydrology and Climate Impacts in Mountain Region, WSL Institute for Snow and Avalanche Research SLF": {
+    "matched": true,
+    "canonical_name": "WSL Institute for Snow and Avalanche Research SLF",
+    "city": "Davos",
+    "country": "Switzerland",
+    "latitude": 46.80429,
+    "longitude": 9.83723,
+    "ror_id": "https://ror.org/04pzmmv39"
+  },
+  "the Working Group of Adaptation in Agricultural Systems, Postdam Institute for Climate Impact Research": {
+    "matched": true,
+    "canonical_name": "Potsdam Institute for Climate Impact Research",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/03e8s1d88"
+  },
+  "the Department of Environmental Science, University of Basel": {
+    "matched": true,
+    "canonical_name": "University of Basel",
+    "city": "Basel",
+    "country": "Switzerland",
+    "latitude": 47.55839,
+    "longitude": 7.57327,
+    "ror_id": "https://ror.org/02s6k3f65"
+  },
+  "the School of Geography and Natural Sciences, Northumbria University": {
+    "matched": true,
+    "canonical_name": "Northumbria University",
+    "city": "Newcastle upon Tyne",
+    "country": "United Kingdom",
+    "latitude": 54.97328,
+    "longitude": -1.61396,
+    "ror_id": "https://ror.org/049e6bc10"
+  },
+  "the School of Geography, Earth and Environmental Sciences, University of Birmingham": {
+    "matched": true,
+    "canonical_name": "University of Birmingham",
+    "city": "Birmingham",
+    "country": "United Kingdom",
+    "latitude": 52.48142,
+    "longitude": -1.89983,
+    "ror_id": "https://ror.org/03angcq70"
+  },
+  "the Department of Geography and the Institute for Artificial Intelligence, University of Georgia": {
+    "matched": true,
+    "canonical_name": "University of Georgia",
+    "city": "Athens",
+    "country": "United States",
+    "latitude": 33.96095,
+    "longitude": -83.37794,
+    "ror_id": "https://ror.org/00te3t702"
+  },
+  "the Department of sustainability and planning, Aalborg University": {
+    "matched": true,
+    "canonical_name": "Aalborg University",
+    "city": "Aalborg",
+    "country": "Denmark",
+    "latitude": 57.048,
+    "longitude": 9.9187,
+    "ror_id": "https://ror.org/04m5j1k67"
+  },
+  "the College of Science and Engineering, Idaho State University": {
+    "matched": true,
+    "canonical_name": "Idaho State University",
+    "city": "Pocatello",
+    "country": "United States",
+    "latitude": 42.8713,
+    "longitude": -112.44553,
+    "ror_id": "https://ror.org/0162z8b04"
+  },
+  "the Institute for climate & sustainable growth, The University of Chicago": {
+    "matched": true,
+    "canonical_name": "University of Chicago",
+    "city": "Chicago",
+    "country": "United States",
+    "latitude": 41.85003,
+    "longitude": -87.65005,
+    "ror_id": "https://ror.org/024mw5h28"
+  },
+  "the Biodiversity Dynamics and Conservation Group, University of Vienna": {
+    "matched": true,
+    "canonical_name": "University of Vienna",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.20849,
+    "longitude": 16.37208,
+    "ror_id": "https://ror.org/03prydq77"
+  },
+  "the School of Planning, Policy, and Environmental Studies, San José State University": {
+    "matched": true,
+    "canonical_name": "San Jose State University",
+    "city": "San Jose",
+    "country": "United States",
+    "latitude": 37.33939,
+    "longitude": -121.89496,
+    "ror_id": "https://ror.org/04qyvz380"
+  },
+  "the Department of Population Health Sciences, Utrecht University": {
+    "matched": true,
+    "canonical_name": "Utrecht University",
+    "city": "Utrecht",
+    "country": "The Netherlands",
+    "latitude": 52.09083,
+    "longitude": 5.12222,
+    "ror_id": "https://ror.org/04pp8hn57"
+  },
+  "the Department of Geosystems, Helmholtz Centre Potsdam – GFZ German Research Centre for Geosciences": {
+    "matched": true,
+    "canonical_name": "GFZ Helmholtz Centre for Geosciences",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.39886,
+    "longitude": 13.06566,
+    "ror_id": "https://ror.org/04z8jg394"
+  },
+  "the Cooperative Fish and Wildlife Research Unit, University of Maine": {
+    "matched": true,
+    "canonical_name": "University of Maine",
+    "city": "Orono",
+    "country": "United States",
+    "latitude": 44.88312,
+    "longitude": -68.67198,
+    "ror_id": "https://ror.org/01adr0w49"
+  },
+  "the School of Earth and Atmospheric Sciences, The Queensland University of Technology": {
+    "matched": true,
+    "canonical_name": "The University of Queensland",
+    "city": "Brisbane",
+    "country": "Australia",
+    "latitude": -27.46794,
+    "longitude": 153.02809,
+    "ror_id": "https://ror.org/00rqy9422"
+  },
+  "the Department of Space, Earth and Environment, Chalmers University of Technology": {
+    "matched": true,
+    "canonical_name": "Department of Space",
+    "city": "Bengaluru",
+    "country": "India",
+    "latitude": 12.97194,
+    "longitude": 77.59369,
+    "ror_id": "https://ror.org/000kjq947"
+  },
+  "the Research Unit of Littoral, Environment and Societies (LIENSs), French national center for scientific research (CNRS)": {
+    "matched": true,
+    "canonical_name": "Centre National de la Recherche Scientifique",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.85341,
+    "longitude": 2.3488,
+    "ror_id": "https://ror.org/02feahw73"
+  },
+  "the Environmental Computational Science and Earth Observation Laboratory, Swiss Federal Institute of Technology in Lausanne (EPFL)": {
+    "matched": true,
+    "canonical_name": "École Polytechnique Fédérale de Lausanne",
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "latitude": 46.516,
+    "longitude": 6.63282,
+    "ror_id": "https://ror.org/02s376052"
+  },
+  "the School of Civil and Environmental Engineering, Cornell University": {
+    "matched": true,
+    "canonical_name": "Cornell University",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.44063,
+    "longitude": -76.49661,
+    "ror_id": "https://ror.org/05bnh6r87"
+  },
+  "the Institute for Environmental Studies, Free University of Amsterdam (VU Amsterdam)": {
+    "matched": true,
+    "canonical_name": "Vrije Universiteit Amsterdam",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.37403,
+    "longitude": 4.88969,
+    "ror_id": "https://ror.org/008xxew50"
+  },
+  "the Department of Earth and Environmental Science, Lund University": {
+    "matched": true,
+    "canonical_name": "Lund University",
+    "city": "Lund",
+    "country": "Sweden",
+    "latitude": 55.70584,
+    "longitude": 13.19321,
+    "ror_id": "https://ror.org/012a77v79"
+  },
+  "the Department of Environmental Sensing and Modelling, Luxembourg Institute of Science and Technology": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Science and Technology",
+    "city": "Belvaux",
+    "country": "Luxembourg",
+    "latitude": 49.51014,
+    "longitude": 5.92414,
+    "ror_id": "https://ror.org/01t178j62"
+  },
+  "the Senckenberg Biodiversity and Climate Research Centre, Senckenberg – Leibniz Institution for Biodiversity and Earth System Research": {
+    "matched": true,
+    "canonical_name": "Senckenberg - Leibniz Institution for Biodiversity and Earth System Research",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "latitude": 50.11552,
+    "longitude": 8.68417,
+    "ror_id": "https://ror.org/00xmqmx64"
+  },
+  "the Earth System Research Center, University of New Hampshire": {
+    "matched": true,
+    "canonical_name": "University of New Hampshire",
+    "city": "Durham",
+    "country": "United States",
+    "latitude": 43.13397,
+    "longitude": -70.92645,
+    "ror_id": "https://ror.org/01rmh9n78"
+  },
+  "the Department of Geodesy and Earth Observation, Technical University of Denmark": {
+    "matched": true,
+    "canonical_name": "Technical University of Denmark",
+    "city": "Kongens Lyngby",
+    "country": "Denmark",
+    "latitude": 55.77044,
+    "longitude": 12.50378,
+    "ror_id": "https://ror.org/04qtj9h94"
+  },
+  "the Department of Space, Earth, and Environment, Chalmers University of Technology": {
+    "matched": true,
+    "canonical_name": "Department of Space",
+    "city": "Bengaluru",
+    "country": "India",
+    "latitude": 12.97194,
+    "longitude": 77.59369,
+    "ror_id": "https://ror.org/000kjq947"
+  },
+  "the Department of Environmental Systems Science, Swiss Federal Institute of Technology Zurich (ETH Zurich)": {
+    "matched": true,
+    "canonical_name": "ETH Zurich",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.36667,
+    "longitude": 8.55,
+    "ror_id": "https://ror.org/05a28rw58"
+  },
+  "the School of Engineering and Technology, University of Washington Tacoma": {
+    "matched": true,
+    "canonical_name": "University of Washington",
+    "city": "Seattle",
+    "country": "United States",
+    "latitude": 47.60621,
+    "longitude": -122.33207,
+    "ror_id": "https://ror.org/00cvxb145"
+  },
+  "the Department of Geography, Free University of Brussels (VUB)": {
+    "matched": true,
+    "canonical_name": "Boston University Brussels",
+    "city": "Brussels",
+    "country": "Belgium",
+    "latitude": 50.85045,
+    "longitude": 4.34878,
+    "ror_id": "https://ror.org/02vpfbn76"
+  },
+  "the Water, Energy and Environmental Engineering Research Unit, University of Oulu": {
+    "matched": true,
+    "canonical_name": "University of Oulu",
+    "city": "Oulu",
+    "country": "Finland",
+    "latitude": 65.01236,
+    "longitude": 25.46816,
+    "ror_id": "https://ror.org/03yj89h83"
+  },
+  "the Sustainable Built Environments Research Area, Chalmers University of Technology": {
+    "matched": true,
+    "canonical_name": "Chalmers University of Technology",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.70716,
+    "longitude": 11.96679,
+    "ror_id": "https://ror.org/040wg7k59"
+  },
+  "the Botanical Institute of Barcelona": {
+    "matched": true,
+    "canonical_name": "Institut Botànic de Barcelona",
+    "city": "Barcelona",
+    "country": "Spain",
+    "latitude": 41.38879,
+    "longitude": 2.15899,
+    "ror_id": "https://ror.org/00wq3fc38"
+  },
+  "the Department of Architecture and Department of Built Environment, Aalto University": {
+    "matched": true,
+    "canonical_name": "Aalto University",
+    "city": "Espoo",
+    "country": "Finland",
+    "latitude": 60.2052,
+    "longitude": 24.6522,
+    "ror_id": "https://ror.org/020hwjq30"
+  },
+  "the Lamont-Doherty Earth Observatory, Columbia University": {
+    "matched": true,
+    "canonical_name": "Columbia University",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.71427,
+    "longitude": -74.00597,
+    "ror_id": "https://ror.org/00hj8s172"
+  },
+  "the Department of Forest & Conservation Sciences, The University of British Columbia": {
+    "matched": true,
+    "canonical_name": "University of British Columbia",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.24966,
+    "longitude": -123.11934,
+    "ror_id": "https://ror.org/03rmrcq20"
+  },
+  "the Department of Public Health, The University of Texas Southwestern Medical Center": {
+    "matched": true,
+    "canonical_name": "Department of Public Health",
+    "city": "Pasadena",
+    "country": "United States",
+    "latitude": 34.14778,
+    "longitude": -118.14452,
+    "ror_id": "https://ror.org/04thj7y95"
+  },
+  "the Remote Sensing and Natural Resources Modelling Group, Luxembourg Institute of Science and Technology (LIST)": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Science and Technology",
+    "city": "Belvaux",
+    "country": "Luxembourg",
+    "latitude": 49.51014,
+    "longitude": 5.92414,
+    "ror_id": "https://ror.org/01t178j62"
+  },
+  "Luxembourg Institute of Science and Technology (LIST)": {
+    "matched": true,
+    "canonical_name": "Luxembourg Institute of Science and Technology",
+    "city": "Belvaux",
+    "country": "Luxembourg",
+    "latitude": 49.51014,
+    "longitude": 5.92414,
+    "ror_id": "https://ror.org/01t178j62"
+  },
+  "the Leverhulme Centre for Anthropocene Biodiversity, University of York": {
+    "matched": true,
+    "canonical_name": "York University",
+    "city": "York",
+    "country": "United States",
+    "latitude": 40.86807,
+    "longitude": -97.592,
+    "ror_id": "https://ror.org/022jz8688"
+  },
+  "the Department of Ecology, Swedish University of Agricultural Sciences (SLU)": {
+    "matched": true,
+    "canonical_name": "Swedish University of Agricultural Sciences",
+    "city": "Uppsala",
+    "country": "Sweden",
+    "latitude": 59.85882,
+    "longitude": 17.63889,
+    "ror_id": "https://ror.org/02yy8x990"
+  },
+  "the Department of Geography, Durham University": {
+    "matched": true,
+    "canonical_name": "Durham University",
+    "city": "Durham",
+    "country": "United Kingdom",
+    "latitude": 54.77676,
+    "longitude": -1.57566,
+    "ror_id": "https://ror.org/01v29qb04"
+  }
+}

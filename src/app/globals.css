@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --background: #eef6f8;
+  --foreground: #0f172a;
+  --panel: #ffffff;
+  --muted: #5b7083;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sora);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sora), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.leaflet-container {
+  font-family: var(--font-sora), sans-serif;
+  background: #0f172a;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 18px;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
