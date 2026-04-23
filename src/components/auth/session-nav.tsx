@@ -25,7 +25,7 @@ export function SessionNav({ session }: { session: SessionContext }) {
       <div className="flex items-center gap-3">
         <Link
           href="/sign-in"
-          className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-200"
+          className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-cpgis-globe hover:text-cpgis-globe"
         >
           Sign in
         </Link>
@@ -35,7 +35,7 @@ export function SessionNav({ session }: { session: SessionContext }) {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.18em] text-cyan-200 md:block">
+      <div className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.18em] text-cpgis-globe md:block">
         {session.role}
       </div>
       <div className="hidden text-sm text-slate-300 md:block">
@@ -44,7 +44,7 @@ export function SessionNav({ session }: { session: SessionContext }) {
       <button
         type="button"
         onClick={handleSignOut}
-        className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-200"
+        className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-cpgis-globe hover:text-cpgis-globe"
       >
         Sign out
       </button>

@@ -7,10 +7,12 @@ import {
   MapContainer,
   Popup,
   TileLayer,
+  Tooltip,
   useMap,
   useMapEvents,
 } from "react-leaflet";
 import type { AddressCandidate, JobRecord, MapBounds } from "@/lib/types";
+import { formatDateLabel, formatRelativeDeadline } from "@/lib/utils";
 
 interface DisplayJob extends JobRecord {
   displayLatitude: number;
@@ -50,6 +52,49 @@ function averageCenter(jobs: JobRecord[]): LatLngExpression {
 
 function coordinateKey(latitude: number, longitude: number) {
   return `${latitude.toFixed(4)}:${longitude.toFixed(4)}`;
+}
+
+function getDeadlineTone(job: JobRecord) {
+  if (!job.applyBy) {
+    return {
+      label: "Active",
+      stroke: "#2f45a6",
+      fill: "#2f45a6",
+      selectedFill: "#dbeafe",
+    };
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const deadline = new Date(`${job.applyBy}T00:00:00`);
+  const daysLeft = Math.ceil(
+    (deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
+  );
+
+  if (daysLeft < 0) {
+    return {
+      label: "Expired",
+      stroke: "#64748b",
+      fill: "#94a3b8",
+      selectedFill: "#e2e8f0",
+    };
+  }
+
+  if (daysLeft <= 7) {
+    return {
+      label: "Closing soon",
+      stroke: "#8f1d2c",
+      fill: "#8f1d2c",
+      selectedFill: "#fee2e2",
+    };
+  }
+
+  return {
+    label: "Active",
+    stroke: "#2f45a6",
+    fill: "#2f45a6",
+    selectedFill: "#dbeafe",
+  };
 }
 
 function spreadOverlappingJobs(jobs: JobRecord[]): DisplayJob[] {
@@ -205,12 +250,12 @@ export default function JobsMap({
       ? {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; CARTO',
-          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          url: "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
         }
       : {
           attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; CARTO',
+          url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
         };
 
   return (
@@ -220,7 +265,7 @@ export default function JobsMap({
         zoom={3}
         minZoom={2}
         scrollWheelZoom
-        className="h-[500px] w-full"
+        className="h-[540px] w-full lg:h-[640px]"
       >
         <TileLayer attribution={themeConfig.attribution} url={themeConfig.url} />
 
@@ -233,27 +278,51 @@ export default function JobsMap({
 
         {displayJobs.map((job) => {
           const selected = job.id === selectedJobId;
+          const tone = getDeadlineTone(job);
 
           return (
             <CircleMarker
               key={job.id}
               center={[job.displayLatitude, job.displayLongitude]}
-              radius={selected ? 11 : 7}
+              radius={selected ? 11 : 7.5}
               pathOptions={{
-                color: selected ? "#7dd3fc" : "#38bdf8",
-                fillColor: selected ? "#cffafe" : "#06b6d4",
-                fillOpacity: selected ? 0.95 : 0.75,
-                weight: selected ? 3 : 1.5,
+                color: selected ? tone.stroke : "#ffffff",
+                fillColor: selected ? tone.selectedFill : tone.fill,
+                fillOpacity: selected ? 0.96 : 0.82,
+                opacity: 0.95,
+                weight: selected ? 3 : 1.75,
               }}
               eventHandlers={{
                 click: () => onSelect(job.id),
               }}
             >
+              <Tooltip
+                className="cpgis-job-tooltip"
+                direction="top"
+                offset={[0, -8]}
+                opacity={1}
+                sticky
+              >
+                <div className="max-w-[260px] space-y-1">
+                  <div className="text-sm font-semibold">{job.title}</div>
+                  <div className="text-xs">{job.organization}</div>
+                  <div className="text-xs text-slate-600">
+                    {job.location.city}
+                    {job.location.country ? `, ${job.location.country}` : ""}
+                  </div>
+                  <div className="text-xs font-semibold text-slate-700">
+                    {tone.label}: {formatDateLabel(job.applyBy)}
+                  </div>
+                </div>
+              </Tooltip>
               <Popup>
                 <div className="space-y-1">
                   <div className="font-semibold">{job.title}</div>
                   <div>{job.organization}</div>
                   <div>{job.location.label}</div>
+                  <div>
+                    {tone.label}: {formatRelativeDeadline(job.applyBy)}
+                  </div>
                   {job.overlapCount > 1 ? (
                     <div className="text-xs text-slate-600">
                       Expanded from {job.overlapCount} overlapping jobs at this source

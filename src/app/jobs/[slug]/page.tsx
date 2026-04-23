@@ -20,10 +20,10 @@ export default async function JobDetailPage({
   return (
     <>
       <SiteHeader session={session} />
-      <main className="min-h-screen bg-[linear-gradient(180deg,_#f7fbff_0%,_#eef6f8_100%)] px-4 py-10 sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-[linear-gradient(180deg,_#f7fbff_0%,_#edf4f8_100%)] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-            <div className="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">
+            <div className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-deep">
               Public share page
             </div>
             <h1 className="mt-3 text-balance text-4xl font-semibold leading-tight text-slate-950">
@@ -47,7 +47,7 @@ export default async function JobDetailPage({
               {job.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700"
+                  className="rounded-full bg-cpgis-ice px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cpgis-deep"
                 >
                   {tag}
                 </span>
@@ -59,13 +59,13 @@ export default async function JobDetailPage({
                 href={job.applicationUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-cyan-200 bg-cyan-50 px-5 py-3 text-sm font-semibold text-cyan-950 transition hover:bg-cyan-100"
+                className="rounded-full border border-cpgis-globe/30 bg-cpgis-ice px-5 py-3 text-sm font-semibold text-cpgis-ink transition hover:bg-white"
               >
                 Open application
               </a>
               <Link
                 href="/"
-                className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700"
+                className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-cpgis-globe hover:text-cpgis-deep"
               >
                 Back to map
               </Link>

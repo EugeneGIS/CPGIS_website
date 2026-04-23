@@ -29,11 +29,11 @@ export function JobList({ jobs, selectedJobId, onSelect }: JobListProps) {
             key={job.id}
             type="button"
             onClick={() => onSelect(job.id)}
-            className={cn(
-              "block w-full rounded-2xl border px-4 py-4 text-left transition",
+          className={cn(
+              "block w-full rounded-2xl border px-4 py-3 text-left transition",
               isSelected
-                ? "border-cyan-500 bg-slate-950 text-white shadow-[0_24px_60px_rgba(6,182,212,0.15)]"
-                : "border-slate-200 bg-white text-slate-900 hover:border-cyan-300 hover:bg-cyan-50/30",
+                ? "border-cpgis-deep bg-cpgis-deep text-white shadow-[0_24px_60px_rgba(47,69,166,0.18)]"
+                : "border-slate-200 bg-white text-slate-900 hover:border-cpgis-globe hover:bg-cpgis-ice",
             )}
           >
             <div className="flex items-start justify-between gap-3">
@@ -52,8 +52,8 @@ export function JobList({ jobs, selectedJobId, onSelect }: JobListProps) {
                 className={cn(
                   "rounded-full px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.2em]",
                   isSelected
-                    ? "bg-cyan-400/15 text-cyan-200"
-                    : "bg-cyan-50 text-cyan-700",
+                    ? "bg-white/15 text-white"
+                    : "bg-cpgis-ice text-cpgis-deep",
                 )}
               >
                 {job.location.city}
