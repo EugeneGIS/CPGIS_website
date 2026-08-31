@@ -85,7 +85,7 @@ function parseDeadline(raw?: string) {
   }
 
   const match = text.match(
-    /\b(?:apply by|due)\s+(\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})/i,
+    /\b(?:apply by|due|apply)\s+(\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})/i,
   );
 
   if (!match) {

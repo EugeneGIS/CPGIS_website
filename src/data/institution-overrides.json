@@ -1,0 +1,994 @@
+[
+  {
+    "aliases": [
+      "chair group of model-based environmental exposure science, augsburg university",
+      "university of augsburg"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Augsburg, Universitaetsstrasse 2, 86159 Augsburg, Germany",
+    "city": "Augsburg",
+    "country": "Germany",
+    "latitude": 48.37154,
+    "longitude": 10.89851
+  },
+  {
+    "aliases": [
+      "cornell university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Cornell University, Ithaca, NY 14850, United States",
+    "city": "Ithaca",
+    "country": "United States",
+    "latitude": 42.452916,
+    "longitude": -76.4800635
+  },
+  {
+    "aliases": [
+      "department of geography, university of victoria"
+    ],
+    "applicationUrls": [
+      "https://bit.ly/44ijsyh"
+    ],
+    "excludedAliases": [],
+    "address": "Department of Geography, David Turpin Building, University of Victoria, 3800 Finnerty Road, Victoria, BC V8P 5C2, Canada",
+    "city": "Victoria",
+    "country": "Canada",
+    "latitude": 48.464991,
+    "longitude": -123.314226
+  },
+  {
+    "aliases": [
+      "department of geoscience, ecole normale supérieure (ens)",
+      "department of geoscience, école normale supérieure (ens)"
+    ],
+    "applicationUrls": [
+      "https://bit.ly/3ryazqf"
+    ],
+    "excludedAliases": [],
+    "address": "Department of Geosciences, Ecole Normale Superieure, 24 Rue Lhomond, 75005 Paris, France",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.84252,
+    "longitude": 2.34564
+  },
+  {
+    "aliases": [
+      "department of environmental science, aarhus university"
+    ],
+    "applicationUrls": [
+      "https://bit.ly/4pzdclg"
+    ],
+    "excludedAliases": [],
+    "address": "Aarhus University, Frederiksborgvej 399, 4000 Roskilde, Denmark",
+    "city": "Roskilde",
+    "country": "Denmark",
+    "latitude": 55.692568,
+    "longitude": 12.103063
+  },
+  {
+    "aliases": [
+      "department of business development and technology, aarhus university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Aarhus University, Birk Centerpark 15, 7400 Herning, Denmark",
+    "city": "Herning",
+    "country": "Denmark",
+    "latitude": 56.129435,
+    "longitude": 9.02711
+  },
+  {
+    "aliases": [],
+    "applicationUrls": [
+      "https://bit.ly/3pqcrjc",
+      "https://bit.ly/3th1eex",
+      "https://bit.ly/43mrvt8"
+    ],
+    "excludedAliases": [],
+    "address": "Aarhus University Research Centre Flakkebjerg, Forsoegsvej 1, 4200 Slagelse, Denmark",
+    "city": "Slagelse",
+    "country": "Denmark",
+    "latitude": 55.325344,
+    "longitude": 11.391328
+  },
+  {
+    "aliases": [
+      "department of biology, aarhus university",
+      "department of electrical and computer engineering, aarhus university"
+    ],
+    "applicationUrls": [
+      "https://bit.ly/49ezxzu",
+      "https://bit.ly/4atp5ah",
+      "https://bit.ly/4av1dhu",
+      "https://bit.ly/4kzchbr"
+    ],
+    "excludedAliases": [],
+    "address": "Aarhus University, Nordre Ringgade 1, 8000 Aarhus C, Denmark",
+    "city": "Aarhus",
+    "country": "Denmark",
+    "latitude": 56.1670905,
+    "longitude": 10.2026177
+  },
+  {
+    "aliases": [
+      "bartlett centre for advanced spatial analysis"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UCL Bartlett Centre for Advanced Spatial Analysis, Maple House, 149 Tottenham Court Road, London W1T 7NF, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5243894,
+    "longitude": -0.1374139
+  },
+  {
+    "aliases": [
+      "bartlett school of architecture, university college london"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UCL Bartlett School of Architecture, 22 Gordon Street, London WC1H 0QB, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.525885,
+    "longitude": -0.1326242
+  },
+  {
+    "aliases": [
+      "department of civil, environmental and geomatic engineering, university college london"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UCL Civil, Environmental and Geomatic Engineering, Chadwick Building, Gower Street, London WC1E 6BT, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5240483,
+    "longitude": -0.1340167
+  },
+  {
+    "aliases": [
+      "lancaster medical school, lancaster university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Lancaster Medical School, Lancaster University, Lancaster LA1 4YW, United Kingdom",
+    "city": "Lancaster",
+    "country": "United Kingdom",
+    "latitude": 54.0099461,
+    "longitude": -2.787598
+  },
+  {
+    "aliases": [
+      "nijmegen school of management, radboud university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Nijmegen School of Management, Heyendaalseweg 141, 6525 AJ Nijmegen, The Netherlands",
+    "city": "Nijmegen",
+    "country": "The Netherlands",
+    "latitude": 51.8215173,
+    "longitude": 5.8634329
+  },
+  {
+    "aliases": [
+      "newcastle university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Newcastle University, Newcastle upon Tyne NE1 7RU, United Kingdom",
+    "city": "Newcastle upon Tyne",
+    "country": "United Kingdom",
+    "latitude": 54.9801751,
+    "longitude": -1.6146802
+  },
+  {
+    "aliases": [
+      "university of plymouth"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Plymouth, Drake Circus, Plymouth PL4 8AA, United Kingdom",
+    "city": "Plymouth",
+    "country": "United Kingdom",
+    "latitude": 50.3757001,
+    "longitude": -4.1393786
+  },
+  {
+    "aliases": [
+      "university of washington tacoma"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Washington Tacoma, 1900 Commerce Street, Tacoma, WA 98402, United States",
+    "city": "Tacoma",
+    "country": "United States",
+    "latitude": 47.2450762,
+    "longitude": -122.4397174
+  },
+  {
+    "aliases": [
+      "queensland university of technology"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Queensland University of Technology, Gardens Point Campus, 2 George Street, Brisbane QLD 4000, Australia",
+    "city": "Brisbane",
+    "country": "Australia",
+    "latitude": -27.4773884,
+    "longitude": 153.0283366
+  },
+  {
+    "aliases": [
+      "research unit of sensor and remote sensing, the french national research institute for agriculture, food, and environment"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "INRAE UMR TETIS, Maison de la Teledetection, 500 Rue Jean-Francois Breton, 34093 Montpellier, France",
+    "city": "Montpellier",
+    "country": "France",
+    "latitude": 43.645311,
+    "longitude": 3.8767479
+  },
+  {
+    "aliases": [],
+    "applicationUrls": [
+      "https://bit.ly/4fntsn5"
+    ],
+    "excludedAliases": [],
+    "address": "Western Sydney University Engineering Innovation Hub, 6 Hassall Street, Parramatta NSW 2150, Australia",
+    "city": "Parramatta",
+    "country": "Australia",
+    "latitude": -33.8178945,
+    "longitude": 151.0074062
+  },
+  {
+    "aliases": [],
+    "applicationUrls": [
+      "https://bit.ly/4fpegpy"
+    ],
+    "excludedAliases": [],
+    "address": "Western Sydney University Parramatta South Campus, Victoria Road, Rydalmere NSW 2116, Australia",
+    "city": "Parramatta",
+    "country": "Australia",
+    "latitude": -33.809094,
+    "longitude": 151.02753
+  },
+  {
+    "aliases": [],
+    "applicationUrls": [
+      "https://bit.ly/40ngegy"
+    ],
+    "excludedAliases": [],
+    "address": "Texas A&M University, 400 Bizzell Street, College Station, TX 77843, United States",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.6108618,
+    "longitude": -96.3520606
+  },
+  {
+    "aliases": [
+      "research unit of littoral, environment and societies"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "LIENSs UMR 7266, Institut du Littoral et de l'Environnement, 2 Rue Olympe de Gouges, 17000 La Rochelle, France",
+    "city": "La Rochelle",
+    "country": "France",
+    "latitude": 46.142485,
+    "longitude": -1.1572395
+  },
+  {
+    "aliases": [
+      "image, city, and environment laboratory"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "LIVE UMR 7362, 3 Rue de l'Argonne, 67000 Strasbourg, France",
+    "city": "Strasbourg",
+    "country": "France",
+    "latitude": 48.5841199,
+    "longitude": 7.7715898
+  },
+  {
+    "aliases": [
+      "umr 6266 idees center"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "IDEES UMR 6266, Building 7, Rue Lavoisier, 76821 Mont-Saint-Aignan, France",
+    "city": "Mont-Saint-Aignan",
+    "country": "France",
+    "latitude": 49.458834,
+    "longitude": 1.0676735
+  },
+  {
+    "aliases": [
+      "cnrs@create"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "CNRS@CREATE, CREATE Tower, 1 Create Way, Singapore 138602",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.3035244,
+    "longitude": 103.773937
+  },
+  {
+    "aliases": [
+      "university college dublin"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University College Dublin, Belfield, Dublin 4, Ireland",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.3068499,
+    "longitude": -6.2246268
+  },
+  {
+    "aliases": [
+      "chalmers university of technology"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Chalmers University of Technology, Chalmersplatsen 4, 412 96 Gothenburg, Sweden",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.6897462,
+    "longitude": 11.9765259
+  },
+  {
+    "aliases": [
+      "university of amsterdam"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [
+      "free university of amsterdam"
+    ],
+    "address": "University of Amsterdam, Spui 21, 1012 WX Amsterdam, The Netherlands",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "latitude": 52.3681334,
+    "longitude": 4.8898042
+  },
+  {
+    "aliases": [
+      "university of vienna"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Vienna, Universitaetsring 1, 1010 Vienna, Austria",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.2131278,
+    "longitude": 16.3606855
+  },
+  {
+    "aliases": [
+      "postdam institute for climate impact research",
+      "potsdam institute for climate impact research"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Potsdam Institute for Climate Impact Research, Telegrafenberg A31, 14473 Potsdam, Germany",
+    "city": "Potsdam",
+    "country": "Germany",
+    "latitude": 52.3806374,
+    "longitude": 13.0642063
+  },
+  {
+    "aliases": [
+      "leibniz institute for baltic sea research"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Leibniz Institute for Baltic Sea Research Warnemuende, Seestrasse 15, 18119 Rostock, Germany",
+    "city": "Rostock",
+    "country": "Germany",
+    "latitude": 54.1795499,
+    "longitude": 12.0817229
+  },
+  {
+    "aliases": [
+      "alfred wegener institute"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Alfred Wegener Institute, Am Handelshafen 12, 27570 Bremerhaven, Germany",
+    "city": "Bremerhaven",
+    "country": "Germany",
+    "latitude": 53.5332936,
+    "longitude": 8.5801243
+  },
+  {
+    "aliases": [
+      "eth zurich",
+      "federal institute of technology zurich (eth zurich)"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "ETH Zurich, Raemistrasse 101, 8092 Zurich, Switzerland",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.3764545,
+    "longitude": 8.5481666
+  },
+  {
+    "aliases": [
+      "university at buffalo"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University at Buffalo South Campus, 3435 Main Street, Buffalo, NY 14214, United States",
+    "city": "Buffalo",
+    "country": "United States",
+    "latitude": 42.9533636,
+    "longitude": -78.8185843
+  },
+  {
+    "aliases": [
+      "university of gothenburg",
+      "university of gotherburg"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Gothenburg Faculty of Science, Guldhedsgatan 5A, Gothenburg, Sweden",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "latitude": 57.6845012,
+    "longitude": 11.9637212
+  },
+  {
+    "aliases": [
+      "university of bergen"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Bergen Department of Biological Sciences, Thormoehlens gate 53A, 5006 Bergen, Norway",
+    "city": "Bergen",
+    "country": "Norway",
+    "latitude": 60.381012,
+    "longitude": 5.331927
+  },
+  {
+    "aliases": [
+      "northeastern university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [
+      "northeastern university london"
+    ],
+    "address": "Northeastern University, 360 Huntington Avenue, Boston, MA 02115, United States",
+    "city": "Boston",
+    "country": "United States",
+    "latitude": 42.3351065,
+    "longitude": -71.0892575
+  },
+  {
+    "aliases": [
+      "university of st gallen",
+      "university of st. gallen"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of St. Gallen, Dufourstrasse 50, 9000 St. Gallen, Switzerland",
+    "city": "St. Gallen",
+    "country": "Switzerland",
+    "latitude": 47.4300025,
+    "longitude": 9.3722184
+  },
+  {
+    "aliases": [
+      "university of texas southwestern medical center",
+      "ut southwestern medical center"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UT Southwestern Medical Center, 5323 Harry Hines Boulevard, Dallas, TX 75390, United States",
+    "city": "Dallas",
+    "country": "United States",
+    "latitude": 32.812043,
+    "longitude": -96.8417201
+  },
+  {
+    "aliases": [
+      "department of biology and school of geography and the environment"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Oxford School of Geography and the Environment, South Parks Road, Oxford OX1 3QY, United Kingdom",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.7589986,
+    "longitude": -1.2517095
+  },
+  {
+    "aliases": [
+      "department of geography, geomatics and environment"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Toronto Mississauga, 3359 Mississauga Road, Mississauga, ON L5L 1C6, Canada",
+    "city": "Mississauga",
+    "country": "Canada",
+    "latitude": 43.5502208,
+    "longitude": -79.6626584
+  },
+  {
+    "aliases": [
+      "center for advanced infrastructure and transportation, rutgers university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Rutgers Center for Advanced Infrastructure and Transportation, 100 Brett Road, Piscataway, NJ 08854, United States",
+    "city": "Piscataway",
+    "country": "United States",
+    "latitude": 40.5215445,
+    "longitude": -74.4650785
+  },
+  {
+    "aliases": [
+      "opengeohub foundation"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "OpenGeoHub Foundation, Waldeck Pyrmontlaan 14, 6865 HK Doorwerth, The Netherlands",
+    "city": "Doorwerth",
+    "country": "The Netherlands",
+    "latitude": 51.9796465,
+    "longitude": 5.8016545
+  },
+  {
+    "aliases": [
+      "leibniz centre for tropical marine research"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Leibniz Centre for Tropical Marine Research, Fahrenheitstrasse 6, 28359 Bremen, Germany",
+    "city": "Bremen",
+    "country": "Germany",
+    "latitude": 53.1078984,
+    "longitude": 8.8460396
+  },
+  {
+    "aliases": [
+      "area @rgs_ibg"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Royal Geographical Society with IBG, 1 Kensington Gore, London SW7 2AR, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5013114,
+    "longitude": -0.1752543
+  },
+  {
+    "aliases": [
+      "research unit of coastline, environment, remote sensing, geomatics"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "LETG Rennes, Universite Rennes 2, Place du Recteur Henri Le Moal, 35043 Rennes, France",
+    "city": "Rennes",
+    "country": "France",
+    "latitude": 48.1193249,
+    "longitude": -1.7014997
+  },
+  {
+    "aliases": [
+      "research unit of environment city society"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UMR 5600 EVS, 18 Rue Chevreul, 69007 Lyon, France",
+    "city": "Lyon",
+    "country": "France",
+    "latitude": 45.7493031,
+    "longitude": 4.8378288
+  },
+  {
+    "aliases": [
+      "laboratory of oceanic, continental environments and paleoenvironments"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UMR CNRS 5805 EPOC, Allee Geoffroy Saint-Hilaire, 33615 Pessac, France",
+    "city": "Pessac",
+    "country": "France",
+    "latitude": 44.8040222,
+    "longitude": -0.6081499
+  },
+  {
+    "aliases": [
+      "university of york"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of York, Heslington, York YO10 5DD, United Kingdom",
+    "city": "York",
+    "country": "United Kingdom",
+    "latitude": 53.9484189,
+    "longitude": -1.0535445
+  },
+  {
+    "aliases": [
+      "the chinese university of hong kong"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "2nd Floor, Wong Foo Yuan Building, The Chinese University of Hong Kong, Shatin, N.T., Hong Kong SAR, China",
+    "city": "Sha Tin",
+    "country": "Hong Kong SAR, China",
+    "latitude": 22.415219,
+    "longitude": 114.208674
+  },
+  {
+    "aliases": [
+      "hong kong polyu",
+      "the hong kong polytechnic university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Room ZS621, 6/F, South Wing, Block Z, Phase 8, 181 Chatham Road South, The Hong Kong Polytechnic University, Hung Hom, Kowloon, Hong Kong",
+    "city": "Hung Hom",
+    "country": "Hong Kong SAR, China",
+    "latitude": 22.306436,
+    "longitude": 114.179501
+  },
+  {
+    "aliases": [
+      "the university of hong kong",
+      "university of hong kong",
+      "university of hongkong"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "10/F, The Jockey Club Tower, Centennial Campus, Pokfulam Road, Hong Kong",
+    "city": "Pok Fu Lam",
+    "country": "Hong Kong SAR, China",
+    "latitude": 22.2831742305872,
+    "longitude": 114.134704281723
+  },
+  {
+    "aliases": [
+      "purdue university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Purdue University, West Lafayette, IN 47907, United States",
+    "city": "West Lafayette",
+    "country": "United States",
+    "latitude": 40.4237,
+    "longitude": -86.9212
+  },
+  {
+    "aliases": [
+      "pacte laboratory",
+      "pacte umr 5194"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "PACTE UMR 5194, CNRS, Grenoble, France",
+    "city": "Grenoble",
+    "country": "France",
+    "latitude": 45.1885,
+    "longitude": 5.7245
+  },
+  {
+    "aliases": [
+      "national institute of education"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "National Institute of Education, Nanyang Technological University, 1 Nanyang Walk, Singapore 637616",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.3487,
+    "longitude": 103.681
+  },
+  {
+    "aliases": [
+      "暨南大学"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Jinan University, 601 Huangpu Avenue West, Tianhe District, Guangzhou, China",
+    "city": "Guangzhou",
+    "country": "China",
+    "latitude": 23.1259,
+    "longitude": 113.3477
+  },
+  {
+    "aliases": [
+      "costain"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Costain Group, Vanwall Business Park, Maidenhead SL6 4UY, United Kingdom",
+    "city": "Maidenhead",
+    "country": "United Kingdom",
+    "latitude": 51.5102,
+    "longitude": -0.7148
+  },
+  {
+    "aliases": [
+      "new york university abu dhabi",
+      "nyu abu dhabi"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "New York University Abu Dhabi, Saadiyat Island, Abu Dhabi, United Arab Emirates",
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "latitude": 24.5242,
+    "longitude": 54.4337
+  },
+  {
+    "aliases": [
+      "norwegian institute for natural research"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "NINA Norwegian Institute for Nature Research, Trondheim, Norway",
+    "city": "Trondheim",
+    "country": "Norway",
+    "latitude": 63.4305,
+    "longitude": 10.3951
+  },
+  {
+    "aliases": [
+      "arctic university of norway"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UiT The Arctic University of Norway, 9037 Tromso, Norway",
+    "city": "Tromsø",
+    "country": "Norway",
+    "latitude": 69.6807,
+    "longitude": 18.9707
+  },
+  {
+    "aliases": [],
+    "applicationUrls": [
+      "https://bit.ly/33c3pnd"
+    ],
+    "excludedAliases": [],
+    "address": "INRAE, 147 Rue de l'Universite, 75007 Paris, France",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.8607,
+    "longitude": 2.3187
+  },
+  {
+    "aliases": [
+      "communications earth",
+      "nature cities",
+      "nature communications",
+      "nature geoscience",
+      "nature portfolio",
+      "nature sustainability",
+      "nature water",
+      "springer nature"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Springer Nature, The Campus, 4 Crinan Street, London N1 9XW, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5354,
+    "longitude": -0.1005
+  },
+  {
+    "aliases": [
+      "international society for photogrammetry",
+      "isprs"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "ISPRS Secretariat, Leibniz Universitat Hannover, Nienburger Strasse 1, 30167 Hannover, Germany",
+    "city": "Hannover",
+    "country": "Germany",
+    "latitude": 52.389,
+    "longitude": 9.724
+  },
+  {
+    "aliases": [
+      "unu-wider",
+      "world institute for development economics research"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "UNU-WIDER, Katajanokanlaituri 6 B, 00160 Helsinki, Finland",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.1672,
+    "longitude": 24.9769
+  },
+  {
+    "aliases": [
+      "mohammed vi polytechnic"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Mohammed VI Polytechnic University, Benguerir, Morocco",
+    "city": "Benguerir",
+    "country": "Morocco",
+    "latitude": 31.6214,
+    "longitude": -8.0643
+  },
+  {
+    "aliases": [
+      "college of urban and environmental sciences, pku",
+      "北大城环"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Peking University, 5 Yiheyuan Road, Haidian District, Beijing 100871, China",
+    "city": "Beijing",
+    "country": "China",
+    "latitude": 39.9889,
+    "longitude": 116.3057
+  },
+  {
+    "aliases": [
+      "at hilo"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "University of Hawai'i at Hilo, 200 W Kawili St, Hilo, HI",
+    "city": "Hilo",
+    "country": "United States",
+    "latitude": 19.7005,
+    "longitude": -155.0864
+  },
+  {
+    "aliases": [
+      "mott macdonald (australia)",
+      "mott macdonald (victoria, australia)",
+      "mott macdonald's (australia)"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Mott MacDonald Australia, 114 William Street, Melbourne VIC, Australia",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.8136,
+    "longitude": 144.9553
+  },
+  {
+    "aliases": [
+      "mott macdonald"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Mott MacDonald, Sydenham Road, Croydon CR0 2EE, United Kingdom",
+    "city": "Croydon",
+    "country": "United Kingdom",
+    "latitude": 51.3722,
+    "longitude": -0.0994
+  },
+  {
+    "aliases": [
+      "dalcour maclaren"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Dalcour Maclaren, The Barn, Bignell Park Barns, Chesterton, Bicester OX26 1TD, United Kingdom",
+    "city": "Bicester",
+    "country": "United Kingdom",
+    "latitude": 51.8917,
+    "longitude": -1.1485
+  },
+  {
+    "aliases": [
+      "british columbia timber sales"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "British Columbia Timber Sales, Ministry of Forests, Victoria, BC, Canada",
+    "city": "Victoria",
+    "country": "Canada",
+    "latitude": 48.4284,
+    "longitude": -123.3656
+  },
+  {
+    "aliases": [
+      "texas a&m agrilife",
+      "texas water resource institute"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Texas A&M AgriLife Research, College Station, TX, USA",
+    "city": "College Station",
+    "country": "United States",
+    "latitude": 30.6215,
+    "longitude": -96.3384
+  },
+  {
+    "aliases": [
+      "wyoming geographic information science center"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Wyoming Geographic Information Science Center, University of Wyoming, Laramie, WY, USA",
+    "city": "Laramie",
+    "country": "United States",
+    "latitude": 41.3174,
+    "longitude": -105.5555
+  },
+  {
+    "aliases": [
+      "leiden university",
+      "university of leiden"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Leiden University, Rapenburg 70, 2311 EZ Leiden, Netherlands",
+    "city": "Leiden",
+    "country": "Netherlands",
+    "latitude": 52.1599,
+    "longitude": 4.4824
+  },
+  {
+    "aliases": [
+      "lancaster environment centre"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Lancaster Environment Centre, Lancaster University, Lancaster LA1 4YQ, United Kingdom",
+    "city": "Lancaster",
+    "country": "United Kingdom",
+    "latitude": 54.0092,
+    "longitude": -2.7844
+  },
+  {
+    "aliases": [
+      "univerisity of michigan"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "School for Environment and Sustainability, University of Michigan, Ann Arbor, MI 48109, USA",
+    "city": "Ann Arbor",
+    "country": "United States",
+    "latitude": 42.2756,
+    "longitude": -83.7413
+  },
+  {
+    "aliases": [
+      "durhan university"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Durham University, Lower Mountjoy, South Road, Durham DH1 3LE, United Kingdom",
+    "city": "Durham",
+    "country": "United Kingdom",
+    "latitude": 54.7681,
+    "longitude": -1.5753
+  },
+  {
+    "aliases": [
+      "sei oxford"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "SEI Oxford, Oxford Centre for Innovation, New Road, Oxford OX1 1BY, United Kingdom",
+    "city": "Oxford",
+    "country": "United Kingdom",
+    "latitude": 51.7548,
+    "longitude": -1.2544
+  },
+  {
+    "aliases": [
+      "national museum of natural history"
+    ],
+    "applicationUrls": [],
+    "excludedAliases": [],
+    "address": "Smithsonian National Museum of Natural History, 10th St. & Constitution Ave. NW, Washington, DC 20560, USA",
+    "city": "Washington",
+    "country": "United States",
+    "latitude": 38.8913,
+    "longitude": -77.0261
+  }
+]

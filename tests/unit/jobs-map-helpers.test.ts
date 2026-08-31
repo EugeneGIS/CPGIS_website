@@ -56,6 +56,15 @@ describe("spreadOverlappingJobs", () => {
     expect(spread[0].displayLongitude).not.toBe(jobs[0].location.longitude);
     expect(spread[0].location.longitude).toBe(114.1694);
   });
+
+  it("drops unmapped records at null island instead of clustering them", () => {
+    const spread = spreadOverlappingJobs([
+      makeJob("1", "mapped"),
+      makeJob("2", "unmapped", 0, 0),
+    ]);
+
+    expect(spread.map((job) => job.slug)).toEqual(["mapped"]);
+  });
 });
 
 describe("selection focus", () => {

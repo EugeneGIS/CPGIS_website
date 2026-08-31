@@ -17,6 +17,17 @@ describe("parseDocxTextToImports", () => {
     });
   });
 
+  it("parses deadlines written as 'apply <date>' without 'by'", () => {
+    const [job] = parseDocxTextToImports(
+      "Research Fellow available at Example University https://example.org/job/7 apply 6 May 2024",
+    );
+
+    expect(job).toMatchObject({
+      applyBy: "2024-05-06",
+      deadlineText: "apply 6 May 2024",
+    });
+  });
+
   it("keeps distinct source URLs and removes exact duplicate lines", () => {
     const jobs = parseDocxTextToImports(`
       Research Fellow available at Example University https://example.org/job/one

@@ -108,6 +108,12 @@ export function spreadOverlappingJobs(jobs: JobRecord[]): DisplayJob[] {
   const groups = new Map<string, JobRecord[]>();
 
   for (const job of jobs) {
+    // Unmappable records (failed geocode) must not pile up at (0, 0); they stay
+    // in the list views but are skipped by the map.
+    if (job.location.latitude === 0 && job.location.longitude === 0) {
+      continue;
+    }
+
     const key = coordinateKey(job.location.latitude, job.location.longitude);
     const group = groups.get(key);
 

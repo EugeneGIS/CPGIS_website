@@ -19,6 +19,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_JSON = REPO_ROOT / "src" / "data" / "cpgis-jobs.json"
 LEGACY_SLUGS_JSON = REPO_ROOT / "src" / "data" / "legacy-job-slug-redirects.json"
+INSTITUTION_OVERRIDES_JSON = (
+    REPO_ROOT / "src" / "data" / "institution-overrides.json"
+)
 CACHE_JSON = REPO_ROOT / "scripts" / "cache" / "cpgis-ror-cache.json"
 DATE_LINE = re.compile(r"^20\d{6}$")
 ROW_PATTERN = re.compile(
@@ -115,7 +118,13 @@ INSTITUTION_LOCATION_OVERRIDES = (
         "longitude": 9.02711,
     },
     {
-        "application_urls": ("https://bit.ly/43mrvt8",),
+        # Department of Agroecology records otherwise fall for the INRAE
+        # agroecology centre in Dijon, France.
+        "application_urls": (
+            "https://bit.ly/43mrvt8",
+            "https://bit.ly/3pqcrjc",
+            "https://bit.ly/3th1eex",
+        ),
         "address": (
             "Aarhus University Research Centre Flakkebjerg, "
             "Forsoegsvej 1, 4200 Slagelse, Denmark"
@@ -615,7 +624,12 @@ INSTITUTION_LOCATION_OVERRIDES = (
         "longitude": 114.208674,
     },
     {
-        "aliases": ("the hong kong polytechnic university",),
+        # "Hong Kong PolyU" shorthand in a tweet geocoded to a district-level
+        # Chinese name; the full official name already routes correctly.
+        "aliases": (
+            "the hong kong polytechnic university",
+            "hong kong polyu",
+        ),
         "address": (
             "Room ZS621, 6/F, South Wing, Block Z, Phase 8, "
             "181 Chatham Road South, The Hong Kong Polytechnic University, "
@@ -627,7 +641,13 @@ INSTITUTION_LOCATION_OVERRIDES = (
         "longitude": 114.179501,
     },
     {
-        "aliases": ("the university of hong kong",),
+        # "University of Hongkong" (one word) in some tweets evades the
+        # spaced alias and geocoded to a district-level Chinese name.
+        "aliases": (
+            "the university of hong kong",
+            "university of hong kong",
+            "university of hongkong",
+        ),
         "address": (
             "10/F, The Jockey Club Tower, Centennial Campus, "
             "Pokfulam Road, Hong Kong"
@@ -636,6 +656,334 @@ INSTITUTION_LOCATION_OVERRIDES = (
         "country": REQUIRED_COUNTRY_DISPLAY["hong_kong"],
         "latitude": 22.2831742305872,
         "longitude": 114.134704281723,
+    },
+    {
+        # A forestry-department affiliation previously fell through to a
+        # same-named institute in Lilongwe, Malawi. Every Purdue record should
+        # sit on the West Lafayette campus.
+        "aliases": ("purdue university",),
+        "address": "Purdue University, West Lafayette, IN 47907, United States",
+        "city": "West Lafayette",
+        "country": "United States",
+        "latitude": 40.4237,
+        "longitude": -86.9212,
+    },
+    {
+        # "Pacte laboratory" previously resolved the CNRS parent straight to
+        # Luanda, Angola. PACTE (UMR 5194) sits with the Grenoble campuses.
+        "aliases": ("pacte laboratory", "pacte umr 5194"),
+        "address": "PACTE UMR 5194, CNRS, Grenoble, France",
+        "city": "Grenoble",
+        "country": "France",
+        "latitude": 45.1885,
+        "longitude": 5.7245,
+    },
+    {
+        # Cambodia also has a "National Institute of Education" in Phnom Penh,
+        # which captured the Singapore NIE (NTU) affiliation.
+        "aliases": ("national institute of education",),
+        "address": (
+            "National Institute of Education, Nanyang Technological "
+            "University, 1 Nanyang Walk, Singapore 637616"
+        ),
+        "city": "Singapore",
+        "country": "Singapore",
+        "latitude": 1.3487,
+        "longitude": 103.681,
+    },
+    {
+        # Alias on the Chinese name only: "Jinan University" in English must
+        # not match the University of Jinan (济南大学), which really is in Jinan.
+        # Jinan University (暨南大学) is in Guangzhou.
+        "aliases": ("暨南大学",),
+        "address": (
+            "Jinan University, 601 Huangpu Avenue West, Tianhe District, "
+            "Guangzhou, China"
+        ),
+        "city": "Guangzhou",
+        "country": "China",
+        "latitude": 23.1259,
+        "longitude": 113.3477,
+    },
+    {
+        # A bare "Costain" matched the Costain neighbourhood of Lagos,
+        # Nigeria. Unify all records on the UK headquarters.
+        "aliases": ("costain",),
+        "address": (
+            "Costain Group, Vanwall Business Park, Maidenhead SL6 4UY, "
+            "United Kingdom"
+        ),
+        "city": "Maidenhead",
+        "country": "United Kingdom",
+        "latitude": 51.5102,
+        "longitude": -0.7148,
+    },
+    {
+        # NYU Abu Dhabi is a genuine satellite campus on Saadiyat Island; the
+        # override also gives the geocoder's Arabic country name a reviewed
+        # English form. Generic NYU records stay in New York.
+        "aliases": ("new york university abu dhabi", "nyu abu dhabi"),
+        "address": (
+            "New York University Abu Dhabi, Saadiyat Island, "
+            "Abu Dhabi, United Arab Emirates"
+        ),
+        "city": "Abu Dhabi",
+        "country": "United Arab Emirates",
+        "latitude": 24.5242,
+        "longitude": 54.4337,
+    },
+    {
+        # The tweet wrote "Natural" for "Nature": the misspelled institute
+        # name misses ROR and Nominatim dropped it in Podari, Romania.
+        "aliases": ("norwegian institute for natural research",),
+        "address": (
+            "NINA Norwegian Institute for Nature Research, Trondheim, Norway"
+        ),
+        "city": "Trondheim",
+        "country": "Norway",
+        "latitude": 63.4305,
+        "longitude": 10.3951,
+    },
+    {
+        "aliases": ("arctic university of norway",),
+        "address": (
+            "UiT The Arctic University of Norway, 9037 Tromso, Norway"
+        ),
+        "city": "Tromsø",
+        "country": "Norway",
+        "latitude": 69.6807,
+        "longitude": 18.9707,
+    },
+    {
+        # INRAE without a named unit previously fell through to Brussels.
+        # Keyed by URL because several INRAE centre records geocode correctly
+        # and must not be dragged to the Paris headquarters.
+        "application_urls": ("https://bit.ly/33c3pnd",),
+        "address": "INRAE, 147 Rue de l'Universite, 75007 Paris, France",
+        "city": "Paris",
+        "country": "France",
+        "latitude": 48.8607,
+        "longitude": 2.3187,
+    },
+    {
+        # Springer Nature's registry entry carries a Lisbon address, but the
+        # Nature editorial teams behind these editor posts sit in London.
+        "aliases": (
+            "springer nature",
+            "nature portfolio",
+            "nature communications",
+            "nature geoscience",
+            "nature water",
+            "nature sustainability",
+            "nature cities",
+            "communications earth",
+        ),
+        "address": (
+            "Springer Nature, The Campus, 4 Crinan Street, "
+            "London N1 9XW, United Kingdom"
+        ),
+        "city": "London",
+        "country": "United Kingdom",
+        "latitude": 51.5354,
+        "longitude": -0.1005,
+    },
+    {
+        # ISPRS secretariat is hosted by Leibniz Universitat Hannover.
+        "aliases": ("international society for photogrammetry", "isprs"),
+        "address": (
+            "ISPRS Secretariat, Leibniz Universitat Hannover, "
+            "Nienburger Strasse 1, 30167 Hannover, Germany"
+        ),
+        "city": "Hannover",
+        "country": "Germany",
+        "latitude": 52.389,
+        "longitude": 9.724,
+    },
+    {
+        # UNU-WIDER works from Helsinki although UNU headquarters is Tokyo.
+        "aliases": (
+            "world institute for development economics research",
+            "unu-wider",
+        ),
+        "address": (
+            "UNU-WIDER, Katajanokanlaituri 6 B, 00160 Helsinki, Finland"
+        ),
+        "city": "Helsinki",
+        "country": "Finland",
+        "latitude": 60.1672,
+        "longitude": 24.9769,
+    },
+    {
+        # Geocoder results for the Morocco campus came back in Berber/Arabic.
+        "aliases": ("mohammed vi polytechnic",),
+        "address": (
+            "Mohammed VI Polytechnic University, Benguerir, Morocco"
+        ),
+        "city": "Benguerir",
+        "country": "Morocco",
+        "latitude": 31.6214,
+        "longitude": -8.0643,
+    },
+    {
+        # The PKU tweet carried Chinese-only display names; anchor it in
+        # English next to the rest of the dataset.
+        "aliases": (
+            "北大城环",
+            "college of urban and environmental sciences, pku",
+        ),
+        "address": (
+            "Peking University, 5 Yiheyuan Road, Haidian District, "
+            "Beijing 100871, China"
+        ),
+        "city": "Beijing",
+        "country": "China",
+        "latitude": 39.9889,
+        "longitude": 116.3057,
+    },
+    {
+        # Manoa records already resolve to Honolulu; "at hilo" only matches
+        # the Hilo campus tweet.
+        "aliases": ("at hilo",),
+        "address": "University of Hawai'i at Hilo, 200 W Kawili St, Hilo, HI",
+        "city": "Hilo",
+        "country": "United States",
+        "latitude": 19.7005,
+        "longitude": -155.0864,
+    },
+    {
+        # Australian Mott MacDonald posts; must precede the generic entry.
+        "aliases": (
+            "mott macdonald (australia)",
+            "mott macdonald's (australia)",
+            "mott macdonald (victoria, australia)",
+        ),
+        "address": (
+            "Mott MacDonald Australia, 114 William Street, "
+            "Melbourne VIC, Australia"
+        ),
+        "city": "Melbourne",
+        "country": "Australia",
+        "latitude": -37.8136,
+        "longitude": 144.9553,
+    },
+    {
+        "aliases": ("mott macdonald",),
+        "address": (
+            "Mott MacDonald, Sydenham Road, Croydon CR0 2EE, "
+            "United Kingdom"
+        ),
+        "city": "Croydon",
+        "country": "United Kingdom",
+        "latitude": 51.3722,
+        "longitude": -0.0994,
+    },
+    {
+        "aliases": ("dalcour maclaren",),
+        "address": (
+            "Dalcour Maclaren, The Barn, Bignell Park Barns, Chesterton, "
+            "Bicester OX26 1TD, United Kingdom"
+        ),
+        "city": "Bicester",
+        "country": "United Kingdom",
+        "latitude": 51.8917,
+        "longitude": -1.1485,
+    },
+    {
+        "aliases": ("british columbia timber sales",),
+        "address": (
+            "British Columbia Timber Sales, Ministry of Forests, "
+            "Victoria, BC, Canada"
+        ),
+        "city": "Victoria",
+        "country": "Canada",
+        "latitude": 48.4284,
+        "longitude": -123.3656,
+    },
+    {
+        "aliases": ("texas water resource institute", "texas a&m agrilife"),
+        "address": "Texas A&M AgriLife Research, College Station, TX, USA",
+        "city": "College Station",
+        "country": "United States",
+        "latitude": 30.6215,
+        "longitude": -96.3384,
+    },
+    {
+        "aliases": ("wyoming geographic information science center",),
+        "address": (
+            "Wyoming Geographic Information Science Center, University of "
+            "Wyoming, Laramie, WY, USA"
+        ),
+        "city": "Laramie",
+        "country": "United States",
+        "latitude": 41.3174,
+        "longitude": -105.5555,
+    },
+    {
+        # Covers the "University of Leiden" word order and unifies the
+        # country display with the correctly geocoded Leiden records.
+        "aliases": ("university of leiden", "leiden university"),
+        "address": "Leiden University, Rapenburg 70, 2311 EZ Leiden, Netherlands",
+        "city": "Leiden",
+        "country": "Netherlands",
+        "latitude": 52.1599,
+        "longitude": 4.4824,
+    },
+    {
+        # Source tweets misspelled these university names; ROR misses them
+        # entirely and Nominatim has nothing to hold on to.
+        "aliases": ("lancaster environment centre",),
+        "address": (
+            "Lancaster Environment Centre, Lancaster University, "
+            "Lancaster LA1 4YQ, United Kingdom"
+        ),
+        "city": "Lancaster",
+        "country": "United Kingdom",
+        "latitude": 54.0092,
+        "longitude": -2.7844,
+    },
+    {
+        "aliases": ("univerisity of michigan",),
+        "address": (
+            "School for Environment and Sustainability, University of "
+            "Michigan, Ann Arbor, MI 48109, USA"
+        ),
+        "city": "Ann Arbor",
+        "country": "United States",
+        "latitude": 42.2756,
+        "longitude": -83.7413,
+    },
+    {
+        "aliases": ("durhan university",),
+        "address": (
+            "Durham University, Lower Mountjoy, South Road, "
+            "Durham DH1 3LE, United Kingdom"
+        ),
+        "city": "Durham",
+        "country": "United Kingdom",
+        "latitude": 54.7681,
+        "longitude": -1.5753,
+    },
+    {
+        "aliases": ("sei oxford",),
+        "address": (
+            "SEI Oxford, Oxford Centre for Innovation, New Road, "
+            "Oxford OX1 1BY, United Kingdom"
+        ),
+        "city": "Oxford",
+        "country": "United Kingdom",
+        "latitude": 51.7548,
+        "longitude": -1.2544,
+    },
+    {
+        "aliases": ("national museum of natural history",),
+        "address": (
+            "Smithsonian National Museum of Natural History, 10th St. & "
+            "Constitution Ave. NW, Washington, DC 20560, USA"
+        ),
+        "city": "Washington",
+        "country": "United States",
+        "latitude": 38.8913,
+        "longitude": -77.0261,
     },
 )
 
@@ -652,6 +1000,7 @@ class ParsedRow:
 
 def normalize_text(value: str) -> str:
     value = value.replace("\xa0", " ")
+    value = value.replace("&amp;", "&")
     value = unicodedata.normalize("NFKC", value)
     return re.sub(r"\s+", " ", value).strip()
 
@@ -792,7 +1141,7 @@ def parse_deadline(trailing_text: str) -> tuple[str, str | None]:
         return ("Position open until filled", None)
 
     match = re.search(
-        r"\b(?:apply by|due)\s+(\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})",
+        r"\b(?:apply by|due|apply)\s+(\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})",
         trailing_text,
         re.IGNORECASE,
     )
@@ -845,11 +1194,14 @@ def derive_query(organization: str) -> str:
     return cleaned
 
 
-def extract_rows(source_docx: Path) -> list[ParsedRow]:
-    text = subprocess.check_output(
-        ["textutil", "-convert", "txt", "-stdout", str(source_docx)],
-        text=True,
-    )
+def extract_rows(source: Path) -> list[ParsedRow]:
+    if source.suffix.lower() == ".txt":
+        text = source.read_text(encoding="utf-8")
+    else:
+        text = subprocess.check_output(
+            ["textutil", "-convert", "txt", "-stdout", str(source)],
+            text=True,
+        )
     lines = [normalize_text(line) for line in text.splitlines() if normalize_text(line)]
 
     rows: list[ParsedRow] = []
@@ -962,11 +1314,14 @@ def lookup_ror(query: str, affiliation: str, cache: dict[str, dict]) -> dict:
         result = lookup_nominatim(query)
 
     cache[cache_key] = result
-    time.sleep(0.03)
+    # ROR tolerates a few requests per second; stay clearly below that.
+    time.sleep(0.15)
     return result
 
 
 def lookup_nominatim(query: str) -> dict:
+    # Nominatim usage policy requires at most one request per second.
+    time.sleep(1.1)
     url = (
         "https://nominatim.openstreetmap.org/search?"
         + urllib.parse.urlencode(
@@ -1055,8 +1410,8 @@ def build_summary(title: str, organization: str) -> str:
     return f"{title} available at {organization}."
 
 
-def build_jobs(source_docx: Path) -> list[dict]:
-    rows = extract_rows(source_docx)
+def build_jobs(source: Path) -> list[dict]:
+    rows = extract_rows(source)
     cache = load_cache()
     jobs: list[dict] = []
     total_rows = len(rows)
@@ -1164,6 +1519,27 @@ def write_legacy_slug_policy(jobs: list[dict]) -> None:
     )
 
 
+def export_institution_overrides() -> None:
+    """Write the reviewed campus table for the website's runtime matcher."""
+    payload = [
+        {
+            "aliases": sorted(override.get("aliases", ())),
+            "applicationUrls": sorted(override.get("application_urls", ())),
+            "excludedAliases": sorted(override.get("excluded_aliases", ())),
+            "address": override["address"],
+            "city": override["city"],
+            "country": override["country"],
+            "latitude": override["latitude"],
+            "longitude": override["longitude"],
+        }
+        for override in INSTITUTION_LOCATION_OVERRIDES
+    ]
+    INSTITUTION_OVERRIDES_JSON.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+    )
+    print(f"Wrote {len(payload)} overrides to {INSTITUTION_OVERRIDES_JSON}")
+
+
 def rewrite_existing_slugs() -> None:
     jobs = json.loads(OUTPUT_JSON.read_text())
 
@@ -1228,11 +1604,28 @@ def main() -> None:
         help="Apply display and institution location policy to committed JSON",
     )
     parser.add_argument(
+        "--export-overrides",
+        action="store_true",
+        help="Export the institution override table to src/data for the website",
+    )
+    parser.add_argument(
         "--source-docx",
         type=Path,
         help="Path to the source CPGIS .docx file (required for a full rebuild)",
     )
+    parser.add_argument(
+        "--source-txt",
+        type=Path,
+        help=(
+            "Path to a plain-text feed in the CPGIS line format "
+            "(date header lines plus job lines); alternative to --source-docx"
+        ),
+    )
     args = parser.parse_args()
+
+    if args.export_overrides:
+        export_institution_overrides()
+        return
 
     if args.rewrite_existing_slugs:
         rewrite_existing_slugs()
@@ -1242,16 +1635,22 @@ def main() -> None:
         rewrite_existing_locations()
         return
 
-    if args.source_docx is None:
-        parser.error("--source-docx is required unless --rewrite-existing-slugs is used")
+    sources = [source for source in (args.source_docx, args.source_txt) if source]
+    if not sources:
+        parser.error(
+            "--source-docx or --source-txt is required unless "
+            "--rewrite-existing-slugs is used"
+        )
+    if len(sources) > 1:
+        parser.error("pass only one of --source-docx and --source-txt")
 
-    source_docx = args.source_docx.expanduser().resolve()
-    if not source_docx.is_file():
-        parser.error(f"source DOCX does not exist or is not a file: {source_docx}")
-    if source_docx.suffix.lower() != ".docx":
-        parser.error(f"source file must use the .docx extension: {source_docx}")
+    source = sources[0].expanduser().resolve()
+    if not source.is_file():
+        parser.error(f"source file does not exist or is not a file: {source}")
+    if source.suffix.lower() not in {".docx", ".txt"}:
+        parser.error(f"source file must use the .docx or .txt extension: {source}")
 
-    jobs = build_jobs(source_docx)
+    jobs = build_jobs(source)
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_JSON.write_text(json.dumps(jobs, indent=2, ensure_ascii=False) + "\n")
     write_legacy_slug_policy(jobs)

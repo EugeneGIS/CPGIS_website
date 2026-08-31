@@ -106,7 +106,14 @@ describe("bundled institutional location overrides", () => {
 
     expect(newYorkUniversityJobs.length).toBeGreaterThan(0);
     for (const job of newYorkUniversityJobs) {
-      expect(job.location.country).toBe("United States");
+      // NYU Abu Dhabi is a genuine satellite campus; every other NYU record
+      // belongs in New York, and none of them may ever land on York, UK.
+      const expectedCountry = job.organization
+        .toLowerCase()
+        .includes("abu dhabi")
+        ? "United Arab Emirates"
+        : "United States";
+      expect(job.location.country).toBe(expectedCountry);
       expect(job.location.latitude).not.toBe(53.9484189);
       expect(job.location.longitude).not.toBe(-1.0535445);
     }
@@ -145,20 +152,34 @@ describe("bundled institutional location overrides", () => {
       ["https://bit.ly/4aV1DHU", "Aarhus"],
       ["https://bit.ly/47cLPhu", "Herning"],
       ["https://bit.ly/48He5tB", "Aarhus"],
+      // Tweet-history Agroecology records reviewed onto the Flakkebjerg site.
+      ["https://bit.ly/3pQCrjc", "Slagelse"],
+      ["https://bit.ly/3th1eex", "Slagelse"],
     ]);
+    const campusCities = new Set(["Aarhus", "Roskilde", "Herning", "Slagelse"]);
     const aarhusJobs = jobs.filter((job) =>
       job.organization.toLowerCase().includes("aarhus university"),
     );
 
-    expect(aarhusJobs).toHaveLength(expectedByApplicationUrl.size);
+    expect(aarhusJobs.length).toBeGreaterThan(expectedByApplicationUrl.size);
     for (const job of aarhusJobs) {
+      expect(campusCities.has(job.location.city)).toBe(true);
+      expect(job.location.country).toBe("Denmark");
+
       const expectedCity = expectedByApplicationUrl.get(job.applicationUrl);
-      expect(expectedCity).toBeDefined();
-      expect(job.location).toMatchObject({
-        label: `${expectedCity}, Denmark`,
-        city: expectedCity,
-        country: "Denmark",
-      });
+      if (expectedCity) {
+        expect(job.location).toMatchObject({
+          label: `${expectedCity}, Denmark`,
+          city: expectedCity,
+          country: "Denmark",
+        });
+      }
+    }
+
+    for (const url of expectedByApplicationUrl.keys()) {
+      expect(
+        aarhusJobs.some((job) => job.applicationUrl === url),
+      ).toBe(true);
     }
   });
 
