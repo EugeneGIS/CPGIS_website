@@ -31,7 +31,7 @@ export default function SingleJobMapInner({
         radius={11}
         pathOptions={{
           color: "#ffffff",
-          fillColor: "#2f45a6",
+          fillColor: "#3753a1",
           fillOpacity: 1,
           opacity: 1,
           weight: 3,

@@ -30,10 +30,10 @@ export const MARKER_PALETTE: Record<
 > = {
   light: {
     active: {
-      fill: "#2f45a6",
+      fill: "#3753a1",
       selectedFill: "#dbeafe",
       stroke: "#ffffff",
-      selectedStroke: "#2f45a6",
+      selectedStroke: "#3753a1",
     },
     closingSoon: {
       fill: "#b42318",

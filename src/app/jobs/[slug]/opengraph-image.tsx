@@ -29,7 +29,7 @@ export default async function Image({
         style={{
           alignItems: "stretch",
           background: "#f7fbff",
-          color: "#10172f",
+          color: "#121a31",
           display: "flex",
           fontFamily: "sans-serif",
           height: "100%",
@@ -51,7 +51,7 @@ export default async function Image({
         >
           <div
             style={{
-              background: "#e8f6fb",
+              background: "#e9f8fd",
               display: "flex",
               flex: "0 0 43%",
               overflow: "hidden",
@@ -102,7 +102,7 @@ export default async function Image({
             <div
               style={{
                 alignItems: "center",
-                background: "#2f45a6",
+                background: "#3753a1",
                 border: "9px solid #ffffff",
                 borderRadius: "50% 50% 50% 8px",
                 boxShadow: "0 16px 36px rgba(47,69,166,0.35)",
@@ -118,7 +118,7 @@ export default async function Image({
             >
               <div
                 style={{
-                  background: "#36b7d8",
+                  background: "#36c5f1",
                   borderRadius: "50%",
                   display: "flex",
                   height: "26px",
@@ -130,7 +130,7 @@ export default async function Image({
             <div
               style={{
                 bottom: "34px",
-                color: "#2f45a6",
+                color: "#3753a1",
                 display: "flex",
                 fontSize: "22px",
                 fontWeight: 700,
@@ -155,7 +155,7 @@ export default async function Image({
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div
                 style={{
-                  color: "#2f45a6",
+                  color: "#3753a1",
                   display: "flex",
                   fontSize: "20px",
                   fontWeight: 700,
@@ -167,7 +167,7 @@ export default async function Image({
               </div>
               <div
                 style={{
-                  color: "#10172f",
+                  color: "#121a31",
                   display: "flex",
                   fontSize: title.length > 65 ? "41px" : "49px",
                   fontWeight: 700,
@@ -199,7 +199,7 @@ export default async function Image({
               }}
             >
               <span>Explore the opportunity</span>
-              <span style={{ color: "#2f45a6", fontWeight: 700 }}>
+              <span style={{ color: "#3753a1", fontWeight: 700 }}>
                 CPGIS Job Portal
               </span>
             </div>

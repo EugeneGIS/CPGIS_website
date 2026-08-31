@@ -8,12 +8,13 @@
     sans-serif;
   --font-ibm-plex-mono: ui-monospace, "SFMono-Regular", "Cascadia Code",
     "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
-  --cpgis-deep-blue: #2f45a6;
-  --cpgis-globe-blue: #36b7d8;
-  --cpgis-ice: #e8f6fb;
-  --cpgis-ink: #10172f;
-  --cpgis-red: #8f1d2c;
-  --background: #f4f8fb;
+  /* Brand palette extracted from the CPGIS logo (In4P6Nks_400x400.jpg):
+     deep indigo blue #3753a1 and bright cyan blue #36c5f1 on white. */
+  --cpgis-deep-blue: #3753a1;
+  --cpgis-globe-blue: #36c5f1;
+  --cpgis-ice: #e9f8fd;
+  --cpgis-ink: #121a31;
+  --background: #f4f9fc;
   --foreground: #0f172a;
   --panel: #ffffff;
   --muted: #5b7083;
@@ -26,19 +27,18 @@
   --color-cpgis-globe: var(--cpgis-globe-blue);
   --color-cpgis-ice: var(--cpgis-ice);
   --color-cpgis-ink: var(--cpgis-ink);
-  --color-cpgis-red: var(--cpgis-red);
-  --color-cyan-50: #e8f6fb;
-  --color-cyan-100: #d6eef7;
-  --color-cyan-200: #b9e2f0;
-  --color-cyan-300: #86d2e6;
+  --color-cyan-50: #e9f8fd;
+  --color-cyan-100: #d3f1fa;
+  --color-cyan-200: #ade7f7;
+  --color-cyan-300: #72d4eb;
   --color-cyan-400: var(--cpgis-globe-blue);
-  --color-cyan-500: #249fc1;
+  --color-cyan-500: #1fa8d6;
   --color-cyan-600: var(--cpgis-deep-blue);
   --color-cyan-700: var(--cpgis-deep-blue);
-  --color-cyan-900: #1e2f76;
+  --color-cyan-900: #26397e;
   --color-teal-400: var(--cpgis-globe-blue);
   --color-teal-700: var(--cpgis-deep-blue);
-  --color-sky-50: #e8f6fb;
+  --color-sky-50: #e9f8fd;
   --color-sky-700: var(--cpgis-deep-blue);
   --font-sans: var(--font-sora);
   --font-mono: var(--font-ibm-plex-mono);
