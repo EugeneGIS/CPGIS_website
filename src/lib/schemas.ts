@@ -63,7 +63,8 @@ export const submitJobSchema = z.object({
   applyBy: optionalIsoCalendarDateSchema.optional().default(""),
   deadlineText: z.string().max(120).optional().default(""),
   tags: z.array(z.string().min(2).max(40)).default([]),
-  importSource: z.string().max(120).optional().default("manual-form"),
+  importSource: z.string().max(120).optional().default("paste-extract"),
+  status: z.enum(["draft", "pending"]).optional().default("pending"),
 });
 
 export type SubmitJobInput = z.infer<typeof submitJobSchema>;

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionContext } from "@/lib/auth";
+import { addDemoJob } from "@/lib/demo-store";
 import { isSupabaseConfigured } from "@/lib/env";
 import { createJobSlug } from "@/lib/job-identity";
 import { submitJobSchema } from "@/lib/schemas";
@@ -65,9 +66,43 @@ export async function POST(request: Request) {
   });
 
   if (!isSupabaseConfigured()) {
+    // Dev-only queue so the review workflow is clickable without Supabase.
+    const createdAt = new Date().toISOString();
+    addDemoJob({
+      id: `demo-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+      slug,
+      title: job.title,
+      organization: job.organization,
+      department: job.department || undefined,
+      summary: job.summary,
+      description: job.description || undefined,
+      applicationUrl: job.applicationUrl,
+      contactEmail: job.contactEmail || undefined,
+      applyBy: job.applyBy || undefined,
+      deadlineText:
+        job.deadlineText ||
+        (job.applyBy ? `Apply by ${job.applyBy}` : "Open until filled"),
+      status: job.status,
+      sourceDate: createdAt.slice(0, 10),
+      importSource: job.importSource,
+      tags: job.tags,
+      createdAt,
+      updatedAt: createdAt,
+      location: {
+        label: [job.city, job.country].filter(Boolean).join(", "),
+        address: job.address || undefined,
+        city: job.city,
+        country: job.country,
+        latitude: job.latitude,
+        longitude: job.longitude,
+      },
+    });
+
     return NextResponse.json({
       message:
-        "Demo mode: the job payload validated successfully. Connect Supabase to persist it.",
+        job.status === "draft"
+          ? "Draft saved to the in-memory demo queue (resets on server restart)."
+          : "Submitted to the in-memory demo queue (resets on server restart) — open /admin to review it.",
       job: {
         ...job,
         slug,
@@ -117,8 +152,9 @@ export async function POST(request: Request) {
         job.deadlineText ||
         (job.applyBy ? `Apply by ${job.applyBy}` : "Open until filled"),
       tags: job.tags,
-      status: "pending",
+      status: job.status,
       import_source: job.importSource,
+      source_date: new Date().toISOString().slice(0, 10),
       created_by: session.user.id,
     });
 
@@ -140,6 +176,9 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    message: "Job submitted for admin review.",
+    message:
+      job.status === "draft"
+        ? "Draft saved. It will not appear publicly until it is submitted and approved."
+        : "Job submitted for admin review.",
   });
 }

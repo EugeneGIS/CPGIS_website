@@ -4,6 +4,7 @@ import { DocxImportPanel } from "@/components/forms/docx-import-panel";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
 import { getAdminJobs } from "@/lib/jobs";
+import { toDateKey } from "@/lib/utils";
 
 export default async function AdminPage() {
   const session = await getSessionContext();
@@ -11,8 +12,10 @@ export default async function AdminPage() {
   const canManage = session.mode === "demo" || session.role === "admin";
   const jobs = canManage ? await getAdminJobs() : [];
   const pendingJobs = jobs.filter((job) => job.status === "pending").length;
+  const needsChangesJobs = jobs.filter((job) => job.status === "needs_changes").length;
+  const approvedJobs = jobs.filter((job) => job.status === "approved").length;
   const publishedJobs = jobs.filter((job) => job.status === "published").length;
-  const archivedJobs = jobs.filter((job) => job.status === "archived").length;
+  const today = toDateKey(new Date());
 
   return (
     <>
@@ -47,17 +50,18 @@ export default async function AdminPage() {
             </div>
           ) : (
             <>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
                 <AdminMetric label="Pending review" value={String(pendingJobs)} />
+                <AdminMetric label="Needs changes" value={String(needsChangesJobs)} />
+                <AdminMetric label="Approved" value={String(approvedJobs)} />
                 <AdminMetric label="Published jobs" value={String(publishedJobs)} />
-                <AdminMetric label="Archived jobs" value={String(archivedJobs)} />
                 <AdminMetric
                   label="Mode"
                   value={session.mode === "demo" ? "Demo preview" : "Supabase live"}
                 />
               </div>
 
-              <AdminJobsBoard jobs={jobs} session={session} />
+              <AdminJobsBoard jobs={jobs} today={today} />
               <DocxImportPanel />
             </>
           )}

@@ -1,4 +1,10 @@
-export type JobStatus = "draft" | "pending" | "published" | "archived";
+export type JobStatus =
+  | "draft"
+  | "pending"
+  | "needs_changes"
+  | "approved"
+  | "published"
+  | "archived";
 
 export type UserRole = "public" | "member" | "admin";
 
@@ -31,6 +37,16 @@ export interface JobRecord {
   updatedAt: string;
   createdBy?: string;
   location: JobLocation;
+  facebookPostedAt?: string;
+  xPostedAt?: string;
+}
+
+export interface ReviewNote {
+  id: string;
+  jobId: string;
+  authorEmail?: string;
+  body: string;
+  createdAt: string;
 }
 
 export interface JobFilters {

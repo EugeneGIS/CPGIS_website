@@ -1,6 +1,13 @@
 create extension if not exists pgcrypto;
 
-create type public.job_status as enum ('draft', 'pending', 'published', 'archived');
+create type public.job_status as enum (
+  'draft',
+  'pending',
+  'needs_changes',
+  'approved',
+  'published',
+  'archived'
+);
 create type public.app_role as enum ('member', 'admin');
 
 create table if not exists public.profiles (
@@ -34,9 +41,23 @@ create table if not exists public.job_posts (
   status public.job_status not null default 'pending',
   created_by uuid references auth.users (id) on delete set null,
   published_at timestamptz,
+  facebook_posted_at timestamptz,
+  x_posted_at timestamptz,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now())
 );
+
+create table if not exists public.job_review_notes (
+  id uuid primary key default gen_random_uuid(),
+  job_id uuid not null references public.job_posts (id) on delete cascade,
+  author_id uuid references auth.users (id) on delete set null,
+  author_email text,
+  body text not null check (char_length(body) between 1 and 2000),
+  created_at timestamptz not null default timezone('utc', now())
+);
+
+create index if not exists job_review_notes_job_id_idx
+  on public.job_review_notes (job_id, created_at desc);
 
 create or replace function public.handle_updated_at()
 returns trigger
@@ -79,6 +100,7 @@ for each row execute procedure public.handle_new_user();
 
 alter table public.profiles enable row level security;
 alter table public.job_posts enable row level security;
+alter table public.job_review_notes enable row level security;
 
 create schema if not exists private;
 revoke all on schema private from public;
@@ -130,12 +152,38 @@ for update
 to authenticated
 using (
   auth.uid() = created_by
-  and status in ('draft', 'pending')
+  and status in ('draft', 'pending', 'needs_changes')
 )
 with check (
   auth.uid() = created_by
-  and status in ('draft', 'pending')
+  and status in ('draft', 'pending', 'needs_changes')
 );
+
+create policy "Admins and creators read review notes"
+on public.job_review_notes
+for select
+to authenticated
+using (
+  (select private.is_admin())
+  or exists (
+    select 1
+    from public.job_posts
+    where public.job_posts.id = job_review_notes.job_id
+      and public.job_posts.created_by = (select auth.uid())
+  )
+);
+
+create policy "Authenticated users write their own review notes"
+on public.job_review_notes
+for insert
+to authenticated
+with check ((select auth.uid()) = author_id);
+
+create policy "Admins manage review notes"
+on public.job_review_notes
+for delete
+to authenticated
+using ((select private.is_admin()));
 
 drop policy if exists "Admins manage everything" on public.job_posts;
 create policy "Admins manage everything"
