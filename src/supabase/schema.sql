@@ -80,10 +80,38 @@ for each row execute procedure public.handle_new_user();
 alter table public.profiles enable row level security;
 alter table public.job_posts enable row level security;
 
-create policy "Public profiles are readable"
+create schema if not exists private;
+revoke all on schema private from public;
+grant usage on schema private to authenticated;
+
+create or replace function private.is_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+    from public.profiles
+    where public.profiles.id = (select auth.uid())
+      and public.profiles.role = 'admin'
+  );
+$$;
+
+revoke all on function private.is_admin() from public;
+grant execute on function private.is_admin() to authenticated;
+
+drop policy if exists "Public profiles are readable" on public.profiles;
+drop policy if exists "Users read their own profile or admins read all" on public.profiles;
+create policy "Users read their own profile or admins read all"
 on public.profiles
 for select
-using (true);
+to authenticated
+using (
+  (select auth.uid()) = id
+  or (select private.is_admin())
+);
 
 create policy "Users can read published jobs"
 on public.job_posts
@@ -109,23 +137,10 @@ with check (
   and status in ('draft', 'pending')
 );
 
+drop policy if exists "Admins manage everything" on public.job_posts;
 create policy "Admins manage everything"
 on public.job_posts
 for all
 to authenticated
-using (
-  exists (
-    select 1
-    from public.profiles
-    where profiles.id = auth.uid()
-      and profiles.role = 'admin'
-  )
-)
-with check (
-  exists (
-    select 1
-    from public.profiles
-    where profiles.id = auth.uid()
-      and profiles.role = 'admin'
-  )
-);
+using ((select private.is_admin()))
+with check ((select private.is_admin()));

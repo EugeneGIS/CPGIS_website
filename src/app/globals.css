@@ -1,7 +1,13 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+@import "maplibre-gl/dist/maplibre-gl.css";
 
 :root {
+  --font-sora: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    sans-serif;
+  --font-ibm-plex-mono: ui-monospace, "SFMono-Regular", "Cascadia Code",
+    "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
   --cpgis-deep-blue: #2f45a6;
   --cpgis-globe-blue: #36b7d8;
   --cpgis-ice: #e8f6fb;
@@ -66,8 +72,101 @@ button {
   background: #eef2f4;
 }
 
+.cpgis-vector-map-dark .maplibregl-canvas {
+  filter: invert(0.88) hue-rotate(180deg) brightness(0.72) contrast(1.08)
+    saturate(0.72);
+}
+
 .leaflet-popup-content-wrapper {
   border-radius: 18px;
+  max-width: calc(100vw - 32px);
+}
+
+.leaflet-popup-content {
+  overflow-wrap: anywhere;
+}
+
+.cpgis-job-popup-title,
+.cpgis-job-popup-organization,
+.cpgis-job-tooltip-title,
+.cpgis-job-tooltip-organization {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.cpgis-job-popup-title {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  line-height: 1.4;
+}
+
+.cpgis-job-popup-organization {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.leaflet-interactive.cpgis-job-hit-target {
+  cursor: pointer;
+}
+
+.cpgis-job-popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cpgis-job-popup-actions button,
+.cpgis-job-popup-actions a {
+  align-items: center;
+  border: 1px solid rgba(47, 69, 166, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 5px;
+  justify-content: center;
+  line-height: 1;
+  min-height: 34px;
+  padding: 8px 11px;
+}
+
+.cpgis-job-popup-actions button {
+  background: #ffffff;
+  color: var(--cpgis-deep-blue);
+}
+
+.cpgis-job-popup-actions .cpgis-job-popup-apply {
+  background: var(--cpgis-deep-blue);
+  color: #ffffff;
+}
+
+.cpgis-job-popup-actions .cpgis-job-popup-details {
+  background: #ffffff;
+  color: var(--cpgis-deep-blue);
+}
+
+.cpgis-job-popup-actions button:hover,
+.cpgis-job-popup-actions button:focus-visible {
+  background: var(--cpgis-ice);
+}
+
+.cpgis-job-popup-actions .cpgis-job-popup-apply:hover,
+.cpgis-job-popup-actions .cpgis-job-popup-apply:focus-visible {
+  background: #1e2f76;
+}
+
+.cpgis-job-popup-actions .cpgis-job-popup-details:hover,
+.cpgis-job-popup-actions .cpgis-job-popup-details:focus-visible {
+  background: var(--cpgis-ice);
+}
+
+.cpgis-job-popup-actions button:focus-visible,
+.cpgis-job-popup-actions a:focus-visible {
+  outline: 2px solid var(--cpgis-globe-blue);
+  outline-offset: 2px;
 }
 
 .leaflet-tooltip.cpgis-job-tooltip {
@@ -75,7 +174,31 @@ button {
   border-radius: 14px;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
   color: var(--cpgis-ink);
+  max-width: min(320px, calc(100vw - 32px));
   padding: 10px 12px;
+  white-space: normal;
+}
+
+.cpgis-job-tooltip-content {
+  width: min(260px, calc(100vw - 64px));
+}
+
+.cpgis-job-tooltip-title {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  line-height: 1.35;
+}
+
+.cpgis-job-tooltip-organization {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+@media (max-width: 480px) {
+  .leaflet-container:has(.leaflet-popup) .leaflet-control-zoom {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .leaflet-control-attribution {

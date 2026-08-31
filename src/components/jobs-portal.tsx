@@ -3,14 +3,14 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { AddressSearch } from "@/components/address-search";
-import { JobDetails } from "@/components/job-details";
+import { BackToTop } from "@/components/back-to-top";
 import { JobList } from "@/components/job-list";
-import { buildDashboardMetrics, filterJobs } from "@/lib/job-filters";
+import { MARKER_PALETTE } from "@/components/map/jobs-map-helpers";
+import { SOUTH_CHINA_SEA_LINE_PALETTE } from "@/components/map/south-china-sea-style";
+import { filterJobs } from "@/lib/job-filters";
 import type { AddressCandidate, JobRecord, MapBounds } from "@/lib/types";
-
-const RECENT_JOB_LIMIT = 8;
 
 const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
   ssr: false,
@@ -21,20 +21,11 @@ const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
   ),
 });
 
-function sortJobsForList(jobs: JobRecord[]) {
-  return [...jobs].sort((left, right) => {
-    const leftDate = left.sourceDate ?? left.createdAt.slice(0, 10);
-    const rightDate = right.sourceDate ?? right.createdAt.slice(0, 10);
-
-    return rightDate.localeCompare(leftDate);
-  });
-}
-
 export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
-  const [selectedJobId, setSelectedJobId] = useState(jobs[0]?.id ?? "");
+  const [selectedJobId, setSelectedJobId] = useState("");
   const [query, setQuery] = useState("");
   const [bounds, setBounds] = useState<MapBounds | null>(null);
-  const [limitToViewport, setLimitToViewport] = useState(true);
+  const [limitToViewport, setLimitToViewport] = useState(false);
   const [mapTheme, setMapTheme] = useState<"light" | "dark">("light");
   const [searchPanelOpen, setSearchPanelOpen] = useState(false);
   const [addressQuery, setAddressQuery] = useState("");
@@ -47,27 +38,30 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
   const [isPending, startTransition] = useTransition();
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
 
-  const filteredJobs = filterJobs(jobs, {
-    query,
-    limitToViewport,
-    bounds,
-  });
-  const recentJobs = sortJobsForList(filteredJobs).slice(0, RECENT_JOB_LIMIT);
+  const filteredJobs = useMemo(
+    () =>
+      filterJobs(jobs, {
+        query,
+        limitToViewport,
+        bounds,
+      }),
+    [bounds, jobs, limitToViewport, query],
+  );
 
   useEffect(() => {
-    if (!filteredJobs.length) {
+    if (
+      selectedJobId &&
+      !filteredJobs.some((job) => job.id === selectedJobId)
+    ) {
       setSelectedJobId("");
-      return;
-    }
-
-    if (!filteredJobs.some((job) => job.id === selectedJobId)) {
-      setSelectedJobId(sortJobsForList(filteredJobs)[0].id);
     }
   }, [filteredJobs, selectedJobId]);
 
-  const selectedJob =
-    filteredJobs.find((job) => job.id === selectedJobId) ?? recentJobs[0] ?? null;
-  const metrics = buildDashboardMetrics(jobs, filteredJobs);
+  const feedResetKey = `${query}:${limitToViewport}:${
+    limitToViewport && bounds
+      ? `${bounds.north}:${bounds.south}:${bounds.east}:${bounds.west}`
+      : "all"
+  }`;
 
   function handleAddressSearch() {
     if (!addressQuery.trim()) {
@@ -115,6 +109,7 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(54,183,216,0.18),_transparent_32%),linear-gradient(180deg,_#f8fbff_0%,_#edf4f8_100%)] pb-16">
+      <BackToTop />
       <div className="mx-auto max-w-[1500px] px-4 pt-6 sm:px-6 lg:px-8">
         <section className="rounded-[32px] border border-white/60 bg-cpgis-ink px-6 py-7 text-white shadow-[0_36px_110px_rgba(16,23,47,0.24)] sm:px-8 lg:px-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -123,10 +118,8 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
                 CPGIS Jobs map
               </h1>
               <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
-                This version recreates the core dashboard, including searchable
-                opportunities, a map-linked list, extent-based filtering,
-                shareable public detail pages, and a path to member and admin
-                workflows.
+                Explore searchable opportunities, inspect their locations, and
+                open a shareable public page for every position.
               </p>
             </div>
 
@@ -154,16 +147,8 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
         </section>
 
         <section ref={mapSectionRef} className="mt-6 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-deep">
-                Map first
-              </p>
-              <h2 className="mt-1 text-2xl font-semibold text-slate-950">
-                Opportunity map
-              </h2>
-            </div>
-
+          <h2 className="sr-only">Job map</h2>
+          <div className="flex flex-wrap items-center justify-end gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
@@ -258,7 +243,8 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
                         Filter by visible map area
                       </div>
                       <div className="text-sm text-slate-600">
-                        Keeps the list synchronized with the current map view.
+                        Only when enabled, restricts the jobs feed to the current
+                        map view.
                       </div>
                     </div>
                   </label>
@@ -273,55 +259,44 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
             </div>
           ) : null}
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_370px]">
-            <div className="space-y-3">
-              <JobsMap
-                jobs={filteredJobs}
-                selectedJobId={selectedJob?.id}
-                focusCandidate={focusCandidate}
-                focusRequestId={focusRequestId}
-                mapTheme={mapTheme}
-                onSelect={setSelectedJobId}
-                onBoundsChange={setBounds}
-              />
-              <MapLegend />
-            </div>
-
-            <aside className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
-                <Metric label="Published" value={String(metrics.total)} />
-                <Metric label="Visible" value={String(metrics.visible)} />
-                <Metric label="Cities" value={String(metrics.cities)} />
-                <Metric label="Upcoming" value={String(metrics.upcomingDeadlines)} />
-              </div>
-
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-                <div className="mb-4 flex items-end justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-deep">
-                      Map-linked list
-                    </p>
-                    <h2 className="mt-1 text-lg font-semibold text-slate-950">
-                      Recent opportunities
-                    </h2>
-                  </div>
-                  <div className="text-sm text-slate-500">
-                    {recentJobs.length} of {filteredJobs.length}
-                  </div>
-                </div>
-
-                <JobList
-                  jobs={recentJobs}
-                  selectedJobId={selectedJob?.id}
-                  onSelect={setSelectedJobId}
-                />
-              </div>
-            </aside>
+          <div className="space-y-3">
+            <JobsMap
+              jobs={filteredJobs}
+              selectedJobId={selectedJobId || undefined}
+              focusCandidate={focusCandidate}
+              focusRequestId={focusRequestId}
+              mapTheme={mapTheme}
+              onSelect={setSelectedJobId}
+              onClearSelection={() => setSelectedJobId("")}
+              onBoundsChange={setBounds}
+            />
+            <MapLegend mapTheme={mapTheme} />
           </div>
         </section>
 
-        <section className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,1fr)_370px]">
-          <JobDetails job={selectedJob} />
+        <section className="mt-6 grid items-start gap-4 xl:grid-cols-[minmax(0,1fr)_370px]">
+          <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:p-5">
+            <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-deep">
+                  Selected jobs
+                </p>
+                <h2 className="mt-1 text-xl font-semibold text-slate-950">
+                  Matching opportunities
+                </h2>
+              </div>
+              <div className="text-sm text-slate-500">
+                {filteredJobs.length} matching jobs
+              </div>
+            </div>
+
+            <JobList
+              key={feedResetKey}
+              jobs={filteredJobs}
+              selectedJobId={selectedJobId || undefined}
+              onSelect={setSelectedJobId}
+            />
+          </div>
           <PartnerSpotlight />
         </section>
       </div>
@@ -329,34 +304,52 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
   );
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_20px_55px_rgba(15,23,42,0.07)]">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-        {label}
-      </div>
-      <div className="mt-2 text-3xl font-semibold text-cpgis-ink">{value}</div>
-    </div>
-  );
-}
+function MapLegend({ mapTheme }: { mapTheme: "light" | "dark" }) {
+  const palette = MARKER_PALETTE[mapTheme];
+  const isDark = mapTheme === "dark";
 
-function MapLegend() {
   return (
-    <div className="flex flex-wrap gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-xs text-slate-600 shadow-[0_16px_40px_rgba(15,23,42,0.05)]">
-      <LegendItem color="bg-cpgis-deep" label="Active recruitment" />
-      <LegendItem color="bg-cpgis-red" label="Closing within 7 days" />
-      <LegendItem color="bg-slate-400" label="Expired deadline" />
-      <span className="text-slate-500">
+    <div
+      className={`flex flex-wrap gap-3 rounded-2xl border px-4 py-3 text-xs shadow-[0_16px_40px_rgba(15,23,42,0.05)] transition-colors ${
+        isDark
+          ? "border-slate-700 bg-cpgis-ink text-slate-200"
+          : "border-slate-200 bg-white text-slate-600"
+      }`}
+    >
+      <LegendItem color={palette.active.fill} label="Active recruitment" />
+      <LegendItem color={palette.closingSoon.fill} label="Closing within 7 days" />
+      <LegendItem color={palette.expired.fill} label="Expired" />
+      <LineLegendItem
+        color={SOUTH_CHINA_SEA_LINE_PALETTE[mapTheme]}
+        label="South China Sea ten-dash line"
+      />
+      <span className={isDark ? "text-slate-400" : "text-slate-500"}>
         Hover over a point to preview title, institution, city, and deadline.
       </span>
     </div>
   );
 }
 
+function LineLegendItem({ color, label }: { color: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2">
+      <span
+        aria-hidden="true"
+        className="h-[3px] w-5 rounded-full"
+        style={{ backgroundColor: color }}
+      />
+      {label}
+    </span>
+  );
+}
+
 function LegendItem({ color, label }: { color: string; label: string }) {
   return (
     <span className="inline-flex items-center gap-2">
-      <span className={`h-3 w-3 rounded-full ${color}`} />
+      <span
+        className="h-3 w-3 rounded-full border border-white/40"
+        style={{ backgroundColor: color }}
+      />
       {label}
     </span>
   );

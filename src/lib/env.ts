@@ -11,6 +11,10 @@ export function isSupabaseConfigured() {
   return Boolean(env.supabaseUrl && env.supabaseAnonKey);
 }
 
+export function isDemoImportPreviewEnabled() {
+  return process.env.NODE_ENV !== "production";
+}
+
 export function hasPremiumGeocoder() {
   return Boolean(env.geocoderApiKey);
 }

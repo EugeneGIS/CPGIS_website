@@ -3,6 +3,8 @@
 import { useState, useTransition } from "react";
 import type { ImportedJobDraft } from "@/lib/types";
 
+const MAX_DOCX_BYTES = 10 * 1024 * 1024;
+
 export function DocxImportPanel() {
   const [file, setFile] = useState<File | null>(null);
   const [results, setResults] = useState<ImportedJobDraft[]>([]);
@@ -15,30 +17,46 @@ export function DocxImportPanel() {
       return;
     }
 
+    if (!file.name.toLowerCase().endsWith(".docx")) {
+      setMessage("Only .docx files are supported.");
+      return;
+    }
+
+    if (file.size > MAX_DOCX_BYTES) {
+      setMessage("The DOCX file must be 10 MB or smaller.");
+      return;
+    }
+
     setMessage("");
+    setResults([]);
 
     startTransition(async () => {
-      const formData = new FormData();
-      formData.append("file", file);
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
 
-      const response = await fetch("/api/import/docx", {
-        method: "POST",
-        body: formData,
-      });
+        const response = await fetch("/api/import/docx", {
+          method: "POST",
+          body: formData,
+        });
 
-      const payload = (await response.json()) as {
-        imports?: ImportedJobDraft[];
-        message?: string;
-        error?: string;
-      };
+        const payload = (await response.json()) as {
+          code?: string;
+          imports?: ImportedJobDraft[];
+          message?: string;
+          error?: string;
+        };
 
-      if (!response.ok) {
-        setMessage(payload.error ?? "Import failed.");
-        return;
+        if (!response.ok) {
+          setMessage(payload.error ?? "Import failed.");
+          return;
+        }
+
+        setResults(payload.imports ?? []);
+        setMessage(payload.message ?? "Parsed the document.");
+      } catch {
+        setMessage("Import failed because the server response was unavailable.");
       }
-
-      setResults(payload.imports ?? []);
-      setMessage(payload.message ?? "Parsed the document.");
     });
   }
 
@@ -54,14 +72,14 @@ export function DocxImportPanel() {
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
           This importer reads the text-heavy `.docx` format you shared, extracts
           rows that follow the “available at … URL … deadline” pattern, and
-          prepares them for admin review.
+          prepares them for admin review. Files must be 10 MB or smaller.
         </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
         <input
           type="file"
-          accept=".doc,.docx"
+          accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={(event) => setFile(event.target.files?.[0] ?? null)}
           className="max-w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700"
         />

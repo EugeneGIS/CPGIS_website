@@ -1,27 +1,85 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { JobDetailActions } from "@/components/job-detail-actions";
+import { SingleJobMap } from "@/components/map/single-job-map";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
-import { getJobBySlug } from "@/lib/jobs";
+import { env } from "@/lib/env";
+import { getJobPageData } from "@/lib/job-page-data";
+import {
+  buildCanonicalJobUrl,
+  getJobShareDescription,
+  getJobShareTitle,
+} from "@/lib/job-share";
 import { formatDateLabel, formatRelativeDeadline, formatSourceDate } from "@/lib/utils";
 
-export default async function JobDetailPage({
-  params,
-}: {
+type JobPageProps = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export async function generateMetadata({
+  params,
+}: JobPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const [session, job] = await Promise.all([getSessionContext(), getJobBySlug(slug)]);
+  const job = await getJobPageData(slug);
 
   if (!job) {
     notFound();
   }
 
+  const canonicalUrl = buildCanonicalJobUrl(job.slug, env.appUrl);
+  const title = getJobShareTitle(job);
+  const description = getJobShareDescription(job);
+
+  return {
+    metadataBase: new URL(new URL(canonicalUrl).origin),
+    title: `${title} | CPGIS Jobs`,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "CPGIS Jobs Portal",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function JobDetailPage({
+  params,
+}: JobPageProps) {
+  const { slug } = await params;
+  const [session, job] = await Promise.all([
+    getSessionContext(),
+    getJobPageData(slug),
+  ]);
+
+  if (!job) {
+    notFound();
+  }
+
+  if (job.slug !== slug) {
+    permanentRedirect(`/jobs/${job.slug}`);
+  }
+
+  const canonicalUrl = buildCanonicalJobUrl(job.slug, env.appUrl);
+
   return (
     <>
       <SiteHeader session={session} />
       <main className="min-h-screen bg-[linear-gradient(180deg,_#f7fbff_0%,_#edf4f8_100%)] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-5xl space-y-6">
+          <SingleJobMap location={job.location} organization={job.organization} />
+
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
             <div className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-deep">
               Public share page
@@ -55,14 +113,12 @@ export default async function JobDetailPage({
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={job.applicationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-cpgis-globe/30 bg-cpgis-ice px-5 py-3 text-sm font-semibold text-cpgis-ink transition hover:bg-white"
-              >
-                Open application
-              </a>
+              <JobDetailActions
+                applicationUrl={job.applicationUrl}
+                canonicalUrl={canonicalUrl}
+                organization={job.organization}
+                title={job.title}
+              />
               <Link
                 href="/"
                 className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-cpgis-globe hover:text-cpgis-deep"
