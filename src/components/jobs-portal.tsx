@@ -8,8 +8,7 @@ import { AddressSearch } from "@/components/address-search";
 import { BackToTop } from "@/components/back-to-top";
 import { JobList } from "@/components/job-list";
 import { MARKER_PALETTE } from "@/components/map/jobs-map-helpers";
-import { SOUTH_CHINA_SEA_LINE_PALETTE } from "@/components/map/south-china-sea-style";
-import { filterJobs } from "@/lib/job-filters";
+import { filterJobs, isJobExpired } from "@/lib/job-filters";
 import type { AddressCandidate, JobRecord, MapBounds } from "@/lib/types";
 
 const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
@@ -21,11 +20,18 @@ const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
   ),
 });
 
-export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
+export function JobsPortal({
+  jobs,
+  today,
+}: {
+  jobs: JobRecord[];
+  today: string;
+}) {
   const [selectedJobId, setSelectedJobId] = useState("");
   const [query, setQuery] = useState("");
   const [bounds, setBounds] = useState<MapBounds | null>(null);
   const [limitToViewport, setLimitToViewport] = useState(false);
+  const [showExpired, setShowExpired] = useState(false);
   const [mapTheme, setMapTheme] = useState<"light" | "dark">("light");
   const [searchPanelOpen, setSearchPanelOpen] = useState(false);
   const [addressQuery, setAddressQuery] = useState("");
@@ -38,14 +44,28 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
   const [isPending, startTransition] = useTransition();
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
 
+  // Expired records (deadline passed, or rolling posts older than two
+  // months) stay in the archive behind a toggle instead of cluttering the
+  // active recruitment map.
+  const activeJobs = useMemo(
+    () =>
+      showExpired ? jobs : jobs.filter((job) => !isJobExpired(job, today)),
+    [jobs, showExpired, today],
+  );
+
   const filteredJobs = useMemo(
     () =>
-      filterJobs(jobs, {
+      filterJobs(activeJobs, {
         query,
         limitToViewport,
         bounds,
       }),
-    [bounds, jobs, limitToViewport, query],
+    [activeJobs, bounds, limitToViewport, query],
+  );
+
+  const expiredCount = useMemo(
+    () => jobs.filter((job) => isJobExpired(job, today)).length,
+    [jobs, today],
   );
 
   useEffect(() => {
@@ -248,6 +268,27 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
                       </div>
                     </div>
                   </label>
+
+                  <label className="mt-3 flex items-start gap-3 rounded-xl border border-slate-200 bg-white px-3 py-3">
+                    <input
+                      checked={showExpired}
+                      onChange={(event) =>
+                        setShowExpired(event.target.checked)
+                      }
+                      type="checkbox"
+                      className="mt-1 h-4 w-4 rounded border-slate-300 text-cpgis-deep"
+                    />
+                    <div>
+                      <div className="text-sm font-semibold text-slate-900">
+                        Show expired postings
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        {expiredCount} archived records whose deadline passed or
+                        that were posted more than two months ago. They stay
+                        hidden until enabled.
+                      </div>
+                    </div>
+                  </label>
                 </div>
               </div>
             </div>
@@ -270,7 +311,29 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
               onClearSelection={() => setSelectedJobId("")}
               onBoundsChange={setBounds}
             />
-            <MapLegend mapTheme={mapTheme} />
+            <MapLegend mapTheme={mapTheme} showExpired={showExpired} />
+
+            <div className="flex flex-wrap items-center gap-3">
+              {!showExpired && expiredCount > 0 ? (
+                <button
+                  type="button"
+                  onClick={() => setShowExpired(true)}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-cpgis-globe hover:text-cpgis-deep"
+                >
+                  {expiredCount.toLocaleString()} expired postings hidden —
+                  show them
+                </button>
+              ) : null}
+              {showExpired ? (
+                <button
+                  type="button"
+                  onClick={() => setShowExpired(false)}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-cpgis-globe hover:text-cpgis-deep"
+                >
+                  Hide expired postings
+                </button>
+              ) : null}
+            </div>
           </div>
         </section>
 
@@ -304,7 +367,13 @@ export function JobsPortal({ jobs }: { jobs: JobRecord[] }) {
   );
 }
 
-function MapLegend({ mapTheme }: { mapTheme: "light" | "dark" }) {
+function MapLegend({
+  mapTheme,
+  showExpired,
+}: {
+  mapTheme: "light" | "dark";
+  showExpired: boolean;
+}) {
   const palette = MARKER_PALETTE[mapTheme];
   const isDark = mapTheme === "dark";
 
@@ -318,28 +387,13 @@ function MapLegend({ mapTheme }: { mapTheme: "light" | "dark" }) {
     >
       <LegendItem color={palette.active.fill} label="Active recruitment" />
       <LegendItem color={palette.closingSoon.fill} label="Closing within 7 days" />
-      <LegendItem color={palette.expired.fill} label="Expired" />
-      <LineLegendItem
-        color={SOUTH_CHINA_SEA_LINE_PALETTE[mapTheme]}
-        label="South China Sea ten-dash line"
-      />
+      {showExpired ? (
+        <LegendItem color={palette.expired.fill} label="Expired" />
+      ) : null}
       <span className={isDark ? "text-slate-400" : "text-slate-500"}>
         Hover over a point to preview title, institution, city, and deadline.
       </span>
     </div>
-  );
-}
-
-function LineLegendItem({ color, label }: { color: string; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className="h-[3px] w-5 rounded-full"
-        style={{ backgroundColor: color }}
-      />
-      {label}
-    </span>
   );
 }
 

@@ -1,5 +1,10 @@
 import { demoJobs } from "@/lib/mock-data";
 import type { JobRecord } from "@/lib/types";
+import {
+  findDemoJobBySlug,
+  getDemoJobs,
+  getPublishedDemoJobs,
+} from "@/lib/demo-store";
 import { isSupabaseConfigured } from "@/lib/env";
 import { createJobSlug } from "@/lib/job-identity";
 import { normalizeLocationDisplay } from "@/lib/location-policy";
@@ -42,6 +47,10 @@ export function mapSupabaseRowToJob(row: Record<string, unknown>): JobRecord {
     createdAt: String(row.created_at),
     updatedAt: String(row.updated_at),
     createdBy: row.created_by ? String(row.created_by) : undefined,
+    facebookPostedAt: row.facebook_posted_at
+      ? String(row.facebook_posted_at)
+      : undefined,
+    xPostedAt: row.x_posted_at ? String(row.x_posted_at) : undefined,
     location: normalizeLocationDisplay({
       label: [row.city, row.country].filter(Boolean).join(", "),
       address: row.address ? String(row.address) : undefined,
@@ -55,7 +64,7 @@ export function mapSupabaseRowToJob(row: Record<string, unknown>): JobRecord {
 
 export async function getPublishedJobs() {
   if (!isSupabaseConfigured()) {
-    return demoJobs;
+    return [...getPublishedDemoJobs(), ...demoJobs];
   }
 
   const supabase = await createServerSupabaseClient();
@@ -74,7 +83,7 @@ export async function getPublishedJobs() {
 
 export async function getAdminJobs() {
   if (!isSupabaseConfigured()) {
-    return [...demoJobs].sort((left, right) =>
+    return [...getDemoJobs(), ...demoJobs].sort((left, right) =>
       right.createdAt.localeCompare(left.createdAt),
     );
   }
@@ -100,7 +109,11 @@ export async function getJobBySlug(slug: string) {
   const canonicalSlug = legacySlugRedirects[slug] ?? slug;
 
   if (!isSupabaseConfigured()) {
-    return demoJobs.find((job) => job.slug === canonicalSlug) ?? null;
+    return (
+      findDemoJobBySlug(canonicalSlug) ??
+      demoJobs.find((job) => job.slug === canonicalSlug) ??
+      null
+    );
   }
 
   const supabase = await createServerSupabaseClient();
