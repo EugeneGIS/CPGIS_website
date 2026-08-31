@@ -1,8 +1,17 @@
 import { clsx } from "clsx";
-import { format, formatDistanceToNowStrict, isBefore, parseISO } from "date-fns";
+import { format, formatDistanceToNowStrict, parseISO } from "date-fns";
 
 export function cn(...values: Array<string | false | null | undefined>) {
   return clsx(values);
+}
+
+/**
+ * Calendar date in the runtime's local timezone. Deadline policy is date-only:
+ * a job stays valid through its deadline day, so no time or UTC conversion is
+ * involved anywhere in expiry checks.
+ */
+export function toDateKey(date: Date): string {
+  return format(date, "yyyy-MM-dd");
 }
 
 export function formatDateLabel(value?: string) {
@@ -26,11 +35,15 @@ export function formatRelativeDeadline(value?: string) {
     return "Rolling deadline";
   }
 
-  const date = parseISO(value);
+  const today = toDateKey(new Date());
 
-  if (isBefore(date, new Date())) {
+  if (today > value) {
     return "Deadline passed";
   }
 
-  return formatDistanceToNowStrict(date, { addSuffix: true });
+  if (today === value) {
+    return "Deadline today";
+  }
+
+  return formatDistanceToNowStrict(parseISO(value), { addSuffix: true });
 }
