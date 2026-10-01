@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { writeFile } from "node:fs/promises";
 import { PbfWriter } from "pbf";
 import { renderMapPreview } from "@/lib/map-preview";
 import { mapShareInputSchema } from "@/lib/map-share";
@@ -70,9 +71,11 @@ describe("OpenFreeMap share preview", () => {
 
   it.each(["light", "dark"] as const)("renders a %s PNG when vector basemap features are available", async (theme) => {
     const bytes = Uint8Array.from(fixtureTile()).buffer;
-    vi.stubGlobal("fetch", vi.fn()
-      .mockResolvedValueOnce(new Response(bytes, { status: 200 }))
-      .mockResolvedValue(new Response("missing", { status: 404 })));
+    const realFetch = globalThis.fetch;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) =>
+      String(input).startsWith("https://tiles.openfreemap.org/planet/latest/")
+        ? Promise.resolve(new Response(bytes.slice(0), { status: 200 }))
+        : realFetch(input, init)));
     const response = await renderMapPreview({
       jobs: [],
       input: mapShareInputSchema.parse({
@@ -88,4 +91,30 @@ describe("OpenFreeMap share preview", () => {
     expect([...png.slice(0, 8)]).toEqual([137, 80, 78, 71, 13, 10, 26, 10]);
     expect(png.length).toBeGreaterThan(10_000);
   });
+
+  it.skipIf(process.env.CPGIS_TEST_LIVE_TILES !== "1")("renders a real OpenFreeMap tile selection", async () => {
+    const areas = [
+      { name: "world", bounds: { north: 70.4368, south: -11.69527, west: -115.3125, east: 136.75781 } },
+      { name: "hong-kong", bounds: { north: 23, south: 22, west: 113.5, east: 114.7 } },
+    ];
+    for (const area of areas) {
+      const view = {
+        jobs: [],
+        input: mapShareInputSchema.parse({
+          bounds: area.bounds,
+          query: "",
+          includeExpired: false,
+          theme: "light",
+        }),
+        createdAt: "2026-10-01T12:00:00.000Z",
+        persisted: false,
+      };
+      const response = await renderMapPreview(view);
+      const png = new Uint8Array(await response.arrayBuffer());
+      if (process.env.CPGIS_PREVIEW_OUTPUT) {
+        await writeFile(process.env.CPGIS_PREVIEW_OUTPUT.replace(/\.png$/, `-${area.name}.png`), png);
+      }
+      expect(png.length).toBeGreaterThan(10_000);
+    }
+  }, 60_000);
 });

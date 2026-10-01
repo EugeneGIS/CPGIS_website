@@ -99,24 +99,27 @@ export async function renderMapPreview(view: MapShareView) {
     }}>
       <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         style={{ position: "absolute", left: 0, top: 0 }}>
-        <path d={basemap.water} fill={dark ? "#24435a" : "#d8e9ed"} fillRule="evenodd" />
-        <path d={basemap.parks} fill={dark ? "#40504a" : "#e5ebdd"} fillRule="evenodd" />
+        <path d={basemap.water} fill={dark ? "#24435a" : "#d8e9ed"} fillRule="nonzero" />
+        <path d={basemap.parks} fill={dark ? "#40504a" : "#e5ebdd"} fillRule="nonzero" />
         <path d={basemap.roads} fill="none" stroke={dark ? "#74818d" : "#c7cbd0"}
           strokeWidth="1.3" strokeLinecap="round" />
-        <path d={drawChinaPath(viewport)} fill={dark ? "#344458" : "#e7eef4"}
-          stroke={dark ? "#8495a9" : "#97aaca"} strokeWidth="1.5" fillRule="evenodd" opacity="0.94" />
+        {viewport.zoom < 5 && <path d={drawChinaPath(viewport)} fill={dark ? "#344458" : "#e7eef4"}
+          stroke={dark ? "#8495a9" : "#97aaca"} strokeWidth="1.5" fillRule="evenodd" opacity="0.94" />}
         <path d={drawTenDashPath(viewport)} fill="none" stroke={SOUTH_CHINA_SEA_LINE_PALETTE[view.input.theme]}
           strokeWidth="2" strokeLinecap="round" opacity={dark ? "0.7" : "0.6"} />
-        {basemap.places.map((place, index) => (
-          <text key={index} x={place.x} y={place.y} fontSize="12" fontWeight="600"
-            fill={dark ? "#d9e2ec" : "#4b5968"} stroke={dark ? "#293341" : "#f5f6f4"}
-            strokeWidth="3" paintOrder="stroke" textAnchor="middle">{place.name}</text>
-        ))}
         {[...cells.values()].map((cell, index) => (
           <circle key={index} cx={cell.x} cy={cell.y} r={Math.min(13, 5 + Math.log2(cell.count + 1) * 2)}
             fill={MARKER_PALETTE[view.input.theme][cell.status].fill} stroke="#ffffff" strokeWidth="2" />
         ))}
       </svg>
+      {basemap.places.map((place, index) => (
+        <div key={index} style={{
+          display: "flex", position: "absolute", left: place.x - 58, top: place.y - 8,
+          width: 116, justifyContent: "center", textAlign: "center",
+          color: dark ? "#d9e2ec" : "#4b5968", fontSize: 12, fontWeight: 600,
+          textShadow: dark ? "0 1px 3px #293341" : "0 1px 3px #f5f6f4",
+        }}>{place.name}</div>
+      ))}
       <div style={{
         display: "flex", position: "absolute", left: 38, top: 38, right: 38,
         alignItems: "center", justifyContent: "space-between", background: "#ffffffee",
