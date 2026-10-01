@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSessionContext } from "@/lib/auth";
 import { addDemoNote, getDemoNotes } from "@/lib/demo-store";
-import { isSupabaseConfigured } from "@/lib/env";
+import { isDemoImportPreviewEnabled, isSupabaseConfigured } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const noteSchema = z.object({
@@ -16,6 +16,9 @@ export async function GET(
   const { id } = await context.params;
 
   if (!isSupabaseConfigured()) {
+    if (!isDemoImportPreviewEnabled()) {
+      return NextResponse.json({ error: "Admin access is unavailable until authentication is configured." }, { status: 503 });
+    }
     return NextResponse.json({ notes: getDemoNotes(id) });
   }
 
@@ -58,6 +61,9 @@ export async function POST(
   }
 
   if (!isSupabaseConfigured()) {
+    if (!isDemoImportPreviewEnabled()) {
+      return NextResponse.json({ error: "Admin access is unavailable until authentication is configured." }, { status: 503 });
+    }
     const note = addDemoNote(id, payload.data.body, "demo-reviewer@localhost");
 
     return NextResponse.json({ note });
@@ -65,10 +71,10 @@ export async function POST(
 
   const session = await getSessionContext();
 
-  if (!session.user) {
+  if (!session.user || session.role !== "admin") {
     return NextResponse.json(
-      { error: "Sign in before writing review notes." },
-      { status: 401 },
+      { error: "Admin access is required to write review notes." },
+      { status: 403 },
     );
   }
 

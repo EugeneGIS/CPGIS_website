@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/env", () => ({
   isSupabaseConfigured: () => false,
+  isDemoImportPreviewEnabled: () => false,
 }));
 
 import { POST } from "@/app/api/jobs/route";
@@ -38,5 +39,15 @@ describe("POST /api/jobs date validation", () => {
         },
       ],
     });
+  });
+
+  it("rejects submissions when production authentication is unavailable", async () => {
+    const response = await POST(new Request("http://localhost/api/jobs", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(validSubmission),
+    }));
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toMatchObject({ code: "AUTH_UNAVAILABLE" });
   });
 });

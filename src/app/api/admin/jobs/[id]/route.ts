@@ -6,7 +6,7 @@ import {
   setDemoSocialFlag,
   updateDemoJobStatus,
 } from "@/lib/demo-store";
-import { isSupabaseConfigured } from "@/lib/env";
+import { isDemoImportPreviewEnabled, isSupabaseConfigured } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const moderationSchema = z.object({
@@ -22,6 +22,9 @@ export async function PATCH(
   context: { params: Promise<{ id: string }> },
 ) {
   if (!isSupabaseConfigured()) {
+    if (!isDemoImportPreviewEnabled()) {
+      return NextResponse.json({ error: "Admin access is unavailable until authentication is configured." }, { status: 503 });
+    }
     return patchDemo(request, context);
   }
 

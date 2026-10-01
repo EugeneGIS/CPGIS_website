@@ -81,9 +81,10 @@ npm run build
 
 4. Open [http://localhost:3000](http://localhost:3000)
 
-Without Supabase keys, the app runs in demo mode using local sample data. In
-production, DOCX import is disabled until Supabase authentication is configured;
-the unauthenticated import preview is development-only.
+Without Supabase keys, local development runs in demo mode using sample data.
+In production, the admin page, moderation APIs, CSV/DOCX intake, and job
+submissions fail closed until Supabase authentication is configured. The
+unauthenticated demo review workflow is development-only.
 
 ## Supabase setup
 
@@ -109,7 +110,22 @@ set role = 'admin'
 where id = 'YOUR-USER-UUID';
 ```
 
-5. Apply both SQL files in `src/supabase/migrations/`. Keep `SUPABASE_SERVICE_ROLE_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it.
+5. Apply the SQL files in `src/supabase/migrations/`, including `20261001_admin_review_notes.sql`. Keep `SUPABASE_SERVICE_ROLE_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it.
+
+### Admin-only access
+
+The Admin navigation item is rendered only for an authenticated user whose
+`profiles.role` is `admin`. Direct `/admin` visits by public visitors or members
+return 404; moderation endpoints enforce the same role independently. The
+database's RLS policies are the final backstop. Local demo mode deliberately
+allows review without a login only outside production.
+
+To enable your own admin account: configure the Supabase URL and anon key in
+Vercel, run `schema.sql` plus the migrations in the Supabase SQL Editor, create
+your account at `/sign-in`, find its UUID under Supabase Authentication → Users,
+and run the `update public.profiles ... where id = ...` statement above. Sign out
+and back in if the navigation does not refresh immediately. Keep the service-role
+key only in Vercel's server-side environment variables, not in the browser.
 
 ## Weekly CSV workflow
 

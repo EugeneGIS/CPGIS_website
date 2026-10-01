@@ -1,20 +1,25 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { AdminJobsBoard } from "@/components/admin/admin-jobs-board";
 import { DocxImportPanel } from "@/components/forms/docx-import-panel";
 import { CsvImportPanel } from "@/components/forms/csv-import-panel";
 import { createClient } from "@supabase/supabase-js";
 import { SiteHeader } from "@/components/site-header";
-import { getSessionContext } from "@/lib/auth";
+import { canAccessAdmin, getSessionContext } from "@/lib/auth";
 import { getAdminJobs } from "@/lib/jobs";
 import { env, isSupabaseConfigured } from "@/lib/env";
 import type { CpgisCsvCandidate } from "@/lib/cpgis-csv";
 import { toDateKey } from "@/lib/utils";
 
+export const metadata: Metadata = { robots: { index: false, follow: false } };
+export const dynamic = "force-dynamic";
+
 export default async function AdminPage() {
   const session = await getSessionContext();
 
-  const canManage = session.mode === "demo" || session.role === "admin";
-  const jobs = canManage ? await getAdminJobs() : [];
+  if (!canAccessAdmin(session)) notFound();
+
+  const jobs = await getAdminJobs();
   let csvRows: CpgisCsvCandidate[] = [];
   if (session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey) {
     const client = createClient(env.supabaseUrl, env.supabaseServiceRoleKey);
@@ -49,20 +54,7 @@ export default async function AdminPage() {
             </p>
           </section>
 
-          {!canManage ? (
-            <div className="rounded-[28px] border border-amber-200 bg-amber-50 p-6 text-amber-900 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-              <div className="text-lg font-semibold">Admin access required</div>
-              <p className="mt-2 text-sm leading-7">
-                Your account is signed in as a member. Promote the user to
-                `admin` in the `profiles` table to unlock publishing tools.
-              </p>
-              <Link href="/sign-in" className="mt-4 inline-block font-semibold text-cyan-700">
-                Switch account
-              </Link>
-            </div>
-          ) : (
-            <>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
                 <AdminMetric label="Pending review" value={String(pendingJobs)} />
                 <AdminMetric label="Needs changes" value={String(needsChangesJobs)} />
                 <AdminMetric label="Approved" value={String(approvedJobs)} />
@@ -71,15 +63,13 @@ export default async function AdminPage() {
                   label="Mode"
                   value={session.mode === "demo" ? "Demo preview" : "Supabase live"}
                 />
-              </div>
+          </div>
 
-              <AdminJobsBoard jobs={jobs} today={today} />
-              {session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey
-                ? <CsvImportPanel initialRows={csvRows} />
-                : <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">Weekly CSV intake requires Supabase authentication, the service-role key, and the CSV import migration. The local demo cannot persist an import queue.</div>}
-              <DocxImportPanel />
-            </>
-          )}
+          <AdminJobsBoard jobs={jobs} today={today} />
+          {session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey
+            ? <CsvImportPanel initialRows={csvRows} />
+            : <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">Weekly CSV intake requires Supabase authentication, the service-role key, and the CSV import migration. The local demo cannot persist an import queue.</div>}
+          <DocxImportPanel />
         </div>
       </main>
     </>

@@ -1,5 +1,5 @@
 import type { SessionContext } from "@/lib/types";
-import { isSupabaseConfigured } from "@/lib/env";
+import { isDemoImportPreviewEnabled, isSupabaseConfigured } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export async function getSessionContext(): Promise<SessionContext> {
@@ -39,4 +39,9 @@ export async function getSessionContext(): Promise<SessionContext> {
     },
     profileName: profile?.full_name ?? user.email ?? "Signed-in user",
   };
+}
+
+export function canAccessAdmin(session: SessionContext) {
+  return (session.role === "admin" && Boolean(session.user)) ||
+    (session.mode === "demo" && isDemoImportPreviewEnabled());
 }

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionContext } from "@/lib/auth";
 import { addDemoJob } from "@/lib/demo-store";
-import { isSupabaseConfigured } from "@/lib/env";
+import { isDemoImportPreviewEnabled, isSupabaseConfigured } from "@/lib/env";
 import { createJobSlug } from "@/lib/job-identity";
 import { submitJobSchema } from "@/lib/schemas";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -66,6 +66,9 @@ export async function POST(request: Request) {
   });
 
   if (!isSupabaseConfigured()) {
+    if (!isDemoImportPreviewEnabled()) {
+      return errorResponse("AUTH_UNAVAILABLE", "Submissions require authentication configuration.", 503);
+    }
     // Dev-only queue so the review workflow is clickable without Supabase.
     const createdAt = new Date().toISOString();
     addDemoJob({

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SessionNav } from "@/components/auth/session-nav";
+import { canAccessAdmin } from "@/lib/auth";
 import type { SessionContext } from "@/lib/types";
 
 export function SiteHeader({ session }: { session: SessionContext }) {
@@ -34,9 +35,11 @@ export function SiteHeader({ session }: { session: SessionContext }) {
           <Link href="/submit" className="transition hover:text-cpgis-globe">
             Submit
           </Link>
-          <Link href="/admin" className="transition hover:text-cpgis-globe">
-            Admin
-          </Link>
+          {canAccessAdmin(session) && (
+            <Link href="/admin" className="transition hover:text-cpgis-globe">
+              Admin
+            </Link>
+          )}
           <SessionNav session={session} />
         </nav>
       </div>
