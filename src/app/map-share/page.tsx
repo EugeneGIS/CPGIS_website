@@ -9,6 +9,7 @@ import { env } from "@/lib/env";
 import { getDisplayJobTitle } from "@/lib/job-display";
 import { getPublicAppOrigin } from "@/lib/job-share";
 import { getMapShareView } from "@/lib/map-share-server";
+import { mapPreviewPath } from "@/lib/map-preview-url";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const suffix = params.toString();
   const origin = getPublicAppOrigin(env.appUrl);
   const url = `${origin}/map-share?${suffix}`;
-  const imageUrl = `${origin}/api/map-preview?${suffix}`;
+  const imageUrl = `${origin}${mapPreviewPath(suffix)}`;
   const title = `CPGIS Jobs map | ${view.jobs.length} opportunities`;
   const description = `Explore ${view.jobs.length} job opportunities in a selected map area. Shared ${view.createdAt.slice(0, 10)}.`;
   return {
@@ -46,7 +47,8 @@ export default async function MapSharePage({ searchParams }: Props) {
   const suffix = params.toString();
   const origin = getPublicAppOrigin(env.appUrl);
   const url = `${origin}/map-share?${suffix}`;
-  const imageUrl = `${origin}/api/map-preview?${suffix}`;
+  const imagePath = mapPreviewPath(suffix);
+  const imageUrl = `${origin}${imagePath}`;
 
   return <>
     <SiteHeader session={session} />
@@ -60,7 +62,7 @@ export default async function MapSharePage({ searchParams }: Props) {
           </div>
           <Link href="/" className="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-cpgis-deep hover:bg-cpgis-ice">Back to live map</Link>
         </div>
-        <img src={`/api/map-preview?${suffix}`} alt={`Map showing ${view.jobs.length} opportunities in the selected area`} width="1200" height="630" className="w-full rounded-[28px] border border-slate-200 shadow-[0_24px_70px_rgba(15,23,42,0.1)]" />
+        <img src={imagePath} alt={`Map showing ${view.jobs.length} opportunities in the selected area`} width="1200" height="630" className="w-full rounded-[28px] border border-slate-200 shadow-[0_24px_70px_rgba(15,23,42,0.1)]" />
         <MapShareActions url={url} imageUrl={imageUrl} />
         {view.input.query && <p className="text-sm text-slate-600">Search filter: <strong>{view.input.query}</strong></p>}
         <section aria-label="Jobs in shared area" className="grid gap-3 md:grid-cols-2">

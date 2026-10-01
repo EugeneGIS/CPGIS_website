@@ -5,6 +5,7 @@ import { env, isSupabaseConfigured } from "@/lib/env";
 import { getPublicAppOrigin } from "@/lib/job-share";
 import { getPublishedJobs } from "@/lib/jobs";
 import { mapShareInputSchema, mapShareSearch, selectMapShareJobs } from "@/lib/map-share";
+import { mapPreviewPath } from "@/lib/map-preview-url";
 import { toDateKey } from "@/lib/utils";
 
 export async function POST(request: Request) {
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       url: `${origin}/map-share?${suffix}`,
-      imageUrl: `${origin}/api/map-preview?${suffix}`,
+      imageUrl: `${origin}${mapPreviewPath(suffix)}`,
       previewPath: `/map-share?${suffix}`,
       count: jobs.length,
       persisted,

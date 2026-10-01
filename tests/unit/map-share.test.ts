@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { demoJobs } from "@/lib/mock-data";
 import { mapShareInputSchema, mapShareSearch, parseMapShareSearch, selectMapShareJobs } from "@/lib/map-share";
+import { mapPreviewPath } from "@/lib/map-preview-url";
 
 describe("map shares", () => {
   const input = mapShareInputSchema.parse({
@@ -14,6 +15,14 @@ describe("map shares", () => {
     const parsed = parseMapShareSearch(new URLSearchParams(mapShareSearch(input, "2026-10-01T12:00:00.000Z")));
     expect(parsed?.input).toEqual(input);
     expect(parsed?.createdAt).toBe("2026-10-01T12:00:00.000Z");
+  });
+
+  it("versions preview images without changing the share selection", () => {
+    const shareSearch = mapShareSearch(input, "2026-10-01T12:00:00.000Z");
+    const previewUrl = new URL(mapPreviewPath(shareSearch), "https://example.com");
+    expect(previewUrl.pathname).toBe("/api/map-preview");
+    expect(previewUrl.searchParams.get("v")).toBeTruthy();
+    expect(parseMapShareSearch(previewUrl.searchParams)?.input).toEqual(input);
   });
 
   it("rejects invalid coordinates and includes all matching real job coordinates", () => {
