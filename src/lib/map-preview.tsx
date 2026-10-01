@@ -10,6 +10,8 @@ import type { MapShareView } from "@/lib/map-share-server";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
+const HEADER_HEIGHT = 80;
+const MAP_HEIGHT = HEIGHT - HEADER_HEIGHT;
 const TILE_SIZE = 256;
 
 function project(latitude: number, longitude: number, zoom: number) {
@@ -31,7 +33,7 @@ function mapViewport(bounds: MapShareView["input"]["bounds"]) {
   const heightAtZero = Math.max(ySouth - yNorth, 1);
   const zoom = Math.max(1, Math.min(9, Math.floor(Math.log2(Math.min(
     WIDTH * 0.88 / widthAtZero,
-    HEIGHT * 0.78 / heightAtZero,
+    MAP_HEIGHT * 0.92 / heightAtZero,
   )))));
   const centerLatitude = (bounds.north + bounds.south) / 2;
   const center = project(centerLatitude, (west + east) / 2, zoom);
@@ -48,7 +50,7 @@ function drawChinaPath(viewport: ReturnType<typeof mapViewport>) {
       const points = ring.map(([longitude, latitude]) => {
         const point = project(latitude, longitude, viewport.zoom);
         const shiftedX = point.x + Math.round((viewport.center.x - point.x) / worldWidth) * worldWidth;
-        return `${Math.round(shiftedX - viewport.center.x + WIDTH / 2)},${Math.round(point.y - viewport.center.y + HEIGHT / 2)}`;
+        return `${Math.round(shiftedX - viewport.center.x + WIDTH / 2)},${Math.round(point.y - viewport.center.y + MAP_HEIGHT / 2)}`;
       });
       if (points.length) parts.push(`M${points.join("L")}Z`);
     }
@@ -62,7 +64,7 @@ function drawTenDashPath(viewport: ReturnType<typeof mapViewport>) {
     const points = feature.geometry.coordinates.map(([longitude, latitude]) => {
       const point = project(latitude, longitude, viewport.zoom);
       const shiftedX = point.x + Math.round((viewport.center.x - point.x) / worldWidth) * worldWidth;
-      return `${Math.round(shiftedX - viewport.center.x + WIDTH / 2)},${Math.round(point.y - viewport.center.y + HEIGHT / 2)}`;
+      return `${Math.round(shiftedX - viewport.center.x + WIDTH / 2)},${Math.round(point.y - viewport.center.y + MAP_HEIGHT / 2)}`;
     });
     return points.length ? `M${points.join("L")}` : "";
   }).join("");
@@ -70,7 +72,7 @@ function drawTenDashPath(viewport: ReturnType<typeof mapViewport>) {
 
 export async function renderMapPreview(view: MapShareView) {
   const viewport = mapViewport(view.input.bounds);
-  const basemap = await loadOpenFreeMapPreview(viewport, WIDTH, HEIGHT);
+  const basemap = await loadOpenFreeMapPreview(viewport, WIDTH, MAP_HEIGHT);
   const worldWidth = 2 ** viewport.zoom * TILE_SIZE;
   const cells = new Map<string, { x: number; y: number; count: number; status: DeadlineStatus }>();
   const today = toDateKey(new Date());
@@ -79,8 +81,8 @@ export async function renderMapPreview(view: MapShareView) {
     const point = project(job.location.latitude, job.location.longitude, viewport.zoom);
     const shiftedX = point.x + Math.round((viewport.center.x - point.x) / worldWidth) * worldWidth;
     const x = Math.round(shiftedX - viewport.center.x + WIDTH / 2);
-    const y = Math.round(point.y - viewport.center.y + HEIGHT / 2);
-    if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT) continue;
+    const y = Math.round(point.y - viewport.center.y + MAP_HEIGHT / 2);
+    if (x < 0 || x > WIDTH || y < 0 || y > MAP_HEIGHT) continue;
     const key = `${Math.round(x / 12)}:${Math.round(y / 12)}`;
     const status = isJobExpired(job, today) ? "expired" : getDeadlineStatus(job.applyBy);
     const cell = cells.get(key);
@@ -94,52 +96,61 @@ export async function renderMapPreview(view: MapShareView) {
   return new ImageResponse(
     <div style={{
       display: "flex", position: "relative", width: WIDTH, height: HEIGHT,
-      background: dark ? "#293341" : "#f5f6f4", overflow: "hidden",
+      background: "#111a33", overflow: "hidden",
       fontFamily: "sans-serif", color: "#121a31",
     }}>
-      <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-        style={{ position: "absolute", left: 0, top: 0 }}>
-        <path d={basemap.water} fill={dark ? "#24435a" : "#d8e9ed"} fillRule="nonzero" />
-        <path d={basemap.parks} fill={dark ? "#40504a" : "#e5ebdd"} fillRule="nonzero" />
-        <path d={basemap.roads} fill="none" stroke={dark ? "#74818d" : "#c7cbd0"}
-          strokeWidth="1.3" strokeLinecap="round" />
-        {viewport.zoom < 5 && <path d={drawChinaPath(viewport)} fill={dark ? "#344458" : "#e7eef4"}
-          stroke={dark ? "#8495a9" : "#97aaca"} strokeWidth="1.5" fillRule="evenodd" opacity="0.94" />}
-        <path d={drawTenDashPath(viewport)} fill="none" stroke={SOUTH_CHINA_SEA_LINE_PALETTE[view.input.theme]}
-          strokeWidth="2" strokeLinecap="round" opacity={dark ? "0.7" : "0.6"} />
-        {[...cells.values()].map((cell, index) => (
-          <circle key={index} cx={cell.x} cy={cell.y} r={Math.min(13, 5 + Math.log2(cell.count + 1) * 2)}
-            fill={MARKER_PALETTE[view.input.theme][cell.status].fill} stroke="#ffffff" strokeWidth="2" />
-        ))}
-      </svg>
-      {basemap.places.map((place, index) => (
-        <div key={index} style={{
-          display: "flex", position: "absolute", left: place.x - 58, top: place.y - 8,
-          width: 116, justifyContent: "center", textAlign: "center",
-          color: dark ? "#d9e2ec" : "#4b5968", fontSize: 12, fontWeight: 600,
-          textShadow: dark ? "0 1px 3px #293341" : "0 1px 3px #f5f6f4",
-        }}>{place.name}</div>
-      ))}
       <div style={{
-        display: "flex", position: "absolute", left: 38, top: 38, right: 38,
-        alignItems: "center", justifyContent: "space-between", background: "#ffffffee",
-        borderRadius: 24, padding: "20px 28px", gap: 20,
+        display: "flex", position: "absolute", left: 0, top: 0,
+        width: WIDTH, height: HEADER_HEIGHT, boxSizing: "border-box",
+        alignItems: "center", justifyContent: "space-between", padding: "12px 28px",
+        background: "#111a33", color: "#ffffff",
       }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          <span style={{ fontSize: 30, fontWeight: 700 }}>CPGIS Jobs map</span>
-          <span style={{ fontSize: 18 }}>Selected map area · {view.jobs.length} opportunities</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <span style={{ fontSize: 25, fontWeight: 700 }}>CPGIS Jobs map</span>
+          <span style={{ fontSize: 14, color: "#bed2e7" }}>Selected area · {view.jobs.length} opportunities</span>
         </div>
-        <span style={{ fontSize: 16, color: "#3753a1" }}>{view.createdAt.slice(0, 10)}</span>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <span style={{ fontSize: 14, color: "#c7ddff" }}>{view.createdAt.slice(0, 10)}</span>
+          <span style={{ fontSize: 12, color: "#d1deed" }}>
+            OpenFreeMap / OpenMapTiles · Data from OpenStreetMap · China: GS(2020)4619
+          </span>
+        </div>
       </div>
-      {basemap.loadedTiles === 0 && <div style={{
-        display: "flex", position: "absolute", left: 38, bottom: 38,
-        background: "#ffffffee", borderRadius: 8, padding: "8px 12px", fontSize: 14,
-      }}>Basemap temporarily unavailable</div>}
       <div style={{
-        display: "flex", position: "absolute", right: 22, bottom: 18,
-        background: "#ffffffee", borderRadius: 8, padding: "6px 10px", fontSize: 12,
+        display: "flex", position: "absolute", left: 0, top: HEADER_HEIGHT,
+        width: WIDTH, height: MAP_HEIGHT, overflow: "hidden",
+        background: dark ? "#293341" : "#f5f6f4",
       }}>
-        OpenFreeMap / OpenMapTiles · Data from OpenStreetMap · China overview: GS(2020)4619
+        <svg width={WIDTH} height={MAP_HEIGHT} viewBox={`0 0 ${WIDTH} ${MAP_HEIGHT}`}
+          style={{ position: "absolute", left: 0, top: 0 }}>
+          <path d={basemap.water} fill={dark ? "#24435a" : "#d8e9ed"} fillRule="nonzero" />
+          <path d={basemap.parks} fill={dark ? "#40504a" : "#e5ebdd"} fillRule="nonzero" />
+          <path d={basemap.roads} fill="none" stroke={dark ? "#74818d" : "#c7cbd0"}
+            strokeWidth="1.3" strokeLinecap="round" />
+          {viewport.zoom < 5 && <path d={drawChinaPath(viewport)} fill={dark ? "#344458" : "#e7eef4"}
+            stroke={dark ? "#8495a9" : "#97aaca"} strokeWidth="1.5" fillRule="evenodd" opacity="0.94" />}
+          <path d={drawTenDashPath(viewport)} fill="none" stroke={SOUTH_CHINA_SEA_LINE_PALETTE[view.input.theme]}
+            strokeWidth="2" strokeLinecap="round" opacity={dark ? "0.7" : "0.6"} />
+        </svg>
+        {basemap.places.map((place, index) => (
+          <div key={index} style={{
+            display: "flex", position: "absolute", left: place.x - 58, top: place.y - 8,
+            width: 116, justifyContent: "center", textAlign: "center",
+            color: dark ? "#d9e2ec" : "#4b5968", fontSize: 12, fontWeight: 600,
+            textShadow: dark ? "0 1px 3px #293341" : "0 1px 3px #f5f6f4",
+          }}>{place.name}</div>
+        ))}
+        <svg width={WIDTH} height={MAP_HEIGHT} viewBox={`0 0 ${WIDTH} ${MAP_HEIGHT}`}
+          style={{ position: "absolute", left: 0, top: 0 }}>
+          {[...cells.values()].map((cell, index) => (
+            <circle key={index} cx={cell.x} cy={cell.y} r={Math.min(13, 5 + Math.log2(cell.count + 1) * 2)}
+              fill={MARKER_PALETTE[view.input.theme][cell.status].fill} stroke="#ffffff" strokeWidth="2" />
+          ))}
+        </svg>
+        {basemap.loadedTiles === 0 && <div style={{
+          display: "flex", position: "absolute", left: 24, bottom: 24,
+          background: "#ffffffee", borderRadius: 8, padding: "8px 12px", fontSize: 14,
+        }}>Basemap temporarily unavailable</div>}
       </div>
     </div>,
     { width: WIDTH, height: HEIGHT, headers: { "Cache-Control": `public, max-age=${view.persisted ? 3600 : 600}` } },

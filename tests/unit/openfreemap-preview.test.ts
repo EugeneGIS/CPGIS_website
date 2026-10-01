@@ -4,6 +4,7 @@ import { PbfWriter } from "pbf";
 import { renderMapPreview } from "@/lib/map-preview";
 import { mapShareInputSchema } from "@/lib/map-share";
 import { loadOpenFreeMapPreview } from "@/lib/openfreemap-preview";
+import type { JobRecord } from "@/lib/types";
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -93,13 +94,23 @@ describe("OpenFreeMap share preview", () => {
   });
 
   it.skipIf(process.env.CPGIS_TEST_LIVE_TILES !== "1")("renders a real OpenFreeMap tile selection", async () => {
+    const markerJob = (city: string, latitude: number, longitude: number): JobRecord => ({
+      id: city.toLowerCase(), slug: city.toLowerCase(), title: `Test job in ${city}`,
+      organization: "Preview test", summary: "", applicationUrl: "https://example.com",
+      deadlineText: "Open until filled", status: "published", tags: [],
+      createdAt: "2026-10-01T12:00:00.000Z", updatedAt: "2026-10-01T12:00:00.000Z",
+      location: { label: city, city, country: "Europe", latitude, longitude },
+    });
     const areas = [
       { name: "world", bounds: { north: 70.4368, south: -11.69527, west: -115.3125, east: 136.75781 } },
+      { name: "europe", bounds: { north: 60, south: 32, west: -22, east: 40 } },
       { name: "hong-kong", bounds: { north: 23, south: 22, west: 113.5, east: 114.7 } },
     ];
     for (const area of areas) {
       const view = {
-        jobs: [],
+        jobs: area.name === "europe"
+          ? [markerJob("London", 51.5074, -0.1278), markerJob("Geneva", 46.2044, 6.1432)]
+          : [],
         input: mapShareInputSchema.parse({
           bounds: area.bounds,
           query: "",
