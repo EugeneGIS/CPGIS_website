@@ -93,16 +93,20 @@ export async function getAdminJobs() {
   }
 
   const supabase = await createServerSupabaseClient();
-  const { data, error } = await supabase
-    .from("job_posts")
-    .select("*")
-    .order("updated_at", { ascending: false });
-
-  if (error) {
-    throw new Error(error.message);
+  const rows: Record<string, unknown>[] = [];
+  const pageSize = 1000;
+  for (let from = 0; ; from += pageSize) {
+    const { data, error } = await supabase
+      .from("job_posts")
+      .select("*")
+      .order("updated_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+    if (error) throw new Error(error.message);
+    rows.push(...(data ?? []));
+    if (!data || data.length < pageSize) break;
   }
 
-  return (data ?? []).map((row) => mapSupabaseRowToJob(row));
+  return rows.map((row) => mapSupabaseRowToJob(row));
 }
 
 export async function getJobBySlug(slug: string) {

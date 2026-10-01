@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AdminJobsBoard } from "@/components/admin/admin-jobs-board";
+import { LegacyJobImportPanel } from "@/components/admin/legacy-job-import-panel";
 import { DocxImportPanel } from "@/components/forms/docx-import-panel";
 import { CsvImportPanel } from "@/components/forms/csv-import-panel";
 import { createClient } from "@supabase/supabase-js";
@@ -10,6 +11,7 @@ import { getAdminJobs } from "@/lib/jobs";
 import { env, isSupabaseConfigured } from "@/lib/env";
 import type { CpgisCsvCandidate } from "@/lib/cpgis-csv";
 import { toDateKey } from "@/lib/utils";
+import { LEGACY_JOB_COUNT } from "@/lib/legacy-job-import";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
@@ -65,6 +67,9 @@ export default async function AdminPage() {
                 />
           </div>
 
+          {session.role === "admin" && isSupabaseConfigured() && (
+            <LegacyJobImportPanel total={LEGACY_JOB_COUNT} />
+          )}
           <AdminJobsBoard jobs={jobs} today={today} />
           {session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey
             ? <CsvImportPanel initialRows={csvRows} />

@@ -127,6 +127,22 @@ and run the `update public.profiles ... where id = ...` statement above. Sign ou
 and back in if the navigation does not refresh immediately. Keep the service-role
 key only in Vercel's server-side environment variables, not in the browser.
 
+## One-time historical DOCX migration
+
+After the Supabase schema and admin-role migration are applied, sign in as an
+admin and open `/admin`. Click **Import historical jobs** to move the 5,147
+bundled `CPGIS.docx` records into `job_posts`. The import runs in 100-row
+batches; if the browser closes or a request fails, click again to resume.
+Existing slugs are skipped without overwriting edits. Original source and
+publication dates are retained, so the current-jobs map hides expired posts
+by default. Do not use the weekly CSV intake for this one-time migration;
+that CSV is a separate private review queue.
+
+This action requires a deployed version containing the import button and a
+Supabase-authenticated admin session. Repository files alone cannot write to
+the hosted database; the import is complete only when the admin panel reports
+all 5,147 rows checked. No service-role key needs to be shared in chat.
+
 ## Weekly CSV workflow
 
 The provided Friday export directory is `/Users/hliu5/Downloads/CPGIS_statistics/CPGIS-media-20260327/output`. Its CSVs are **social-post statistics**, not a structured jobs table: they contain post IDs, timestamps, raw announcement text, non-job posts, and usually `t.co` short links. The latest file was validated with `CPGIS_SAMPLE_CSV=/absolute/path/to/file.csv npm run test -- tests/unit/cpgis-csv.test.ts`.
