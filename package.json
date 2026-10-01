@@ -18,6 +18,7 @@
     "import:cpgis-demo": "python3 scripts/build_cpgis_demo_data.py"
   },
   "dependencies": {
+    "@mapbox/vector-tile": "^3.0.0",
     "@maplibre/maplibre-gl-leaflet": "^0.1.4",
     "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.102.1",
@@ -29,6 +30,7 @@
     "mammoth": "^1.12.0",
     "maplibre-gl": "^6.6.0",
     "next": "16.3.2",
+    "pbf": "^5.0.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-leaflet": "^5.0.0",

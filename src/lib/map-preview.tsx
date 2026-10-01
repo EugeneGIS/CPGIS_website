@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
 import chinaOverview from "@/data/china-overview.json";
 import chinaTenDash from "@/data/china-ten-dash-line.json";
 import { SOUTH_CHINA_SEA_LINE_PALETTE } from "@/components/map/south-china-sea-style";
 import { getDeadlineStatus, MARKER_PALETTE, type DeadlineStatus } from "@/components/map/jobs-map-helpers";
 import { isJobExpired } from "@/lib/job-filters";
+import { loadOpenFreeMapPreview } from "@/lib/openfreemap-preview";
 import { toDateKey } from "@/lib/utils";
 import type { MapShareView } from "@/lib/map-share-server";
 
@@ -68,38 +68,9 @@ function drawTenDashPath(viewport: ReturnType<typeof mapViewport>) {
   }).join("");
 }
 
-async function loadTiles(viewport: ReturnType<typeof mapViewport>, theme: "light" | "dark") {
-  const tiles: { key: string; left: number; top: number; src: string }[] = [];
-  const tileCount = 2 ** viewport.zoom;
-  const firstX = Math.floor((viewport.center.x - WIDTH / 2) / TILE_SIZE);
-  const lastX = Math.ceil((viewport.center.x + WIDTH / 2) / TILE_SIZE);
-  const firstY = Math.max(0, Math.floor((viewport.center.y - HEIGHT / 2) / TILE_SIZE));
-  const lastY = Math.min(tileCount - 1, Math.ceil((viewport.center.y + HEIGHT / 2) / TILE_SIZE));
-  const variant = theme === "dark" ? "dark_nolabels" : "light_nolabels";
-  const requests = [];
-  for (let x = firstX; x <= lastX; x += 1) {
-    for (let y = firstY; y <= lastY; y += 1) {
-      const wrappedX = ((x % tileCount) + tileCount) % tileCount;
-      const url = `https://a.basemaps.cartocdn.com/${variant}/${viewport.zoom}/${wrappedX}/${y}.png`;
-      requests.push(fetch(url, { signal: AbortSignal.timeout(4500) }).then(async (response) => {
-        if (!response.ok) return;
-        const bytes = Buffer.from(await response.arrayBuffer());
-        tiles.push({
-          key: `${x}:${y}`,
-          left: Math.round(x * TILE_SIZE - viewport.center.x + WIDTH / 2),
-          top: Math.round(y * TILE_SIZE - viewport.center.y + HEIGHT / 2),
-          src: `data:image/png;base64,${bytes.toString("base64")}`,
-        });
-      }).catch(() => undefined));
-    }
-  }
-  await Promise.all(requests);
-  return tiles;
-}
-
 export async function renderMapPreview(view: MapShareView) {
   const viewport = mapViewport(view.input.bounds);
-  const tiles = await loadTiles(viewport, view.input.theme);
+  const basemap = await loadOpenFreeMapPreview(viewport, WIDTH, HEIGHT);
   const worldWidth = 2 ** viewport.zoom * TILE_SIZE;
   const cells = new Map<string, { x: number; y: number; count: number; status: DeadlineStatus }>();
   const today = toDateKey(new Date());
@@ -123,17 +94,24 @@ export async function renderMapPreview(view: MapShareView) {
   return new ImageResponse(
     <div style={{
       display: "flex", position: "relative", width: WIDTH, height: HEIGHT,
-      background: dark ? "#263449" : "#d9e8f1", overflow: "hidden",
+      background: dark ? "#293341" : "#f5f6f4", overflow: "hidden",
       fontFamily: "sans-serif", color: "#121a31",
     }}>
-      {tiles.map((tile) => <img key={tile.key} alt="" src={tile.src} width={TILE_SIZE} height={TILE_SIZE}
-        style={{ position: "absolute", left: tile.left, top: tile.top }} />)}
       <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         style={{ position: "absolute", left: 0, top: 0 }}>
+        <path d={basemap.water} fill={dark ? "#24435a" : "#d8e9ed"} fillRule="evenodd" />
+        <path d={basemap.parks} fill={dark ? "#40504a" : "#e5ebdd"} fillRule="evenodd" />
+        <path d={basemap.roads} fill="none" stroke={dark ? "#74818d" : "#c7cbd0"}
+          strokeWidth="1.3" strokeLinecap="round" />
         <path d={drawChinaPath(viewport)} fill={dark ? "#344458" : "#e7eef4"}
           stroke={dark ? "#8495a9" : "#97aaca"} strokeWidth="1.5" fillRule="evenodd" opacity="0.94" />
         <path d={drawTenDashPath(viewport)} fill="none" stroke={SOUTH_CHINA_SEA_LINE_PALETTE[view.input.theme]}
           strokeWidth="2" strokeLinecap="round" opacity={dark ? "0.7" : "0.6"} />
+        {basemap.places.map((place, index) => (
+          <text key={index} x={place.x} y={place.y} fontSize="12" fontWeight="600"
+            fill={dark ? "#d9e2ec" : "#4b5968"} stroke={dark ? "#293341" : "#f5f6f4"}
+            strokeWidth="3" paintOrder="stroke" textAnchor="middle">{place.name}</text>
+        ))}
         {[...cells.values()].map((cell, index) => (
           <circle key={index} cx={cell.x} cy={cell.y} r={Math.min(13, 5 + Math.log2(cell.count + 1) * 2)}
             fill={MARKER_PALETTE[view.input.theme][cell.status].fill} stroke="#ffffff" strokeWidth="2" />
@@ -150,11 +128,15 @@ export async function renderMapPreview(view: MapShareView) {
         </div>
         <span style={{ fontSize: 16, color: "#3753a1" }}>{view.createdAt.slice(0, 10)}</span>
       </div>
+      {basemap.loadedTiles === 0 && <div style={{
+        display: "flex", position: "absolute", left: 38, bottom: 38,
+        background: "#ffffffee", borderRadius: 8, padding: "8px 12px", fontSize: 14,
+      }}>Basemap temporarily unavailable</div>}
       <div style={{
         display: "flex", position: "absolute", right: 22, bottom: 18,
         background: "#ffffffee", borderRadius: 8, padding: "6px 10px", fontSize: 12,
       }}>
-        Map tiles: CARTO / OpenStreetMap · China overview: GS(2020)4619
+        OpenFreeMap / OpenMapTiles · Data from OpenStreetMap · China overview: GS(2020)4619
       </div>
     </div>,
     { width: WIDTH, height: HEIGHT, headers: { "Cache-Control": `public, max-age=${view.persisted ? 3600 : 600}` } },
