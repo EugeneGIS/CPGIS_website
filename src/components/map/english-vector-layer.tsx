@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { maplibreGL } from "@maplibre/maplibre-gl-leaflet";
 import { setWorkerUrl } from "maplibre-gl";
 import { useMap } from "react-leaflet";
+import { REQUIRED_COUNTRY_DISPLAY } from "@/lib/location-policy";
 import {
   ENGLISH_LABEL_EXPRESSION,
   OPENFREEMAP_ATTRIBUTION,
@@ -63,6 +64,11 @@ export function EnglishVectorLayer({ theme }: { theme: EnglishMapTheme }) {
       const style = vectorMap.getStyle();
 
       for (const styleLayer of style.layers ?? []) {
+        if (styleLayer.type === "line" && /(?:admin|boundary|border)/i.test(styleLayer.id)) {
+          vectorMap.setLayoutProperty(styleLayer.id, "visibility", "none");
+          continue;
+        }
+
         if (styleLayer.type !== "symbol") {
           continue;
         }
@@ -75,7 +81,17 @@ export function EnglishVectorLayer({ theme }: { theme: EnglishMapTheme }) {
         vectorMap.setLayoutProperty(
           styleLayer.id,
           "text-field",
-          ENGLISH_LABEL_EXPRESSION,
+          [
+            "case",
+            [
+              "any",
+              ["==", ["get", "name:en"], "Taiwan"],
+              ["==", ["get", "name"], "台湾"],
+              ["==", ["get", "name"], "臺灣"],
+            ],
+            REQUIRED_COUNTRY_DISPLAY.taiwan,
+            ENGLISH_LABEL_EXPRESSION,
+          ],
         );
       }
     };

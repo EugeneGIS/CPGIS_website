@@ -3,8 +3,9 @@ import { ExtractWorkflow } from "@/components/submit/extract-workflow";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
 
-export default async function SubmitPage() {
+export default async function SubmitPage({ searchParams }: { searchParams: Promise<{ text?: string }> }) {
   const session = await getSessionContext();
+  const { text } = await searchParams;
 
   return (
     <>
@@ -35,7 +36,7 @@ export default async function SubmitPage() {
             ) : null}
           </div>
 
-          <ExtractWorkflow session={session} />
+          <ExtractWorkflow session={session} initialText={(text ?? "").slice(0, 2000)} />
         </div>
       </main>
     </>

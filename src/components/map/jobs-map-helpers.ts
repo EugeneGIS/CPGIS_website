@@ -50,16 +50,16 @@ export const MARKER_PALETTE: Record<
   },
   dark: {
     active: {
-      fill: "#67e8f9",
-      selectedFill: "#ecfeff",
-      stroke: "#164e63",
-      selectedStroke: "#22d3ee",
+      fill: "#7294dd",
+      selectedFill: "#eef3ff",
+      stroke: "#233a70",
+      selectedStroke: "#9fb8ed",
     },
     closingSoon: {
-      fill: "#fb7185",
+      fill: "#c34c57",
       selectedFill: "#fff1f2",
-      stroke: "#881337",
-      selectedStroke: "#f43f5e",
+      stroke: "#6d1c2b",
+      selectedStroke: "#e7838d",
     },
     expired: {
       fill: "#64748b",

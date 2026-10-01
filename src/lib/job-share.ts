@@ -1,6 +1,8 @@
 import type { JobRecord } from "@/lib/types";
 
-const DEFAULT_APP_URL = "http://localhost:3000";
+export const PUBLIC_APP_URL = "https://cpgis-job-portal.vercel.app";
+const DEFAULT_APP_URL =
+  process.env.NODE_ENV === "production" ? PUBLIC_APP_URL : "http://localhost:3000";
 
 export function getSafeHttpOrigin(value: string) {
   try {
@@ -19,6 +21,17 @@ export function getSafeHttpOrigin(value: string) {
 export function buildCanonicalJobUrl(slug: string, appUrl: string) {
   const path = `/jobs/${encodeURIComponent(slug)}`;
   return new URL(path, getSafeHttpOrigin(appUrl)).toString();
+}
+
+export function getPublicAppOrigin(configuredUrl?: string) {
+  const origin = getSafeHttpOrigin(configuredUrl || PUBLIC_APP_URL);
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+    ? PUBLIC_APP_URL
+    : origin;
+}
+
+export function buildPublicJobUrl(slug: string, configuredUrl?: string) {
+  return buildCanonicalJobUrl(slug, getPublicAppOrigin(configuredUrl));
 }
 
 export function getSafeHttpUrl(value: string) {

@@ -1,6 +1,10 @@
 # Geography display and source policy
 
-Last verified: 2026-08-29
+Last verified: 2026-10-01
+
+## China overview at broad zoom
+
+`src/data/china-overview.json` is a WGS84, simplified union of the 34 provincial polygons in the owner-supplied GS(2020)4619 Shapefile package. Rebuild it with `scripts/build_china_overview_layer.sh`; do not manually redraw the geometry. It is shown on both public and detail maps below zoom 5, above the basemap but below point markers. The preview image draws the same geometry. The underlying vector style suppresses administrative boundary lines and uses the product-owned Taiwan display string. The overview disappears at city/campus zoom so roads remain visible. The ten-dash geometry remains separate and is styled as a subdued theme-aware gray-blue line. Visual inspection of all zoom levels and both themes is still required before public release.
 
 ## Product-owned display strings
 

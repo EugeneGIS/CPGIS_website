@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { AdminJobsBoard } from "@/components/admin/admin-jobs-board";
 import { DocxImportPanel } from "@/components/forms/docx-import-panel";
+import { CsvImportPanel } from "@/components/forms/csv-import-panel";
+import { createClient } from "@supabase/supabase-js";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
 import { getAdminJobs } from "@/lib/jobs";
+import { env, isSupabaseConfigured } from "@/lib/env";
+import type { CpgisCsvCandidate } from "@/lib/cpgis-csv";
 import { toDateKey } from "@/lib/utils";
 
 export default async function AdminPage() {
@@ -11,6 +15,14 @@ export default async function AdminPage() {
 
   const canManage = session.mode === "demo" || session.role === "admin";
   const jobs = canManage ? await getAdminJobs() : [];
+  let csvRows: CpgisCsvCandidate[] = [];
+  if (session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey) {
+    const client = createClient(env.supabaseUrl, env.supabaseServiceRoleKey);
+    const { data } = await client.from("cpgis_csv_imports")
+      .select("extracted").eq("review_status", "pending")
+      .order("posted_at", { ascending: false }).limit(30);
+    csvRows = (data ?? []).map((item) => item.extracted as CpgisCsvCandidate);
+  }
   const pendingJobs = jobs.filter((job) => job.status === "pending").length;
   const needsChangesJobs = jobs.filter((job) => job.status === "needs_changes").length;
   const approvedJobs = jobs.filter((job) => job.status === "approved").length;
@@ -62,6 +74,9 @@ export default async function AdminPage() {
               </div>
 
               <AdminJobsBoard jobs={jobs} today={today} />
+              {session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey
+                ? <CsvImportPanel initialRows={csvRows} />
+                : <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">Weekly CSV intake requires Supabase authentication, the service-role key, and the CSV import migration. The local demo cannot persist an import queue.</div>}
               <DocxImportPanel />
             </>
           )}

@@ -65,9 +65,9 @@ const EMPTY_FIELDS: WorkflowFields = {
 const SAMPLE_TEXT =
   "Postdoctoral researcher position in urban climate resilience available at the Department of Geography, University of Zurich https://example.org/jobs/42 Apply by 30 October 2026. Contact jobs@geo.uzh.ch";
 
-export function ExtractWorkflow({ session }: { session: SessionContext }) {
+export function ExtractWorkflow({ session, initialText = "" }: { session: SessionContext; initialText?: string }) {
   const [mode, setMode] = useState<"input" | "verify">("input");
-  const [text, setText] = useState("");
+  const [text, setText] = useState(initialText);
   const [sourceUrl, setSourceUrl] = useState("");
   const [docxRows, setDocxRows] = useState<DocxRow[]>([]);
   const [confidence, setConfidence] = useState<Record<string, ExtractedField<string>["confidence"]>>({});

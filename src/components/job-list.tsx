@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { JobActions } from "@/components/job-actions";
+import { getDisplayJobTitle, getInstitutionParts } from "@/lib/job-display";
 import {
   JOB_FEED_BATCH_SIZE,
   nextJobFeedCount,
@@ -94,10 +95,11 @@ export function JobList({
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-base font-semibold leading-6">
-                    {job.title}
+                    {getDisplayJobTitle(job.title)}
                   </h3>
                   <div className="mt-1 text-sm text-slate-600">
-                    {job.organization}
+                    {getInstitutionParts(job).secondary ? `${getInstitutionParts(job).secondary}, ` : ""}
+                    {getInstitutionParts(job).primary}
                   </div>
                 </div>
                 <div

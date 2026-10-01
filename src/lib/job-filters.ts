@@ -13,12 +13,16 @@ function withinBounds(job: JobRecord, bounds: MapBounds | null) {
     return true;
   }
 
-  return (
-    job.location.latitude <= bounds.north &&
+  const width = ((bounds.east - bounds.west) % 360 + 360) % 360;
+  const fullWorld = Math.abs(bounds.east - bounds.west) >= 360;
+  const normalize = (longitude: number) => ((longitude % 360) + 360) % 360;
+  const west = normalize(bounds.west);
+  const longitude = normalize(job.location.longitude);
+  const offset = ((longitude - west) + 360) % 360;
+
+  return job.location.latitude <= bounds.north &&
     job.location.latitude >= bounds.south &&
-    job.location.longitude <= bounds.east &&
-    job.location.longitude >= bounds.west
-  );
+    (fullWorld || offset <= width);
 }
 
 export function filterJobs(jobs: JobRecord[], filters: JobFilters) {

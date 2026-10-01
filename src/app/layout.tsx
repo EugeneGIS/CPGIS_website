@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { env } from "@/lib/env";
-import { getSafeHttpOrigin } from "@/lib/job-share";
+import { getSafeHttpOrigin, getPublicAppOrigin } from "@/lib/job-share";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSafeHttpOrigin(env.appUrl)),
+  metadataBase: new URL(
+    process.env.NODE_ENV === "production"
+      ? getPublicAppOrigin(env.appUrl)
+      : getSafeHttpOrigin(env.appUrl),
+  ),
   title: "CPGIS Jobs Portal",
   description:
     "A non-ArcGIS jobs portal with public sharing, address search, map-linked filtering, and member/admin workflows.",

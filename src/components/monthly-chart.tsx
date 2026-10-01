@@ -1,6 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
+import Link from "next/link";
 import type { MonthlyBucket } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,9 @@ export function MonthlyChart({
   onSelect,
   onTogglePast,
 }: MonthlyChartProps) {
-  const visible = showPast ? [...upcoming, ...past] : upcoming;
+  const visible = (showPast ? [...upcoming, ...past] : upcoming).sort((a, b) =>
+    b.label.localeCompare(a.label),
+  );
   const max = Math.max(...visible.map((bucket) => bucket.value), 1);
 
   return (
@@ -42,6 +45,7 @@ export function MonthlyChart({
           </h3>
         </div>
 
+        <div className="flex flex-wrap items-center gap-3">
         {past.length > 0 ? (
           <button
             type="button"
@@ -66,46 +70,30 @@ export function MonthlyChart({
             Show past months
           </button>
         ) : null}
+          <Link
+            href="/"
+            className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-cpgis-deep transition hover:border-cpgis-globe hover:bg-cpgis-ice"
+          >
+            Back to map
+          </Link>
+        </div>
       </div>
 
       {visible.length ? (
         <div>
-          <p className="mt-4 border-b border-slate-100 pb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-            Current &amp; upcoming
-          </p>
           <div className="divide-y divide-slate-100">
-            {upcoming.map((bucket) => (
+            {visible.map((bucket) => (
               <MonthRow
                 key={bucket.label}
                 bucket={bucket}
                 max={max}
                 currentMonth={currentMonth}
+                historical={bucket.label < currentMonth}
                 selected={bucket.label === selectedLabel}
                 onSelect={onSelect}
               />
             ))}
           </div>
-
-          {showPast && past.length > 0 ? (
-            <>
-              <p className="mt-6 border-b border-slate-100 pb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Past months
-              </p>
-              <div className="divide-y divide-slate-100">
-                {past.map((bucket) => (
-                  <MonthRow
-                    key={bucket.label}
-                    bucket={bucket}
-                    max={max}
-                    currentMonth={currentMonth}
-                    historical
-                    selected={bucket.label === selectedLabel}
-                    onSelect={onSelect}
-                  />
-                ))}
-              </div>
-            </>
-          ) : null}
         </div>
       ) : (
         <p className="mt-4 rounded-2xl border border-dashed border-slate-300 px-4 py-8 text-center text-sm text-slate-500">

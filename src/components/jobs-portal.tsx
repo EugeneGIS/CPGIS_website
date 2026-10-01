@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, Share2, SlidersHorizontal, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
@@ -33,6 +33,9 @@ export function JobsPortal({
   const [limitToViewport, setLimitToViewport] = useState(false);
   const [showExpired, setShowExpired] = useState(false);
   const [mapTheme, setMapTheme] = useState<"light" | "dark">("light");
+  const [share, setShare] = useState<{ url: string; imageUrl: string; previewPath: string; count: number; persisted: boolean } | null>(null);
+  const [shareError, setShareError] = useState("");
+  const [sharing, setSharing] = useState(false);
   const [searchPanelOpen, setSearchPanelOpen] = useState(false);
   const [addressQuery, setAddressQuery] = useState("");
   const [addressResults, setAddressResults] = useState<AddressCandidate[]>([]);
@@ -127,47 +130,42 @@ export function JobsPortal({
     });
   }
 
+  async function handleShareMap() {
+    if (!bounds) return;
+    setSharing(true);
+    setShareError("");
+    setShare(null);
+    try {
+      const response = await fetch("/api/map-shares", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ bounds, query, includeExpired: showExpired, theme: mapTheme }),
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || "Could not create a map share.");
+      setShare(payload);
+    } catch (error) {
+      setShareError(error instanceof Error ? error.message : "Could not create a map share.");
+    } finally {
+      setSharing(false);
+    }
+  }
+
+  async function copyShareLink() {
+    if (!share) return;
+    try {
+      await navigator.clipboard.writeText(share.url);
+    } catch {
+      setShareError("Clipboard access failed. Open the preview page to copy the URL.");
+    }
+  }
+
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(54,183,216,0.18),_transparent_32%),linear-gradient(180deg,_#f8fbff_0%,_#edf4f8_100%)] pb-16">
       <BackToTop />
       <div className="mx-auto max-w-[1500px] px-4 pt-6 sm:px-6 lg:px-8">
-        <section className="rounded-[32px] border border-white/60 bg-cpgis-ink px-6 py-7 text-white shadow-[0_36px_110px_rgba(16,23,47,0.24)] sm:px-8 lg:px-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-4xl">
-              <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-tight sm:text-5xl">
-                CPGIS Jobs map
-              </h1>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
-                Explore searchable opportunities, inspect their locations, and
-                open a shareable public page for every position.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/plan-ahead"
-                className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-cpgis-globe hover:text-cpgis-globe"
-              >
-                Plan ahead
-              </Link>
-              <Link
-                href="/submit"
-                className="rounded-full bg-cpgis-globe px-5 py-3 text-sm font-semibold text-cpgis-ink transition hover:bg-white"
-              >
-                Submit a job
-              </Link>
-              <Link
-                href="/admin"
-                className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-cpgis-globe hover:text-cpgis-globe"
-              >
-                Admin workspace
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section ref={mapSectionRef} className="mt-6 space-y-4">
-          <h2 className="sr-only">Job map</h2>
+        <section ref={mapSectionRef} className="space-y-4">
+          <h1 className="sr-only">CPGIS Jobs map</h1>
           <div className="flex flex-wrap items-center justify-end gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <button
@@ -178,6 +176,17 @@ export function JobsPortal({
               >
                 <Search className="h-4 w-4" />
                 Search
+              </button>
+
+              <button
+                type="button"
+                title="Share the jobs in the current map area"
+                disabled={!bounds || sharing}
+                onClick={handleShareMap}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-cpgis-ink shadow-[0_16px_40px_rgba(15,23,42,0.06)] transition hover:border-cpgis-globe hover:bg-cpgis-ice disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Share2 className="h-4 w-4" />
+                {sharing ? "Creating…" : "Share this map"}
               </button>
 
               <div className="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
@@ -299,6 +308,19 @@ export function JobsPortal({
               {addressError}
             </div>
           ) : null}
+
+          {shareError && <p role="alert" className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">{shareError}</p>}
+          {share && <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cpgis-globe/40 bg-white p-4 shadow-sm">
+            <div>
+              <p className="font-semibold text-slate-950">{share.count} jobs in this shared area</p>
+              <p className="text-sm text-slate-600">{share.persisted ? "Saved selection" : "Live selection; jobs may change without a database"}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link href={share.previewPath} className="rounded-full border border-cpgis-deep px-4 py-2 text-sm font-semibold text-cpgis-deep hover:bg-cpgis-ice">Preview page</Link>
+              <button type="button" onClick={copyShareLink} className="rounded-full bg-cpgis-deep px-4 py-2 text-sm font-semibold text-white hover:bg-cpgis-ink">Copy link</button>
+              <a href={share.imageUrl} download="cpgis-jobs-map.png" className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Download image</a>
+            </div>
+          </div>}
 
           <div className="space-y-3">
             <JobsMap

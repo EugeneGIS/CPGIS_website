@@ -9,6 +9,7 @@ interface JobDetailActionsProps {
   canonicalUrl: string;
   organization: string;
   title: string;
+  shareable?: boolean;
 }
 
 async function copyText(text: string) {
@@ -37,6 +38,7 @@ export function JobDetailActions({
   canonicalUrl,
   organization,
   title,
+  shareable = true,
 }: JobDetailActionsProps) {
   const [shareStatus, setShareStatus] = useState<
     "idle" | "shared" | "copied" | "failed"
@@ -98,7 +100,7 @@ export function JobDetailActions({
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <button
+      {shareable && <button
         type="button"
         onClick={handleShare}
         className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-cpgis-globe hover:text-cpgis-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cpgis-globe"
@@ -110,7 +112,7 @@ export function JobDetailActions({
           <Share2 aria-hidden="true" className="h-4 w-4" />
         )}
         {shareLabel}
-      </button>
+      </button>}
 
       {safeApplicationUrl ? (
         <a

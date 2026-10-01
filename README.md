@@ -26,8 +26,10 @@ A non-ArcGIS web implementation of the dashboard pattern you shared, built as a 
   supplied GS(2020)4619 standard-map boundary layer
 - Address search via `/api/geocode`
 - Public share pages at `/jobs/[slug]`
+- Shareable map ranges at `/map-share` with a server-rendered PNG preview
 - Submission form for new opportunities
 - Admin import page that parses CPGIS-style `.docx` content
+- Admin-only weekly CPGIS media CSV intake with post-ID deduplication and a private review queue (Supabase mode)
 - Supabase-ready API routes and schema
 - Demo fallback mode for local development when Supabase keys are not configured
 
@@ -39,12 +41,16 @@ A non-ArcGIS web implementation of the dashboard pattern you shared, built as a 
 - `src/app/jobs/[slug]/page.tsx`: public share page
 - `src/app/api/geocode/route.ts`: address search proxy
 - `src/app/api/import/docx/route.ts`: DOCX parser endpoint
+- `src/app/api/import/csv/route.ts`: admin CSV intake endpoint
+- `src/app/map-share/page.tsx`: shareable map-range page
 - `src/app/api/jobs/route.ts`: job submission endpoint
 - `src/data/china-ten-dash-line.json`: validated WGS84 ten-dash GeoJSON layer
 - `scripts/build_south_china_sea_layer.py`: optional GeoPandas maintenance tool
   for rebuilding and cross-checking that layer
 - `src/lib/mock-data.ts`: demo dataset based on your sample
 - `src/supabase/schema.sql`: Supabase tables, trigger, and RLS policies
+- `src/supabase/migrations/20261001_map_shares.sql`: saved map-range snapshots
+- `src/supabase/migrations/20261001_cpgis_csv_imports.sql`: private weekly intake queue
 
 ## Local setup
 
@@ -89,6 +95,7 @@ the unauthenticated import preview is development-only.
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
 GEOCODER_PROVIDER=nominatim
 GEOCODER_API_KEY=
 NOMINATIM_EMAIL=you@example.com
@@ -101,6 +108,16 @@ update public.profiles
 set role = 'admin'
 where id = 'YOUR-USER-UUID';
 ```
+
+5. Apply both SQL files in `src/supabase/migrations/`. Keep `SUPABASE_SERVICE_ROLE_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it.
+
+## Weekly CSV workflow
+
+The provided Friday export directory is `/Users/hliu5/Downloads/CPGIS_statistics/CPGIS-media-20260327/output`. Its CSVs are **social-post statistics**, not a structured jobs table: they contain post IDs, timestamps, raw announcement text, non-job posts, and usually `t.co` short links. The latest file was validated with `CPGIS_SAMPLE_CSV=/absolute/path/to/file.csv npm run test -- tests/unit/cpgis-csv.test.ts`.
+
+An admin can upload the latest CSV in `/admin`. The importer extracts job-like posts, skips repeated post IDs, and stores new entries in a private queue. Review each one in the submission form, resolve its short application link, verify title, organization, deadline and coordinates, then submit it for normal approval and publication. Uploading the same file again does not create duplicate queue entries. Absence from a later weekly export does not withdraw an existing job. The source directory is on a personal computer, so Vercel cannot poll it; **weekly upload is currently manual, not automated**. A scheduled cloud import needs a cloud-accessible source or an upload agent.
+
+Without Supabase, map-range links are live filtered views, not immutable saved snapshots. With Supabase and the service-role key, shares store their selected public job IDs; withdrawn jobs are not disclosed in old shares. The map preview uses CARTO/OpenStreetMap tiles and credits them on the image.
 
 ## Geocoding choices
 
@@ -134,7 +151,7 @@ Typical flow:
 1. Push this folder to a GitHub repository.
 2. Import that repo into Vercel.
 3. Add the same environment variables in Vercel.
-4. Point Vercel to the `cpgis-job-portal` directory if the repo contains other folders.
+4. Set the root directory to this Next.js project if the repository contains other folders.
 
 ## Sample data note
 

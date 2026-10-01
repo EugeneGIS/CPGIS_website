@@ -6,8 +6,8 @@ export const SOUTH_CHINA_SEA_LINE_PALETTE: Record<
   SouthChinaSeaTheme,
   string
 > = {
-  light: "#dc2626",
-  dark: "#fb7185",
+  light: "#8394aa",
+  dark: "#a1b2c8",
 };
 
 export const SOUTH_CHINA_SEA_ATTRIBUTION =
@@ -22,7 +22,7 @@ export function getSouthChinaSeaLineStyle(
     fill: false,
     lineCap: "round",
     lineJoin: "round",
-    opacity: theme === "dark" ? 0.95 : 0.9,
-    weight: theme === "dark" ? 3.25 : 3,
+    opacity: theme === "dark" ? 0.7 : 0.6,
+    weight: theme === "dark" ? 2.25 : 2,
   };
 }

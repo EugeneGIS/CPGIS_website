@@ -3,6 +3,7 @@
 import { CircleMarker, MapContainer, Popup } from "react-leaflet";
 import type { JobLocation } from "@/lib/types";
 import { EnglishVectorLayer } from "./english-vector-layer";
+import { ChinaOverviewLayer } from "./china-overview-layer";
 import { WORLD_COPY_JUMP_ENABLED } from "./jobs-map-helpers";
 import { SouthChinaSeaLayer } from "./south-china-sea-layer";
 
@@ -25,6 +26,7 @@ export default function SingleJobMapInner({
       className="h-[320px] w-full sm:h-[380px]"
     >
       <EnglishVectorLayer theme="light" />
+      <ChinaOverviewLayer theme="light" />
       <SouthChinaSeaLayer theme="light" />
       <CircleMarker
         center={center}

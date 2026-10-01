@@ -7,8 +7,9 @@ import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
 import { env } from "@/lib/env";
 import { getJobPageData } from "@/lib/job-page-data";
+import { getDisplayJobTitle, getInstitutionParts } from "@/lib/job-display";
 import {
-  buildCanonicalJobUrl,
+  buildPublicJobUrl,
   getJobShareDescription,
   getJobShareTitle,
 } from "@/lib/job-share";
@@ -28,29 +29,31 @@ export async function generateMetadata({
     notFound();
   }
 
-  const canonicalUrl = buildCanonicalJobUrl(job.slug, env.appUrl);
+  const canonicalUrl = buildPublicJobUrl(job.slug, env.appUrl);
+  const shareable = !job.id.startsWith("demo-");
   const title = getJobShareTitle(job);
   const description = getJobShareDescription(job);
 
   return {
     metadataBase: new URL(new URL(canonicalUrl).origin),
+    robots: shareable ? undefined : { index: false, follow: false },
     title: `${title} | CPGIS Jobs`,
     description,
-    alternates: {
+    alternates: shareable ? {
       canonical: canonicalUrl,
-    },
-    openGraph: {
+    } : undefined,
+    openGraph: shareable ? {
       type: "article",
       title,
       description,
       url: canonicalUrl,
       siteName: "CPGIS Jobs Portal",
-    },
-    twitter: {
+    } : undefined,
+    twitter: shareable ? {
       card: "summary_large_image",
       title,
       description,
-    },
+    } : undefined,
   };
 }
 
@@ -71,7 +74,8 @@ export default async function JobDetailPage({
     permanentRedirect(`/jobs/${job.slug}`);
   }
 
-  const canonicalUrl = buildCanonicalJobUrl(job.slug, env.appUrl);
+  const canonicalUrl = buildPublicJobUrl(job.slug, env.appUrl);
+  const shareable = !job.id.startsWith("demo-");
 
   return (
     <>
@@ -85,9 +89,12 @@ export default async function JobDetailPage({
               Public share page
             </div>
             <h1 className="mt-3 text-balance text-4xl font-semibold leading-tight text-slate-950">
-              {job.title}
+              {getDisplayJobTitle(job.title)}
             </h1>
-            <p className="mt-3 text-lg text-slate-600">{job.organization}</p>
+            <p className="mt-3 text-lg text-slate-600">
+              {getInstitutionParts(job).secondary ? `${getInstitutionParts(job).secondary}, ` : ""}
+              {getInstitutionParts(job).primary}
+            </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <Info label="Location" value={job.location.label} />
@@ -118,6 +125,7 @@ export default async function JobDetailPage({
                 canonicalUrl={canonicalUrl}
                 organization={job.organization}
                 title={job.title}
+                shareable={shareable}
               />
               <Link
                 href="/"

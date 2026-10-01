@@ -19,7 +19,11 @@ export function PlanAhead({
 }) {
   const { upcoming, past, jobsByMonth, rolling, currentMonth } = data;
   const [showPast, setShowPast] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(upcoming[0]?.label ?? "");
+  const [selectedMonth, setSelectedMonth] = useState(
+    upcoming.find((month) => month.label === currentMonth)?.label ??
+      upcoming.at(-1)?.label ??
+      "",
+  );
   const [visibleCount, setVisibleCount] = useState(MONTH_BATCH_SIZE);
   const [rollingCount, setRollingCount] = useState(ROLLING_BATCH_SIZE);
 
@@ -54,7 +58,7 @@ export function PlanAhead({
       // Leaving past-month mode with a historical month selected would show an
       // empty active list, so fall back to the earliest current-or-future month.
       if (selectedMonth && selectedMonth < currentMonth) {
-        selectMonth(upcoming[0]?.label ?? "");
+        selectMonth(upcoming.find((month) => month.label === currentMonth)?.label ?? upcoming.at(-1)?.label ?? "");
       }
       return;
     }
@@ -69,32 +73,9 @@ export function PlanAhead({
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,_#f7fbff_0%,_#edf4f8_100%)] pb-16">
       <div className="mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8">
-        <section className="rounded-[32px] border border-white/70 bg-cpgis-ink px-6 py-8 text-white shadow-[0_36px_100px_rgba(16,23,47,0.24)] sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cpgis-globe">
-                Plan ahead
-              </p>
-              <h1 className="mt-3 text-balance text-4xl font-semibold sm:text-5xl">
-                Deadlines by month
-              </h1>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
-                Browse opportunities by application deadline month. Positions
-                without a deadline are listed separately while they stay within
-                two months of publication; past months are one toggle away.
-              </p>
-            </div>
-            <Link
-              href="/"
-              className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-cpgis-globe hover:text-cpgis-globe"
-            >
-              Back to map
-            </Link>
-          </div>
-        </section>
+        <h1 className="sr-only">Deadlines by month</h1>
 
-        {upcoming.length > 0 || showPast ? (
-          <div className="mt-6">
+        <div>
             <MonthlyChart
               upcoming={upcoming}
               past={past}
@@ -104,8 +85,7 @@ export function PlanAhead({
               onSelect={selectMonth}
               onTogglePast={togglePast}
             />
-          </div>
-        ) : null}
+        </div>
 
         {selectedMonth ? (
           <section className="mt-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:p-6">
@@ -159,15 +139,6 @@ export function PlanAhead({
             <p className="text-sm text-slate-600">
               No current or upcoming deadline months to show.
             </p>
-            {past.length > 0 ? (
-              <button
-                type="button"
-                onClick={() => togglePast(true)}
-                className="mt-4 rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700"
-              >
-                Show past months
-              </button>
-            ) : null}
           </section>
         )}
 

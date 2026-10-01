@@ -12,11 +12,14 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import type { AddressCandidate, JobRecord, MapBounds } from "@/lib/types";
-import { formatDateLabel, formatRelativeDeadline } from "@/lib/utils";
+import { isJobExpired } from "@/lib/job-filters";
+import { getDisplayJobTitle, getDisplayLocation, getInstitutionParts, getResearchDirection } from "@/lib/job-display";
+import { buildPublicJobUrl } from "@/lib/job-share";
+import { formatRelativeDeadline, toDateKey } from "@/lib/utils";
 import { EnglishVectorLayer } from "./english-vector-layer";
+import { ChinaOverviewLayer } from "./china-overview-layer";
 import { SouthChinaSeaLayer } from "./south-china-sea-layer";
 import {
-  buildCanonicalJobUrl,
   getDeadlineLabel,
   getDeadlineStatus,
   getSafeApplicationUrl,
@@ -24,6 +27,7 @@ import {
   shouldFocusSelection,
   spreadOverlappingJobs,
   WORLD_COPY_JUMP_ENABLED,
+  type DeadlineStatus,
   type DisplayJob,
 } from "./jobs-map-helpers";
 
@@ -36,6 +40,34 @@ interface JobsMapProps {
   onSelect: (jobId: string) => void;
   onClearSelection: () => void;
   onBoundsChange: (bounds: MapBounds) => void;
+}
+
+function JobMapText({ job, status, color }: { job: DisplayJob; status: DeadlineStatus; color: string }) {
+  const { secondary, primary } = getInstitutionParts(job);
+  const direction = getResearchDirection(job);
+  const deadline = status === "expired"
+    ? "Expired"
+    : job.applyBy
+      ? `${getDeadlineLabel(status)}: ${formatRelativeDeadline(job.applyBy)}`
+      : "Active: open until filled";
+
+  return (
+    <div className="max-w-[280px] space-y-1">
+      <div className="cpgis-job-tooltip-title text-sm font-semibold" title={job.title}>
+        {getDisplayJobTitle(job.title)}
+      </div>
+      {direction ? (
+        <div className="cpgis-job-tooltip-direction text-xs text-slate-600" title={direction}>
+          {direction}
+        </div>
+      ) : null}
+      <div className="cpgis-job-tooltip-organization text-xs" title={job.organization}>
+        {secondary ? `${secondary}, ` : ""}{primary}
+      </div>
+      <div className="text-xs text-slate-600">{getDisplayLocation(job)}</div>
+      <div className="text-xs font-semibold" style={{ color }}>{deadline}</div>
+    </div>
+  );
 }
 
 function averageCenter(jobs: JobRecord[]): LatLngExpression {
@@ -182,7 +214,7 @@ function JobPopupActions({ job }: { job: DisplayJob }) {
   const applicationUrl = getSafeApplicationUrl(job.applicationUrl);
 
   async function handleShare() {
-    const url = buildCanonicalJobUrl(job.slug, window.location.origin);
+    const url = buildPublicJobUrl(job.slug, process.env.NEXT_PUBLIC_APP_URL);
 
     if (navigator.share) {
       try {
@@ -219,13 +251,15 @@ function JobPopupActions({ job }: { job: DisplayJob }) {
 
   return (
     <div className="cpgis-job-popup-actions">
-      <button type="button" onClick={handleShare} aria-live="polite">
-        <Share2 aria-hidden="true" size={14} />
-        {shareLabel}
-      </button>
+      {!job.id.startsWith("demo-") ? (
+        <button type="button" onClick={handleShare} aria-live="polite">
+          <Share2 aria-hidden="true" size={14} />
+          {shareLabel}
+        </button>
+      ) : null}
       <a
         className="cpgis-job-popup-details"
-        href={buildCanonicalJobUrl(job.slug, window.location.origin)}
+        href={buildPublicJobUrl(job.slug, process.env.NEXT_PUBLIC_APP_URL)}
       >
         View details
       </a>
@@ -257,6 +291,8 @@ export default function JobsMap({
   const displayJobs = spreadOverlappingJobs(jobs);
   const selectedJob =
     displayJobs.find((job) => job.id === selectedJobId) ?? null;
+  const now = new Date();
+  const today = toDateKey(now);
   return (
     <div className="overflow-hidden rounded-[28px] border border-slate-200 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
       <MapContainer
@@ -268,6 +304,7 @@ export default function JobsMap({
         className="h-[540px] w-full lg:h-[640px]"
       >
         <EnglishVectorLayer theme={mapTheme} />
+        <ChinaOverviewLayer theme={mapTheme} />
         <SouthChinaSeaLayer theme={mapTheme} />
 
         <BoundsBridge onBoundsChange={onBoundsChange} />
@@ -280,8 +317,9 @@ export default function JobsMap({
 
         {displayJobs.map((job) => {
           const selected = job.id === selectedJobId;
-          const deadlineStatus = getDeadlineStatus(job.applyBy);
-          const deadlineLabel = getDeadlineLabel(deadlineStatus);
+          const deadlineStatus = isJobExpired(job, today)
+            ? "expired"
+            : getDeadlineStatus(job.applyBy, now);
           const colors = MARKER_PALETTE[mapTheme][deadlineStatus];
 
           return (
@@ -309,46 +347,11 @@ export default function JobsMap({
                   opacity={1}
                   sticky
                 >
-                  <div className="cpgis-job-tooltip-content space-y-1">
-                    <div
-                      className="cpgis-job-tooltip-title text-sm font-semibold"
-                      title={job.title}
-                    >
-                      {job.title}
-                    </div>
-                    <div
-                      className="cpgis-job-tooltip-organization text-xs"
-                      title={job.organization}
-                    >
-                      {job.organization}
-                    </div>
-                    <div className="text-xs text-slate-600">
-                      {job.location.city}
-                      {job.location.country ? `, ${job.location.country}` : ""}
-                    </div>
-                    <div className="text-xs font-semibold text-slate-700">
-                      {deadlineLabel}: {formatDateLabel(job.applyBy)}
-                    </div>
-                  </div>
+                  <JobMapText job={job} status={deadlineStatus} color={colors.fill} />
                 </Tooltip>
                 <Popup minWidth={240} maxWidth={320}>
                   <div className="cpgis-job-popup space-y-1">
-                    <div
-                      className="cpgis-job-popup-title font-semibold"
-                      title={job.title}
-                    >
-                      {job.title}
-                    </div>
-                    <div
-                      className="cpgis-job-popup-organization"
-                      title={job.organization}
-                    >
-                      {job.organization}
-                    </div>
-                    <div>{job.location.label}</div>
-                    <div>
-                      {deadlineLabel}: {formatRelativeDeadline(job.applyBy)}
-                    </div>
+                    <JobMapText job={job} status={deadlineStatus} color={colors.fill} />
                     {job.overlapCount > 1 ? (
                       <div className="text-xs text-slate-600">
                         Expanded from {job.overlapCount} overlapping jobs at this

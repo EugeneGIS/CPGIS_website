@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getSafeHttpUrl } from "@/lib/job-share";
+import { buildPublicJobUrl, getSafeHttpUrl } from "@/lib/job-share";
 import type { JobRecord } from "@/lib/types";
 
 interface JobActionsProps {
@@ -34,7 +34,7 @@ export function JobActions({ job, compact = false }: JobActionsProps) {
   const safeApplicationUrl = getSafeHttpUrl(job.applicationUrl);
 
   async function handleShare() {
-    const url = new URL(`/jobs/${job.slug}`, window.location.origin).toString();
+    const url = buildPublicJobUrl(job.slug, process.env.NEXT_PUBLIC_APP_URL);
 
     try {
       if (navigator.share) {
@@ -68,13 +68,15 @@ export function JobActions({ job, compact = false }: JobActionsProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <button
-        type="button"
-        onClick={handleShare}
-        className={`rounded-full border border-slate-300 font-semibold text-slate-700 transition hover:border-cpgis-globe hover:text-cpgis-deep ${sizing}`}
-      >
-        Share
-      </button>
+      {!job.id.startsWith("demo-") ? (
+        <button
+          type="button"
+          onClick={handleShare}
+          className={`rounded-full border border-slate-300 font-semibold text-slate-700 transition hover:border-cpgis-globe hover:text-cpgis-deep ${sizing}`}
+        >
+          Share
+        </button>
+      ) : null}
       {safeApplicationUrl ? (
         <a
           href={safeApplicationUrl}
