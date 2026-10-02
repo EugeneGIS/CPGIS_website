@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import chinaOverview from "@/data/china-overview.json";
 import chinaTenDash from "@/data/china-ten-dash-line.json";
@@ -13,6 +16,9 @@ const HEIGHT = 630;
 const HEADER_HEIGHT = 80;
 const MAP_HEIGHT = HEIGHT - HEADER_HEIGHT;
 const TILE_SIZE = 256;
+const logoSrc = readFile(path.join(process.cwd(), "public", "cpgis-logo.png"))
+  .then((bytes) => `data:image/png;base64,${bytes.toString("base64")}`)
+  .catch(() => null);
 
 function project(latitude: number, longitude: number, zoom: number) {
   const n = 2 ** zoom;
@@ -72,7 +78,10 @@ function drawTenDashPath(viewport: ReturnType<typeof mapViewport>) {
 
 export async function renderMapPreview(view: MapShareView) {
   const viewport = mapViewport(view.input.bounds);
-  const basemap = await loadOpenFreeMapPreview(viewport, WIDTH, MAP_HEIGHT);
+  const [basemap, logo] = await Promise.all([
+    loadOpenFreeMapPreview(viewport, WIDTH, MAP_HEIGHT),
+    logoSrc,
+  ]);
   const worldWidth = 2 ** viewport.zoom * TILE_SIZE;
   const cells = new Map<string, { x: number; y: number; count: number; status: DeadlineStatus }>();
   const today = toDateKey(new Date());
@@ -105,9 +114,17 @@ export async function renderMapPreview(view: MapShareView) {
         alignItems: "center", justifyContent: "space-between", padding: "12px 28px",
         background: "#111a33", color: "#ffffff",
       }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <span style={{ fontSize: 25, fontWeight: 700 }}>CPGIS Jobs map</span>
-          <span style={{ fontSize: 14, color: "#bed2e7" }}>Selected area · {view.jobs.length} opportunities</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          {logo && <div style={{
+            display: "flex", width: 56, height: 56, borderRadius: 28,
+            overflow: "hidden", background: "#ffffff", alignItems: "center", justifyContent: "center",
+          }}>
+            <img src={logo} alt="CPGIS logo" width={56} height={56} />
+          </div>}
+          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <span style={{ fontSize: 25, fontWeight: 700 }}>CPGIS Jobs map</span>
+            <span style={{ fontSize: 14, color: "#bed2e7" }}>Selected area · {view.jobs.length} opportunities</span>
+          </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
           <span style={{ fontSize: 14, color: "#c7ddff" }}>{view.createdAt.slice(0, 10)}</span>

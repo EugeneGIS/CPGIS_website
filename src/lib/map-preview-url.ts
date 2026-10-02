@@ -1,4 +1,4 @@
-const FALLBACK_PREVIEW_VERSION = "2026-10-01-header-band";
+const FALLBACK_PREVIEW_VERSION = "2026-10-02-cpgis-logo";
 
 export function mapPreviewPath(shareSearch: string) {
   const search = new URLSearchParams(shareSearch);
