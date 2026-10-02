@@ -7,7 +7,7 @@ import { CsvImportPanel } from "@/components/forms/csv-import-panel";
 import { createClient } from "@supabase/supabase-js";
 import { SiteHeader } from "@/components/site-header";
 import { canAccessAdmin, getSessionContext } from "@/lib/auth";
-import { getAdminJobs } from "@/lib/jobs";
+import { getAdminJobCounts, getAdminJobPage } from "@/lib/jobs";
 import { env, isSupabaseConfigured } from "@/lib/env";
 import type { CpgisCsvCandidate } from "@/lib/cpgis-csv";
 import { toDateKey } from "@/lib/utils";
@@ -21,7 +21,10 @@ export default async function AdminPage() {
 
   if (!canAccessAdmin(session)) notFound();
 
-  const jobs = await getAdminJobs();
+  const today = toDateKey(new Date());
+  const counts = await getAdminJobCounts();
+  const initialStatus = counts.pending > 0 ? "pending" : "all";
+  const jobPage = await getAdminJobPage({ status: initialStatus, query: "", page: 0, today });
   let csvRows: CpgisCsvCandidate[] = [];
   if (session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey) {
     const client = createClient(env.supabaseUrl, env.supabaseServiceRoleKey);
@@ -30,11 +33,6 @@ export default async function AdminPage() {
       .order("posted_at", { ascending: false }).limit(30);
     csvRows = (data ?? []).map((item) => item.extracted as CpgisCsvCandidate);
   }
-  const pendingJobs = jobs.filter((job) => job.status === "pending").length;
-  const needsChangesJobs = jobs.filter((job) => job.status === "needs_changes").length;
-  const approvedJobs = jobs.filter((job) => job.status === "approved").length;
-  const publishedJobs = jobs.filter((job) => job.status === "published").length;
-  const today = toDateKey(new Date());
 
   return (
     <>
@@ -57,10 +55,10 @@ export default async function AdminPage() {
           </section>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-                <AdminMetric label="Pending review" value={String(pendingJobs)} />
-                <AdminMetric label="Needs changes" value={String(needsChangesJobs)} />
-                <AdminMetric label="Approved" value={String(approvedJobs)} />
-                <AdminMetric label="Published jobs" value={String(publishedJobs)} />
+                <AdminMetric label="Pending review" value={String(counts.pending)} />
+                <AdminMetric label="Needs changes" value={String(counts.needs_changes)} />
+                <AdminMetric label="Approved" value={String(counts.approved)} />
+                <AdminMetric label="Published jobs" value={String(counts.published)} />
                 <AdminMetric
                   label="Mode"
                   value={session.mode === "demo" ? "Demo preview" : "Supabase live"}
@@ -70,7 +68,7 @@ export default async function AdminPage() {
           {session.role === "admin" && isSupabaseConfigured() && (
             <LegacyJobImportPanel total={LEGACY_JOB_COUNT} />
           )}
-          <AdminJobsBoard jobs={jobs} today={today} />
+          <AdminJobsBoard initialPage={jobPage} counts={counts} initialStatus={initialStatus} today={today} />
           {session.role === "admin" && isSupabaseConfigured() && env.supabaseServiceRoleKey
             ? <CsvImportPanel initialRows={csvRows} />
             : <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">Weekly CSV intake requires Supabase authentication, the service-role key, and the CSV import migration. The local demo cannot persist an import queue.</div>}

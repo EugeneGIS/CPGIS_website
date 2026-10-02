@@ -8,7 +8,7 @@ import { AddressSearch } from "@/components/address-search";
 import { BackToTop } from "@/components/back-to-top";
 import { JobList } from "@/components/job-list";
 import { MARKER_PALETTE } from "@/components/map/jobs-map-helpers";
-import { filterJobs, isJobExpired } from "@/lib/job-filters";
+import { filterJobs } from "@/lib/job-filters";
 import type { AddressCandidate, JobRecord, MapBounds } from "@/lib/types";
 
 const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
@@ -22,16 +22,19 @@ const JobsMap = dynamic(() => import("@/components/map/jobs-map"), {
 
 export function JobsPortal({
   jobs,
-  today,
+  expiredCount,
 }: {
   jobs: JobRecord[];
-  today: string;
+  expiredCount: number;
 }) {
   const [selectedJobId, setSelectedJobId] = useState("");
   const [query, setQuery] = useState("");
   const [bounds, setBounds] = useState<MapBounds | null>(null);
   const [limitToViewport, setLimitToViewport] = useState(false);
   const [showExpired, setShowExpired] = useState(false);
+  const [expiredJobs, setExpiredJobs] = useState<JobRecord[] | null>(null);
+  const [expiredLoading, setExpiredLoading] = useState(false);
+  const [expiredError, setExpiredError] = useState("");
   const [mapTheme, setMapTheme] = useState<"light" | "dark">("light");
   const [share, setShare] = useState<{ url: string; imageUrl: string; previewPath: string; count: number; persisted: boolean } | null>(null);
   const [shareError, setShareError] = useState("");
@@ -51,9 +54,8 @@ export function JobsPortal({
   // months) stay in the archive behind a toggle instead of cluttering the
   // active recruitment map.
   const activeJobs = useMemo(
-    () =>
-      showExpired ? jobs : jobs.filter((job) => !isJobExpired(job, today)),
-    [jobs, showExpired, today],
+    () => showExpired ? [...jobs, ...(expiredJobs ?? [])] : jobs,
+    [jobs, expiredJobs, showExpired],
   );
 
   const filteredJobs = useMemo(
@@ -66,10 +68,25 @@ export function JobsPortal({
     [activeJobs, bounds, limitToViewport, query],
   );
 
-  const expiredCount = useMemo(
-    () => jobs.filter((job) => isJobExpired(job, today)).length,
-    [jobs, today],
-  );
+  async function handleShowExpired() {
+    if (expiredJobs) {
+      setShowExpired(true);
+      return;
+    }
+    setExpiredLoading(true);
+    setExpiredError("");
+    try {
+      const response = await fetch("/api/jobs/expired");
+      const payload = await response.json() as { jobs?: JobRecord[]; error?: string };
+      if (!response.ok || !payload.jobs) throw new Error(payload.error ?? "Could not load past postings.");
+      setExpiredJobs(payload.jobs);
+      setShowExpired(true);
+    } catch (error) {
+      setExpiredError(error instanceof Error ? error.message : "Could not load past postings.");
+    } finally {
+      setExpiredLoading(false);
+    }
+  }
 
   useEffect(() => {
     if (
@@ -281,9 +298,8 @@ export function JobsPortal({
                   <label className="mt-3 flex items-start gap-3 rounded-xl border border-slate-200 bg-white px-3 py-3">
                     <input
                       checked={showExpired}
-                      onChange={(event) =>
-                        setShowExpired(event.target.checked)
-                      }
+                      disabled={expiredLoading}
+                      onChange={(event) => event.target.checked ? void handleShowExpired() : setShowExpired(false)}
                       type="checkbox"
                       className="mt-1 h-4 w-4 rounded border-slate-300 text-cpgis-deep"
                     />
@@ -292,7 +308,7 @@ export function JobsPortal({
                         Show expired postings
                       </div>
                       <div className="text-sm text-slate-600">
-                        {expiredCount} archived records whose deadline passed or
+                        {expiredCount.toLocaleString()} archived records whose deadline passed or
                         that were posted more than two months ago. They stay
                         hidden until enabled.
                       </div>
@@ -339,11 +355,11 @@ export function JobsPortal({
               {!showExpired && expiredCount > 0 ? (
                 <button
                   type="button"
-                  onClick={() => setShowExpired(true)}
+                  onClick={() => void handleShowExpired()}
+                  disabled={expiredLoading}
                   className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-cpgis-globe hover:text-cpgis-deep"
                 >
-                  {expiredCount.toLocaleString()} expired postings hidden —
-                  show them
+                  {expiredLoading ? "Loading past postings…" : `${expiredCount.toLocaleString()} expired postings hidden — show them`}
                 </button>
               ) : null}
               {showExpired ? (
@@ -355,6 +371,7 @@ export function JobsPortal({
                   Hide expired postings
                 </button>
               ) : null}
+              {expiredError ? <p role="alert" className="text-sm text-rose-700">{expiredError}</p> : null}
             </div>
           </div>
         </section>

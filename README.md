@@ -112,6 +112,14 @@ where id = 'YOUR-USER-UUID';
 
 5. Apply the SQL files in `src/supabase/migrations/`, including `20261001_admin_review_notes.sql`. Keep `SUPABASE_SERVICE_ROLE_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it.
 
+For the optimized public map and admin queue, also apply
+`src/supabase/migrations/20261002_public_job_query_indexes.sql` in the SQL
+Editor. The site works without these indexes, but large job tables will take
+longer to filter and count. The public map now reads active jobs first and
+loads expired published records only when a visitor requests them; the admin
+queue reads one page at a time. Plan-ahead history and the optional expired
+archive load historical records only when opened.
+
 ### Admin-only access
 
 The Admin navigation item is rendered only for an authenticated user whose

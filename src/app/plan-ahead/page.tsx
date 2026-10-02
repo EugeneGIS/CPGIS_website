@@ -2,7 +2,7 @@ import { PlanAhead } from "@/components/plan-ahead";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
 import { buildPlanAheadData } from "@/lib/job-filters";
-import { getPublishedJobs } from "@/lib/jobs";
+import { getActivePublishedJobs, getPastDeadlineCount } from "@/lib/jobs";
 import { toDateKey } from "@/lib/utils";
 
 // Expiry is derived from "today" and the demo queue changes at runtime, so
@@ -10,19 +10,20 @@ import { toDateKey } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
 export default async function PlanAheadPage() {
-  const [jobs, session] = await Promise.all([
-    getPublishedJobs(),
+  const today = toDateKey(new Date());
+  const [jobs, pastDeadlineCount, session] = await Promise.all([
+    getActivePublishedJobs(today),
+    getPastDeadlineCount(today.slice(0, 7)),
     getSessionContext(),
   ]);
 
   // Computed once on the server so hydration sees the same buckets.
-  const today = toDateKey(new Date());
   const data = buildPlanAheadData(jobs, today);
 
   return (
     <>
       <SiteHeader session={session} />
-      <PlanAhead data={data} today={today} />
+      <PlanAhead data={data} today={today} hasPast={pastDeadlineCount > 0} />
     </>
   );
 }

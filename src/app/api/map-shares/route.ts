@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { env, isSupabaseConfigured } from "@/lib/env";
 import { getPublicAppOrigin } from "@/lib/job-share";
-import { getPublishedJobs } from "@/lib/jobs";
+import { getActivePublishedJobs, getPublishedJobs } from "@/lib/jobs";
 import { mapShareInputSchema, mapShareSearch, selectMapShareJobs } from "@/lib/map-share";
 import { mapPreviewPath } from "@/lib/map-preview-url";
 import { toDateKey } from "@/lib/utils";
@@ -20,7 +20,11 @@ export async function POST(request: Request) {
 
   try {
     const createdAt = new Date().toISOString();
-    const jobs = selectMapShareJobs(await getPublishedJobs(), parsed.data, toDateKey(new Date()));
+    const today = toDateKey(new Date());
+    const candidates = parsed.data.includeExpired
+      ? await getPublishedJobs()
+      : await getActivePublishedJobs(today);
+    const jobs = selectMapShareJobs(candidates, parsed.data, today);
     const origin = getPublicAppOrigin(env.appUrl);
     let suffix = mapShareSearch(parsed.data, createdAt);
     let persisted = false;

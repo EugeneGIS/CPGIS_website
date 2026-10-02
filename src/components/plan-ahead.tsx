@@ -13,11 +13,16 @@ const ROLLING_BATCH_SIZE = 6;
 export function PlanAhead({
   data,
   today,
+  hasPast,
 }: {
   data: PlanAheadData;
   today: string;
+  hasPast: boolean;
 }) {
-  const { upcoming, past, jobsByMonth, rolling, currentMonth } = data;
+  const [historicalData, setHistoricalData] = useState<PlanAheadData | null>(null);
+  const [pastLoading, setPastLoading] = useState(false);
+  const [pastError, setPastError] = useState("");
+  const { upcoming, past, jobsByMonth, rolling, currentMonth } = historicalData ?? data;
   const [showPast, setShowPast] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(
     upcoming.find((month) => month.label === currentMonth)?.label ??
@@ -51,7 +56,25 @@ export function PlanAhead({
     setVisibleCount(MONTH_BATCH_SIZE);
   }
 
-  function togglePast(next: boolean) {
+  async function togglePast(next: boolean) {
+    if (next && !historicalData) {
+      setPastLoading(true);
+      setPastError("");
+      try {
+        const response = await fetch("/api/plan-ahead/history");
+        const payload = await response.json() as PlanAheadData & { error?: string };
+        if (!response.ok) throw new Error(payload.error ?? "Could not load past months.");
+        setHistoricalData(payload);
+        if (!selectedMonth && payload.past.length > 0) {
+          selectMonth(payload.past[payload.past.length - 1].label);
+        }
+      } catch (error) {
+        setPastError(error instanceof Error ? error.message : "Could not load past months.");
+        return;
+      } finally {
+        setPastLoading(false);
+      }
+    }
     setShowPast(next);
 
     if (!next) {
@@ -79,6 +102,8 @@ export function PlanAhead({
             <MonthlyChart
               upcoming={upcoming}
               past={past}
+              hasPast={hasPast}
+              pastLoading={pastLoading}
               currentMonth={currentMonth}
               showPast={showPast}
               selectedLabel={selectedMonth}
@@ -86,6 +111,8 @@ export function PlanAhead({
               onTogglePast={togglePast}
             />
         </div>
+
+        {pastError ? <p role="alert" className="mt-3 text-sm text-rose-700">{pastError}</p> : null}
 
         {selectedMonth ? (
           <section className="mt-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:p-6">

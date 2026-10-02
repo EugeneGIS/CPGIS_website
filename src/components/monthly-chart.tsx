@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 interface MonthlyChartProps {
   upcoming: MonthlyBucket[];
   past: MonthlyBucket[];
+  hasPast?: boolean;
+  pastLoading?: boolean;
   currentMonth: string;
   showPast: boolean;
   selectedLabel?: string;
@@ -22,6 +24,8 @@ function formatMonthLabel(label: string) {
 export function MonthlyChart({
   upcoming,
   past,
+  hasPast = past.length > 0,
+  pastLoading = false,
   currentMonth,
   showPast,
   selectedLabel,
@@ -46,12 +50,13 @@ export function MonthlyChart({
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-        {past.length > 0 ? (
+        {hasPast ? (
           <button
             type="button"
             role="switch"
             aria-checked={showPast}
             onClick={() => onTogglePast?.(!showPast)}
+            disabled={pastLoading}
             className="flex items-center gap-3 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-cyan-300 hover:text-slate-900"
           >
             <span
@@ -67,7 +72,7 @@ export function MonthlyChart({
                 )}
               />
             </span>
-            Show past months
+            {pastLoading ? "Loading past months…" : "Show past months"}
           </button>
         ) : null}
           <Link

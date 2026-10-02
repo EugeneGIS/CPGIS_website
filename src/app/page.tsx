@@ -1,7 +1,7 @@
 import { JobsPortal } from "@/components/jobs-portal";
 import { SiteHeader } from "@/components/site-header";
 import { getSessionContext } from "@/lib/auth";
-import { getPublishedJobs } from "@/lib/jobs";
+import { getActivePublishedJobs, getPublishedJobCount } from "@/lib/jobs";
 import { toDateKey } from "@/lib/utils";
 
 // Live data on every request: production reads Supabase (dynamic anyway) and
@@ -9,15 +9,17 @@ import { toDateKey } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [jobs, session] = await Promise.all([
-    getPublishedJobs(),
+  const today = toDateKey(new Date());
+  const [jobs, publishedCount, session] = await Promise.all([
+    getActivePublishedJobs(today),
+    getPublishedJobCount(),
     getSessionContext(),
   ]);
 
   return (
     <>
       <SiteHeader session={session} />
-      <JobsPortal jobs={jobs} today={toDateKey(new Date())} />
+      <JobsPortal jobs={jobs} expiredCount={Math.max(0, publishedCount - jobs.length)} />
     </>
   );
 }

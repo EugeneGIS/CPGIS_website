@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { isJobExpired } from "@/lib/job-filters";
 import { buildSocialDrafts } from "@/lib/social-drafts";
+import type { AdminJobFilter } from "@/lib/jobs";
 import type { JobRecord, JobStatus } from "@/lib/types";
 import { cn, formatDateLabel, formatRelativeDeadline } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ const STATUSES: JobStatus[] = [
   "archived",
 ];
 
-const PAGE_SIZE = 25;
+const ADMIN_JOB_PAGE_SIZE = 25;
 
 const NEXT_ACTIONS: Record<JobStatus, JobStatus[]> = {
   draft: ["pending"],
@@ -54,78 +55,70 @@ interface ReviewNote {
 }
 
 export function AdminJobsBoard({
-  jobs,
+  initialPage,
+  counts,
+  initialStatus,
   today,
 }: {
-  jobs: JobRecord[];
+  initialPage: { jobs: JobRecord[]; total: number; duplicateCounts: Record<string, number> };
+  counts: Record<JobStatus | "all", number>;
+  initialStatus: AdminJobFilter;
   today: string;
 }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const [activeStatus, setActiveStatus] = useState<JobStatus | "all" | "expired">(
-    jobs.some((job) => job.status === "pending") ? "pending" : "all",
-  );
+  const [activeStatus, setActiveStatus] = useState<AdminJobFilter>(initialStatus);
+  const [jobs, setJobs] = useState(initialPage.jobs);
+  const [total, setTotal] = useState(initialPage.total);
+  const [duplicateCounts, setDuplicateCounts] = useState(initialPage.duplicateCounts);
   const [message, setMessage] = useState("");
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [page, setPage] = useState(0);
+  const [reload, setReload] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const firstLoad = useRef(true);
   const [, startTransition] = useTransition();
+
+  useEffect(() => {
+    if (firstLoad.current) {
+      firstLoad.current = false;
+      return;
+    }
+    const controller = new AbortController();
+    const params = new URLSearchParams({ status: activeStatus, query, page: String(page) });
+    const timeout = window.setTimeout(() => fetch(`/api/admin/jobs?${params}`, { signal: controller.signal })
+      .then(async (response) => {
+        const payload = await response.json() as typeof initialPage & { error?: string };
+        if (!response.ok) throw new Error(payload.error ?? "Could not load moderation records.");
+        return payload;
+      })
+      .then((payload) => {
+        setJobs(payload.jobs);
+        setTotal(payload.total);
+        setDuplicateCounts(payload.duplicateCounts);
+      })
+      .catch((error) => {
+        if (!controller.signal.aborted) {
+          setJobs([]);
+          setTotal(0);
+          setMessage(error instanceof Error ? error.message : "Could not load moderation records.");
+        }
+      })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); }), query ? 250 : 0);
+    return () => { window.clearTimeout(timeout); controller.abort(); };
+  }, [activeStatus, query, page, reload]);
 
   const expiredJobs = useMemo(
     () => new Set(jobs.filter((job) => isJobExpired(job, today)).map((job) => job.id)),
     [jobs, today],
   );
 
-  const duplicateUrls = useMemo(() => {
-    const counts = new Map<string, number>();
-
-    for (const job of jobs) {
-      counts.set(job.applicationUrl, (counts.get(job.applicationUrl) ?? 0) + 1);
-    }
-
-    return counts;
-  }, [jobs]);
-
-  const statusCounts = useMemo(() => {
-    const counts = {} as Record<JobStatus | "all" | "expired", number>;
-
-    for (const status of STATUSES) {
-      counts[status] = 0;
-    }
-
-    for (const job of jobs) {
-      counts[job.status] = (counts[job.status] ?? 0) + 1;
-    }
-
-    counts.all = jobs.length;
-    counts.expired = expiredJobs.size;
-
-    return counts;
-  }, [jobs, expiredJobs]);
-
-  const filteredJobs = useMemo(() => {
-    const loweredQuery = query.trim().toLowerCase();
-
-    return jobs.filter((job) => {
-      const matchesStatus =
-        activeStatus === "all"
-          ? true
-          : activeStatus === "expired"
-            ? expiredJobs.has(job.id)
-            : job.status === activeStatus;
-
-      if (!matchesStatus) {
-        return false;
-      }
-
-      if (!loweredQuery) {
-        return true;
-      }
-
-      return [job.title, job.organization, job.location.city, job.location.country, ...job.tags]
-        .join(" ")
-        .toLowerCase()
-        .includes(loweredQuery);
-    });
-  }, [activeStatus, expiredJobs, jobs, query]);
+  function selectStatus(status: AdminJobFilter) {
+    if (status === activeStatus && page === 0) return;
+    setMessage("");
+    setActiveStatus(status);
+    setPage(0);
+    setLoading(true);
+  }
 
   function updateStatus(jobId: string, status: JobStatus) {
     setMessage("");
@@ -144,6 +137,9 @@ export function AdminJobsBoard({
       }
 
       setMessage(payload.message ?? "Job status updated.");
+      setLoading(true);
+      setPage(0);
+      setReload((current) => current + 1);
       router.refresh();
     });
   }
@@ -174,7 +170,9 @@ export function AdminJobsBoard({
                 value={query}
                 onChange={(event) => {
                   setQuery(event.target.value);
-                  setVisibleCount(PAGE_SIZE);
+                  setPage(0);
+                  setLoading(true);
+                  setMessage("");
                 }}
                 placeholder="Title, organization, city..."
                 className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-cyan-500"
@@ -186,25 +184,25 @@ export function AdminJobsBoard({
         <div className="mt-5 flex flex-wrap gap-2">
           <StatusChip
             active={activeStatus === "all"}
-            count={statusCounts.all}
+            count={counts.all}
             label="All"
-            onClick={() => setActiveStatus("all")}
+            onClick={() => selectStatus("all")}
           />
           {STATUSES.map((status) => (
             <StatusChip
               key={status}
               active={activeStatus === status}
-              count={statusCounts[status]}
+              count={counts[status]}
               label={STATUS_LABELS[status]}
-              onClick={() => setActiveStatus(status)}
+              onClick={() => selectStatus(status)}
             />
           ))}
           <StatusChip
             active={activeStatus === "expired"}
-            count={statusCounts.expired}
+            count={activeStatus === "expired" ? total : undefined}
             label="Expired"
             tone="slate"
-            onClick={() => setActiveStatus("expired")}
+            onClick={() => selectStatus("expired")}
           />
         </div>
 
@@ -216,38 +214,45 @@ export function AdminJobsBoard({
       </div>
 
       <div className="space-y-4">
-        {filteredJobs.length ? (
+        {loading ? <p className="text-sm text-slate-500">Loading moderation records…</p> : null}
+        {!loading && jobs.length ? (
           <>
-            {filteredJobs.slice(0, visibleCount).map((job) => (
+            {jobs.map((job) => (
               <JobReviewCard
                 key={job.id}
                 job={job}
                 expired={expiredJobs.has(job.id)}
-                duplicateCount={duplicateUrls.get(job.applicationUrl) ?? 1}
+                duplicateCount={duplicateCounts[job.applicationUrl] ?? 1}
                 onStatus={updateStatus}
               />
             ))}
 
-            {filteredJobs.length > visibleCount ? (
+            {total > ADMIN_JOB_PAGE_SIZE ? (
               <div className="flex items-center justify-center gap-4 rounded-[28px] border border-dashed border-slate-300 bg-white px-4 py-4">
                 <button
                   type="button"
-                  onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                  onClick={() => { setMessage(""); setLoading(true); setPage((current) => Math.max(0, current - 1)); }}
+                  disabled={page === 0 || loading}
                   className="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700"
                 >
-                  Show more
+                  Previous
                 </button>
                 <span className="text-sm text-slate-500">
-                  Showing {visibleCount} of {filteredJobs.length}
+                  Showing {page * ADMIN_JOB_PAGE_SIZE + 1}–{page * ADMIN_JOB_PAGE_SIZE + jobs.length} of {total}
                 </span>
+                <button type="button" onClick={() => { setMessage(""); setLoading(true); setPage((current) => current + 1); }}
+                  disabled={(page + 1) * ADMIN_JOB_PAGE_SIZE >= total || loading}
+                  className="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700 disabled:opacity-50">
+                  Next
+                </button>
               </div>
             ) : null}
           </>
-        ) : (
+        ) : !loading && !message ? (
           <div className="rounded-[28px] border border-dashed border-slate-300 bg-white p-8 text-sm text-slate-500 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
             No jobs match the current moderation filter.
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );
@@ -616,7 +621,7 @@ function StatusChip({
   onClick,
 }: {
   active: boolean;
-  count: number;
+  count?: number;
   label: string;
   tone?: "slate";
   onClick: () => void;
@@ -636,7 +641,7 @@ function StatusChip({
             : "border-slate-200 bg-white text-slate-600 hover:border-cyan-300 hover:text-slate-900",
       )}
     >
-      {label} ({count})
+      {label}{count === undefined ? "" : ` (${count})`}
     </button>
   );
 }
