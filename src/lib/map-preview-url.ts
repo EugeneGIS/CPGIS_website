@@ -1,7 +1,8 @@
-const FALLBACK_PREVIEW_VERSION = "2026-10-02-cpgis-logo";
+// Change only when preview rendering changes; deploys should not invalidate warm images.
+const PREVIEW_VERSION = "2026-10-03-map-preview-v2";
 
 export function mapPreviewPath(shareSearch: string) {
   const search = new URLSearchParams(shareSearch);
-  search.set("v", process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 12) || FALLBACK_PREVIEW_VERSION);
+  search.set("v", PREVIEW_VERSION);
   return `/api/map-preview?${search.toString()}`;
 }

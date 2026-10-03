@@ -159,6 +159,46 @@ test("shared map exposes a social preview image", async ({ page }) => {
   expect((await page.locator('meta[property="og:description"]').getAttribute("content"))?.length).toBeGreaterThanOrEqual(100);
 });
 
+test("map sharing waits for a valid thumbnail before showing its link", async ({ page }) => {
+  let imageRequests = 0;
+  await page.route("**/api/map-shares", (route) => route.fulfill({ json: {
+    url: "http://127.0.0.1:3000/map-share?b=1%2C2%2C3%2C4",
+    imageUrl: "http://127.0.0.1:3000/api/map-preview?test=warm",
+    previewPath: "/map-share?b=1%2C2%2C3%2C4",
+    count: 1,
+    persisted: false,
+  } }));
+  await page.route("**/api/map-preview?**", (route) => {
+    imageRequests += 1;
+    return route.fulfill({
+      status: imageRequests === 1 ? 503 : 200,
+      contentType: imageRequests === 1 ? "text/plain" : "image/png",
+      body: "test image bytes",
+    });
+  });
+
+  await page.goto("/");
+  await page.getByRole("button", { name: "Share this map" }).click();
+  await expect(page.getByRole("button", { name: "Copy link" })).toBeVisible();
+  expect(imageRequests).toBe(2);
+});
+
+test("map sharing does not expose a link when the thumbnail is unavailable", async ({ page }) => {
+  await page.route("**/api/map-shares", (route) => route.fulfill({ json: {
+    url: "http://127.0.0.1:3000/map-share?b=1%2C2%2C3%2C4",
+    imageUrl: "http://127.0.0.1:3000/api/map-preview?test=unavailable",
+    previewPath: "/map-share?b=1%2C2%2C3%2C4",
+    count: 1,
+    persisted: false,
+  } }));
+  await page.route("**/api/map-preview?**", (route) => route.fulfill({ status: 503, body: "unavailable" }));
+
+  await page.goto("/");
+  await page.getByRole("button", { name: "Share this map" }).click();
+  await expect(page.locator("p[role='alert']")).toContainText("thumbnail is not ready");
+  await expect(page.getByRole("button", { name: "Copy link" })).toHaveCount(0);
+});
+
 test("a safe legacy job URL permanently redirects to its canonical detail page", async ({
   page,
   request,

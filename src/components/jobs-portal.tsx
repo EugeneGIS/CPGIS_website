@@ -159,15 +159,18 @@ export function JobsPortal({
       });
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.error || "Could not create a map share.");
-      try {
-        const image = await fetch(payload.imageUrl, { signal: AbortSignal.timeout(15000) });
-        if (!image.ok || !image.headers.get("content-type")?.startsWith("image/")) {
-          throw new Error("Preview image was unavailable.");
+      let imageReady = false;
+      for (let attempt = 0; attempt < 2 && !imageReady; attempt += 1) {
+        try {
+          const image = await fetch(payload.imageUrl, { signal: AbortSignal.timeout(12000) });
+          if (!image.ok || !image.headers.get("content-type")?.startsWith("image/")) continue;
+          await image.arrayBuffer();
+          imageReady = true;
+        } catch {
+          // A second request can succeed after the first one warms the image cache.
         }
-        await image.arrayBuffer();
-      } catch {
-        setShareError("The map link is ready, but its thumbnail could not be prepared. Try the preview page before posting.");
       }
+      if (!imageReady) throw new Error("The map thumbnail is not ready yet. Please try sharing again in a moment.");
       setShare(payload);
     } catch (error) {
       setShareError(error instanceof Error ? error.message : "Could not create a map share.");
@@ -211,7 +214,7 @@ export function JobsPortal({
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-cpgis-ink shadow-[0_16px_40px_rgba(15,23,42,0.06)] transition hover:border-cpgis-globe hover:bg-cpgis-ice disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Share2 className="h-4 w-4" />
-                {sharing ? "Creating…" : "Share this map"}
+                {sharing ? "Preparing preview…" : "Share this map"}
               </button>
 
               <div className="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">

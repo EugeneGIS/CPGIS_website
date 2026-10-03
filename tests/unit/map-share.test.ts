@@ -21,7 +21,7 @@ describe("map shares", () => {
     const shareSearch = mapShareSearch(input, "2026-10-01T12:00:00.000Z");
     const previewUrl = new URL(mapPreviewPath(shareSearch), "https://example.com");
     expect(previewUrl.pathname).toBe("/api/map-preview");
-    expect(previewUrl.searchParams.get("v")).toBeTruthy();
+    expect(previewUrl.searchParams.get("v")).toBe("2026-10-03-map-preview-v2");
     expect(parseMapShareSearch(previewUrl.searchParams)?.input).toEqual(input);
   });
 
