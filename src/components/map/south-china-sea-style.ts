@@ -11,7 +11,7 @@ export const SOUTH_CHINA_SEA_LINE_PALETTE: Record<
 };
 
 export const SOUTH_CHINA_SEA_ATTRIBUTION =
-  "Ten-dash line: supplied WGS84 data; GS(2020)4619 reference";
+  "Ten-dash: WGS84; GS(2020)4619 reference";
 
 export function getSouthChinaSeaLineStyle(
   theme: SouthChinaSeaTheme,

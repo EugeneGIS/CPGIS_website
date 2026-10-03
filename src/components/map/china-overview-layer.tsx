@@ -6,7 +6,7 @@ import { GeoJSON, Pane, useMapEvents } from "react-leaflet";
 import overview from "@/data/china-overview.json";
 import type { SouthChinaSeaTheme } from "./south-china-sea-style";
 
-const SOURCE = "China standard map GS(2020)4619 provincial polygons, overview simplified";
+const SOURCE = "China overview: GS(2020)4619";
 const MAX_OVERVIEW_ZOOM = 5;
 
 export function ChinaOverviewLayer({ theme }: { theme: SouthChinaSeaTheme }) {

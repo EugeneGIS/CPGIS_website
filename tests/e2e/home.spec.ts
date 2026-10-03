@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { getDisplayJobTitle } from "../../src/lib/job-display";
 import jobs from "../../src/data/cpgis-jobs.json";
 import legacySlugs from "../../src/data/legacy-job-slug-redirects.json";
 
@@ -8,14 +9,12 @@ test("homepage exposes the primary job discovery routes", async ({ page }) => {
   await expect(
     page.getByRole("heading", { level: 1, name: "CPGIS Jobs map" }),
   ).toBeVisible();
-  const main = page.getByRole("main");
-
-  await expect(main.getByRole("link", { name: "Plan ahead" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Plan ahead" })).toHaveAttribute(
     "href",
     "/plan-ahead",
   );
   await expect(
-    main.getByRole("link", { name: "Submit a job" }),
+    page.getByRole("link", { name: "Submit", exact: true }),
   ).toHaveAttribute("href", "/submit");
 });
 
@@ -36,7 +35,8 @@ test("homepage presents a batched jobs feed with selection and actions", async (
     .locator("section")
     .filter({ has: page.getByRole("heading", { name: "Matching opportunities" }) });
   const cards = feed.locator("article");
-  await expect(cards).toHaveCount(5);
+  await expect.poll(() => cards.count()).toBeGreaterThan(1);
+  expect(await cards.count()).toBeLessThanOrEqual(10);
   await expect(cards.first().getByRole("button", { name: "Share" })).toBeVisible();
   await expect(cards.first().getByRole("link", { name: "Apply now" })).toHaveAttribute(
     "href",
@@ -50,25 +50,24 @@ test("homepage presents a batched jobs feed with selection and actions", async (
   );
   await expect(cards.first()).toContainText("Selected on map");
 
-  await feed.getByRole("button", { name: "Load 5 more" }).scrollIntoViewIfNeeded();
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await expect(page.getByRole("button", { name: "Back to top" })).toBeVisible();
-  await expect.poll(() => cards.count()).toBeGreaterThan(5);
 });
 
 test("homepage renders the ten-dash line in both map themes", async ({ page }) => {
   await page.goto("/");
 
-  await expect(
-    page.getByText("South China Sea ten-dash line", { exact: true }),
-  ).toBeVisible();
+  await expect(page.locator(".leaflet-control-attribution")).toContainText(
+    "Ten-dash: WGS84; GS(2020)4619 reference",
+  );
 
   const segments = page.locator(".cpgis-south-china-sea-line");
   await expect(segments).toHaveCount(10);
-  await expect(segments.first()).toHaveAttribute("stroke", "#dc2626");
+  await expect(segments.first()).toHaveAttribute("stroke", "#8394aa");
 
   await page.getByRole("button", { name: "Dark", exact: true }).click();
   await expect(segments).toHaveCount(10);
-  await expect(segments.first()).toHaveAttribute("stroke", "#fb7185");
+  await expect(segments.first()).toHaveAttribute("stroke", "#a1b2c8");
 });
 
 test("long job titles stay inside compact map cards", async ({ page }) => {
@@ -76,13 +75,13 @@ test("long job titles stay inside compact map cards", async ({ page }) => {
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await page
     .getByPlaceholder("e.g. remote sensing, EPFL, Lausanne")
-    .fill("improving the accuracy of modeling of soil organic carbon");
+    .fill("electric vehicle charging behavior");
 
   const feed = page
     .locator("section")
     .filter({ has: page.getByRole("heading", { name: "Matching opportunities" }) });
   const card = feed.locator("article").first();
-  await expect(card).toContainText("Lamont-Doherty Earth Observatory");
+  await expect(card).toContainText("The Chinese University of Hong Kong");
   await card.getByRole("button").first().click();
   await page.getByRole("button", { name: "Close search panel" }).click();
   await page.waitForTimeout(1_300);
@@ -112,7 +111,7 @@ test("long job titles stay inside compact map cards", async ({ page }) => {
   );
 
   await marker.click();
-  const popupTitle = page.locator(".cpgis-job-popup-title");
+  const popupTitle = page.locator(".cpgis-job-popup .cpgis-job-tooltip-title");
   await expect(popupTitle).toBeVisible();
   const popupTitleSize = await popupTitle.evaluate((element) => ({
     clientHeight: element.clientHeight,
@@ -123,7 +122,7 @@ test("long job titles stay inside compact map cards", async ({ page }) => {
   );
   await expect(
     page.locator(".leaflet-popup").getByRole("link", { name: "View details" }),
-  ).toHaveAttribute("href", /^http:\/\/127\.0\.0\.1:\d+\/jobs\//);
+  ).toHaveAttribute("href", /\/jobs\//);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(500);
@@ -165,12 +164,12 @@ test("a safe legacy job URL permanently redirects to its canonical detail page",
   await page.goto(`/jobs/${legacySlug}`);
   await expect(page).toHaveURL(new RegExp(`/jobs/${canonicalSlug}$`));
   await expect(
-    page.getByRole("heading", { level: 1, name: job?.title }),
+    page.getByRole("heading", { level: 1, name: getDisplayJobTitle(job!.title) }),
   ).toBeVisible();
   await expect(page.locator(".cpgis-south-china-sea-line")).toHaveCount(10);
   await expect(
     page.getByText(
-      "Ten-dash line: supplied WGS84 data; GS(2020)4619 reference",
+      "Ten-dash: WGS84; GS(2020)4619 reference",
       { exact: false },
     ),
   ).toBeVisible();

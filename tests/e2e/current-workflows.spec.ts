@@ -19,6 +19,28 @@ test("public map loads current jobs before historical records", async ({ page })
   expect(archiveRequests).toBe(1);
 });
 
+test("map themes remain usable above the list on a narrow screen", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const map = page.locator(".leaflet-container");
+  await expect(map).toBeVisible();
+  const mapBox = await map.boundingBox();
+  const listBox = await page.getByRole("heading", { name: "Matching opportunities" }).boundingBox();
+  expect(mapBox).not.toBeNull();
+  expect(listBox).not.toBeNull();
+  expect(mapBox!.y).toBeLessThan(listBox!.y);
+
+  await expect(page.locator(".leaflet-control-attribution")).toBeVisible();
+  const attributionBox = await page.locator(".leaflet-control-attribution").boundingBox();
+  expect(attributionBox!.height).toBeLessThan(45);
+
+  await page.getByRole("button", { name: "Dark", exact: true }).click();
+  await expect(page.locator(".cpgis-vector-map-dark")).toBeVisible();
+  await page.getByRole("button", { name: "Light", exact: true }).click();
+  await expect(page.locator(".cpgis-vector-map-dark")).toHaveCount(0);
+});
+
 test("admin review filters fetch a bounded page", async ({ page }) => {
   await page.goto("/admin");
   await expect(page.getByRole("heading", { name: "Moderate submitted opportunities" })).toBeVisible();
