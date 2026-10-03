@@ -156,6 +156,7 @@ test("shared map exposes a social preview image", async ({ page }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/api\/map-preview\?/);
   await expect(page.locator('meta[property="og:image:type"]')).toHaveAttribute("content", "image/png");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+  expect((await page.locator('meta[property="og:description"]').getAttribute("content"))?.length).toBeGreaterThanOrEqual(100);
 });
 
 test("a safe legacy job URL permanently redirects to its canonical detail page", async ({

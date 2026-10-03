@@ -29,8 +29,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const origin = getPublicAppOrigin(env.appUrl);
   const url = `${origin}/map-share?${suffix}`;
   const imageUrl = `${origin}${mapPreviewPath(suffix)}`;
-  const title = `CPGIS Jobs map | ${view.jobs.length} opportunities`;
-  const description = `Explore ${view.jobs.length} job opportunities in a selected map area. Shared ${view.createdAt.slice(0, 10)}.`;
+  const opportunityLabel = view.jobs.length === 1 ? "opportunity" : "opportunities";
+  const title = `CPGIS Jobs map | ${view.jobs.length} ${opportunityLabel}`;
+  const description = `Explore ${view.jobs.length} ${opportunityLabel} in this shared area on the CPGIS Jobs map. View the mapped positions, organizations, locations, and application details.`;
   return {
     title,
     description,

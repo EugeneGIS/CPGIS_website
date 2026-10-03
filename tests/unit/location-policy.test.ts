@@ -12,8 +12,9 @@ describe("country display policy", () => {
     ["Hong Kong SAR, China", "Hong Kong SAR, China"],
     ["Macao", "Macau SAR, China"],
     ["Macau, China", "Macau SAR, China"],
-    ["Taiwan", "Taiwai, China"],
-    ["Taiwan, China", "Taiwai, China"],
+    ["Taiwan", "Taiwan, China"],
+    ["Taiwan, China", "Taiwan, China"],
+    ["Taiwai, China", "Taiwan, China"],
   ])("normalizes %s to the required display", (input, expected) => {
     expect(normalizeCountryDisplay(input)).toBe(expected);
   });

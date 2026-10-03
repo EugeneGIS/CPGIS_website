@@ -3,7 +3,7 @@ import type { JobLocation } from "@/lib/types";
 export const REQUIRED_COUNTRY_DISPLAY = {
   hongKong: "Hong Kong SAR, China",
   macau: "Macau SAR, China",
-  taiwan: "Taiwai, China",
+  taiwan: "Taiwan, China",
 } as const;
 
 function countryKey(value: string) {

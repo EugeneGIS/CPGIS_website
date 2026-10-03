@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   ENGLISH_LABEL_EXPRESSION,
   OPENFREEMAP_STYLE_URL,
+  TAIPEI_CITY_LABEL_MATCH,
   textFieldContainsName,
 } from "@/components/map/english-map-style";
 
@@ -30,5 +31,10 @@ describe("English vector basemap policy", () => {
     expect(textFieldContainsName("{name:zh}" )).toBe(true);
     expect(textFieldContainsName(["get", "ref"])).toBe(false);
     expect(textFieldContainsName(["get", "housenumber"])).toBe(false);
+  });
+
+  it("targets Taipei for ordinary city styling without changing other capitals", () => {
+    expect(TAIPEI_CITY_LABEL_MATCH).toContainEqual(["==", ["get", "name_en"], "Taipei"]);
+    expect(TAIPEI_CITY_LABEL_MATCH).toContainEqual(["==", ["get", "name"], "臺北"]);
   });
 });
