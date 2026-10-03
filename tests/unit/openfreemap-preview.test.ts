@@ -3,7 +3,7 @@ import { writeFile } from "node:fs/promises";
 import { PbfWriter } from "pbf";
 import { renderMapPreview } from "@/lib/map-preview";
 import { mapShareInputSchema } from "@/lib/map-share";
-import { loadOpenFreeMapPreview } from "@/lib/openfreemap-preview";
+import { loadOpenFreeMapPreview, selectPreviewPlaces } from "@/lib/openfreemap-preview";
 import type { JobRecord } from "@/lib/types";
 
 afterEach(() => vi.unstubAllGlobals());
@@ -46,6 +46,19 @@ function fixtureTile() {
 }
 
 describe("OpenFreeMap share preview", () => {
+  it("deduplicates and spaces city names across vector tiles", () => {
+    expect(selectPreviewPlaces([
+      { x: 100, y: 100, name: "Hong Kong" },
+      { x: 109, y: 102, name: "Shenzhen" },
+      { x: 101, y: 100, name: "Hong Kong" },
+      { x: 250, y: 100, name: "Guangzhou" },
+      { x: 10, y: 10, name: "Offscreen" },
+    ], 400, 300, 5)).toEqual([
+      { x: 100, y: 100, name: "Hong Kong" },
+      { x: 250, y: 100, name: "Guangzhou" },
+    ]);
+  });
+
   it("uses cloud vector tiles and omits political boundary geometry", async () => {
     const bytes = fixtureTile();
     const fetchMock = vi.fn().mockResolvedValue(new Response(Uint8Array.from(bytes).buffer, { status: 200 }));

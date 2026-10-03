@@ -20,6 +20,31 @@ export type PreviewMapLayers = {
   missingTiles: number;
 };
 
+export function selectPreviewPlaces(
+  candidates: PreviewMapLayers["places"],
+  width: number,
+  height: number,
+  zoom: number,
+): PreviewMapLayers["places"] {
+  const selected: PreviewMapLayers["places"] = [];
+  const seen = new Set<string>();
+  const minX = zoom < 6 ? 116 : 92;
+  const minY = zoom < 6 ? 42 : 34;
+  const limit = zoom < 6 ? 28 : 42;
+
+  for (const place of candidates) {
+    const name = place.name.trim();
+    const key = name.toLocaleLowerCase();
+    if (seen.has(key) || place.x < 56 || place.x > width - 56 || place.y < 18 || place.y > height - 18) continue;
+    if (selected.some((other) => Math.abs(other.x - place.x) < minX && Math.abs(other.y - place.y) < minY)) continue;
+    selected.push(place);
+    seen.add(key);
+    if (selected.length >= limit) break;
+  }
+
+  return selected;
+}
+
 function featurePath(feature: VectorTileFeature, left: number, top: number) {
   const scale = TILE_SIZE / feature.extent;
   return feature.loadGeometry().map((ring) => {
@@ -140,7 +165,7 @@ export async function loadOpenFreeMapPreview(
     water: water.join(""),
     parks: parks.join(""),
     roads: roads.join(""),
-    places,
+    places: selectPreviewPlaces(places, width, height, viewport.zoom),
     loadedTiles,
     missingTiles: positions.length - loadedTiles,
   };
