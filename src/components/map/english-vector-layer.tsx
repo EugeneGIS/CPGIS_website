@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { maplibreGL } from "@maplibre/maplibre-gl-leaflet";
-import { setWorkerUrl, type ExpressionSpecification, type SymbolLayerSpecification } from "maplibre-gl";
+import { setWorkerUrl, type SymbolLayerSpecification } from "maplibre-gl";
 import { useMap } from "react-leaflet";
 import { REQUIRED_COUNTRY_DISPLAY } from "@/lib/location-policy";
 import {
@@ -10,6 +10,7 @@ import {
   OPENFREEMAP_ATTRIBUTION,
   OPENFREEMAP_STYLE_URL,
   TAIPEI_CITY_LABEL_MATCH,
+  taipeiCityTextSize,
   textFieldContainsName,
   type EnglishMapTheme,
 } from "./english-map-style";
@@ -85,20 +86,15 @@ export function EnglishVectorLayer({ theme }: { theme: EnglishMapTheme }) {
         if (styleLayer.id === "label_city_capital" && ordinaryCityLayout) {
           const ordinaryFont = ordinaryCityLayout["text-font"] ?? ["Noto Sans Regular"];
           const capitalFont = styleLayer.layout?.["text-font"] ?? ["Noto Sans Bold"];
-          const sizeValue = (value: unknown): number | ExpressionSpecification =>
-            typeof value === "number" || Array.isArray(value)
-              ? value as number | ExpressionSpecification
-              : 12;
-          const ordinarySize = sizeValue(ordinaryCityLayout["text-size"]);
-          const capitalSize = sizeValue(styleLayer.layout?.["text-size"]);
+          const textSize = taipeiCityTextSize(
+            ordinaryCityLayout["text-size"], styleLayer.layout?.["text-size"],
+          );
 
           vectorMap.setLayoutProperty(styleLayer.id, "text-font", [
             "case", TAIPEI_CITY_LABEL_MATCH,
             ["literal", ordinaryFont], ["literal", capitalFont],
           ]);
-          vectorMap.setLayoutProperty(styleLayer.id, "text-size", [
-            "case", TAIPEI_CITY_LABEL_MATCH, ordinarySize, capitalSize,
-          ]);
+          if (textSize) vectorMap.setLayoutProperty(styleLayer.id, "text-size", textSize);
         }
 
         vectorMap.setLayoutProperty(
