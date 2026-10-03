@@ -52,7 +52,7 @@ function JobMapText({ job, status, color }: { job: DisplayJob; status: DeadlineS
       : "Active: open until filled";
 
   return (
-    <div className="max-w-[280px] space-y-1">
+    <div className="cpgis-job-map-text space-y-1">
       <div className="cpgis-job-tooltip-title text-sm font-semibold" title={job.title}>
         {getDisplayJobTitle(job.title)}
       </div>
@@ -349,7 +349,7 @@ export default function JobsMap({
                 >
                   <JobMapText job={job} status={deadlineStatus} color={colors.fill} />
                 </Tooltip>
-                <Popup minWidth={240} maxWidth={320}>
+                <Popup className="cpgis-job-popup-shell" minWidth={320} maxWidth={400}>
                   <div className="cpgis-job-popup space-y-1">
                     <JobMapText job={job} status={deadlineStatus} color={colors.fill} />
                     {job.overlapCount > 1 ? (

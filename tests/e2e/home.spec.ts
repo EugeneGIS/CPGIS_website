@@ -95,31 +95,31 @@ test("long job titles stay inside compact map cards", async ({ page }) => {
 
   expect(tooltipBox).not.toBeNull();
   expect(viewport).not.toBeNull();
-  expect(tooltipBox?.width).toBeLessThanOrEqual(320);
+  expect(tooltipBox?.width).toBeGreaterThanOrEqual(380);
+  expect(tooltipBox?.width).toBeLessThanOrEqual(400);
+  expect(tooltipBox?.height).toBeGreaterThanOrEqual(260);
   expect(tooltipBox?.x).toBeGreaterThanOrEqual(0);
   expect((tooltipBox?.x ?? 0) + (tooltipBox?.width ?? 0)).toBeLessThanOrEqual(
     viewport?.width ?? 0,
   );
 
   const tooltipTitle = tooltip.locator(".cpgis-job-tooltip-title");
-  const tooltipTitleSize = await tooltipTitle.evaluate((element) => ({
-    clientHeight: element.clientHeight,
-    scrollHeight: element.scrollHeight,
-  }));
-  expect(tooltipTitleSize.scrollHeight).toBeGreaterThan(
-    tooltipTitleSize.clientHeight,
-  );
+  await expect(tooltipTitle).toHaveAttribute("title", /electric vehicle charging behavior/);
 
   await marker.click();
   const popupTitle = page.locator(".cpgis-job-popup .cpgis-job-tooltip-title");
   await expect(popupTitle).toBeVisible();
-  const popupTitleSize = await popupTitle.evaluate((element) => ({
-    clientHeight: element.clientHeight,
-    scrollHeight: element.scrollHeight,
-  }));
-  expect(popupTitleSize.scrollHeight).toBeGreaterThan(
-    popupTitleSize.clientHeight,
+  const popupBox = await page.locator(".cpgis-job-popup-shell .leaflet-popup-content-wrapper").boundingBox();
+  expect(popupBox?.width).toBe(400);
+  expect(popupBox?.height).toBeGreaterThanOrEqual(260);
+  expect(popupBox?.height).toBeLessThanOrEqual(340);
+  await expect(tooltip).toBeHidden();
+  const actionBoxes = await page.locator(".cpgis-job-popup-actions > *").evaluateAll((items) =>
+    items.map((item) => item.getBoundingClientRect().y),
   );
+  expect(actionBoxes).toHaveLength(3);
+  expect(new Set(actionBoxes).size).toBe(1);
+  await expect(popupTitle).toHaveAttribute("title", /electric vehicle charging behavior/);
   await expect(
     page.locator(".leaflet-popup").getByRole("link", { name: "View details" }),
   ).toHaveAttribute("href", /\/jobs\//);
@@ -142,6 +142,20 @@ test("long job titles stay inside compact map cards", async ({ page }) => {
     (mobilePopupBox?.x ?? 0) + (mobilePopupBox?.width ?? 0),
   ).toBeLessThanOrEqual(390);
   expect(mobileZoomControl).toEqual({ opacity: "0", pointerEvents: "none" });
+  const mobileActionBoxes = await page.locator(".cpgis-job-popup-actions > *").evaluateAll((items) =>
+    items.map((item) => item.getBoundingClientRect().y),
+  );
+  expect(new Set(mobileActionBoxes).size).toBe(1);
+});
+
+test("shared map exposes a social preview image", async ({ page }) => {
+  await page.goto("/map-share?b=-11.69527%2C-115.3125%2C70.4368%2C136.75781&t=2026-10-01T14%3A32%3A40.719Z", {
+    waitUntil: "domcontentloaded",
+  });
+
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/api\/map-preview\?/);
+  await expect(page.locator('meta[property="og:image:type"]')).toHaveAttribute("content", "image/png");
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
 });
 
 test("a safe legacy job URL permanently redirects to its canonical detail page", async ({

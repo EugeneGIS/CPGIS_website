@@ -9,8 +9,8 @@ import { createJobSlug } from "@/lib/job-identity";
 import { normalizeLocationDisplay } from "@/lib/location-policy";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import legacyJobSlugs from "@/data/legacy-job-slug-redirects.json";
-import { subMonths } from "date-fns";
-import { isJobExpired } from "@/lib/job-filters";
+import { subDays, parseISO } from "date-fns";
+import { isJobExpired, ROLLING_POST_TTL_DAYS } from "@/lib/job-filters";
 import { toDateKey } from "@/lib/utils";
 
 const legacySlugRedirects = legacyJobSlugs.redirects as Record<string, string>;
@@ -96,11 +96,14 @@ export async function getActivePublishedJobs(today: string) {
   }
 
   const supabase = await createServerSupabaseClient();
-  const cutoff = toDateKey(subMonths(new Date(`${today}T12:00:00Z`), 3));
+  const cutoff = toDateKey(subDays(parseISO(today), ROLLING_POST_TTL_DAYS));
   const candidateFilter = [
     `apply_by.gte.${today}`,
     `and(apply_by.is.null,source_date.gte.${cutoff})`,
     `and(apply_by.is.null,source_date.is.null,created_at.gte.${cutoff}T00:00:00Z)`,
+    `and(apply_by.is.null,description.ilike.*appointment*)`,
+    `and(apply_by.is.null,summary.ilike.*appointment*)`,
+    `and(apply_by.is.null,deadline_text.ilike.*appointment*)`,
   ].join(",");
   const rows: Record<string, unknown>[] = [];
   const pageSize = 1000;
@@ -108,7 +111,7 @@ export async function getActivePublishedJobs(today: string) {
   for (let from = 0; ; from += pageSize) {
     const { data, error } = await supabase
       .from("job_posts")
-      .select("id,slug,title,organization,department,summary,application_url,city,country,address,latitude,longitude,apply_by,deadline_text,source_date,import_source,tags,created_at,updated_at")
+      .select("id,slug,title,organization,department,summary,description,application_url,city,country,address,latitude,longitude,apply_by,deadline_text,source_date,import_source,tags,created_at,updated_at")
       .eq("status", "published")
       .or(candidateFilter)
       .order("created_at", { ascending: false })

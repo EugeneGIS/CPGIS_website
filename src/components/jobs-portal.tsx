@@ -50,9 +50,8 @@ export function JobsPortal({
   const [isPending, startTransition] = useTransition();
   const mapSectionRef = useRef<HTMLDivElement | null>(null);
 
-  // Expired records (deadline passed, or rolling posts older than two
-  // months) stay in the archive behind a toggle instead of cluttering the
-  // active recruitment map.
+  // Expired records stay in the archive behind a toggle instead of cluttering
+  // the active recruitment map.
   const activeJobs = useMemo(
     () => showExpired ? [...jobs, ...(expiredJobs ?? [])] : jobs,
     [jobs, expiredJobs, showExpired],
@@ -160,6 +159,15 @@ export function JobsPortal({
       });
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.error || "Could not create a map share.");
+      try {
+        const image = await fetch(payload.imageUrl, { signal: AbortSignal.timeout(15000) });
+        if (!image.ok || !image.headers.get("content-type")?.startsWith("image/")) {
+          throw new Error("Preview image was unavailable.");
+        }
+        await image.arrayBuffer();
+      } catch {
+        setShareError("The map link is ready, but its thumbnail could not be prepared. Try the preview page before posting.");
+      }
       setShare(payload);
     } catch (error) {
       setShareError(error instanceof Error ? error.message : "Could not create a map share.");
@@ -308,9 +316,9 @@ export function JobsPortal({
                         Show expired postings
                       </div>
                       <div className="text-sm text-slate-600">
-                        {expiredCount.toLocaleString()} archived records whose deadline passed or
-                        that were posted more than two months ago. They stay
-                        hidden until enabled.
+                        {expiredCount.toLocaleString()} archived records whose deadline or
+                        stated appointment start passed, or that were posted more than
+                        60 days ago without a start date. They stay hidden until enabled.
                       </div>
                     </div>
                   </label>

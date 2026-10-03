@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { MonthlyChart } from "@/components/monthly-chart";
-import { isJobExpired, type PlanAheadData } from "@/lib/job-filters";
+import { isJobExpired, rollingExpiryDate, type PlanAheadData } from "@/lib/job-filters";
 import type { JobRecord } from "@/lib/types";
 import { cn, formatDateLabel, formatRelativeDeadline, formatSourceDate } from "@/lib/utils";
 
@@ -182,7 +182,7 @@ export function PlanAhead({
                 </h2>
               </div>
               <p className="text-xs text-slate-500">
-                Posted within the last two months · apply anytime
+                Listed through the stated start date, or 60 days after posting
               </p>
             </div>
 
@@ -283,7 +283,7 @@ function RollingJobCard({ job }: { job: JobRecord }) {
         <span aria-hidden>·</span>
         <span>Posted {formatSourceDate(job.sourceDate)}</span>
         <span aria-hidden>·</span>
-        <span>Apply anytime</span>
+        <span>Listed through {formatDateLabel(rollingExpiryDate(job))}</span>
       </div>
     </Link>
   );

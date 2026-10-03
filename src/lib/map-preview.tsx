@@ -123,13 +123,13 @@ export async function renderMapPreview(view: MapShareView) {
           </div>}
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <span style={{ fontSize: 25, fontWeight: 700 }}>CPGIS Jobs map</span>
-            <span style={{ fontSize: 14, color: "#bed2e7" }}>Selected area · {view.jobs.length} opportunities</span>
+            <span style={{ fontSize: 14, color: "#bed2e7" }}>Selected area, {view.jobs.length} opportunities</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
           <span style={{ fontSize: 14, color: "#c7ddff" }}>{view.createdAt.slice(0, 10)}</span>
           <span style={{ fontSize: 12, color: "#d1deed" }}>
-            OpenFreeMap / OpenMapTiles · Data from OpenStreetMap · China: GS(2020)4619
+            OpenFreeMap / OpenMapTiles, data from OpenStreetMap, China: GS(2020)4619
           </span>
         </div>
       </div>
@@ -170,6 +170,6 @@ export async function renderMapPreview(view: MapShareView) {
         }}>Basemap temporarily unavailable</div>}
       </div>
     </div>,
-    { width: WIDTH, height: HEIGHT, headers: { "Cache-Control": `public, max-age=${view.persisted ? 3600 : 600}` } },
+    { width: WIDTH, height: HEIGHT, headers: { "Cache-Control": `public, max-age=0, s-maxage=${view.persisted ? 3600 : 600}` } },
   );
 }

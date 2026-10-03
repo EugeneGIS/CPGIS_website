@@ -23,8 +23,9 @@ describe("focused public job queries", () => {
   it("queries a recent date window, then applies exact calendar-day expiry", async () => {
     const rows = [
       row("deadline-today", "2026-04-01", "2026-10-02"),
-      row("rolling-active", "2026-08-02"),
+      row("rolling-active", "2026-08-03"),
       row("rolling-expired", "2026-08-01"),
+      { ...row("future-start", "2026-01-01"), description: "appointment starts on 31 Oct 2026" },
     ];
     const range = vi.fn(async () => ({ data: rows, error: null }));
     const or = vi.fn(() => ({ order: () => ({ range }) }));
@@ -33,8 +34,9 @@ describe("focused public job queries", () => {
     });
 
     const jobs = await getActivePublishedJobs("2026-10-02");
-    expect(jobs.map((job) => job.id)).toEqual(["deadline-today", "rolling-active"]);
+    expect(jobs.map((job) => job.id)).toEqual(["deadline-today", "rolling-active", "future-start"]);
     expect(or).toHaveBeenCalledWith(expect.stringContaining("apply_by.gte.2026-10-02"));
+    expect(or).toHaveBeenCalledWith(expect.stringContaining("description.ilike.*appointment*"));
     expect(range).toHaveBeenCalledWith(0, 999);
   });
 
