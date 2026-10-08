@@ -96,7 +96,7 @@ unauthenticated demo review workflow is development-only.
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-SUPABASE_SERVICE_ROLE_KEY=...
+SUPABASE_SECRET_KEY=...
 GEOCODER_PROVIDER=nominatim
 GEOCODER_API_KEY=
 NOMINATIM_EMAIL=you@example.com
@@ -110,7 +110,7 @@ set role = 'admin'
 where id = 'YOUR-USER-UUID';
 ```
 
-5. Apply the SQL files in `src/supabase/migrations/`, including `20261001_admin_review_notes.sql`. Keep `SUPABASE_SERVICE_ROLE_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it.
+5. Apply the SQL files in `src/supabase/migrations/`, including `20261001_admin_review_notes.sql` and `20261001_cpgis_csv_imports.sql`. Keep `SUPABASE_SECRET_KEY` server-side only; never expose it as `NEXT_PUBLIC_*` or commit it. The legacy `SUPABASE_SERVICE_ROLE_KEY` variable remains supported as a fallback.
 
 For the optimized public map and admin queue, also apply
 `src/supabase/migrations/20261002_public_job_query_indexes.sql` in the SQL
