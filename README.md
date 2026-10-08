@@ -120,6 +120,26 @@ loads expired published records only when a visitor requests them; the admin
 queue reads one page at a time. Plan-ahead history and the optional expired
 archive load historical records only when opened.
 
+### Invited users and password setup
+
+In Supabase Authentication → URL Configuration, set **Site URL** to the
+production website and add `https://cpgis-job-portal.vercel.app/set-password`
+to **Redirect URLs**. For local testing, also allow
+`http://localhost:3000/set-password`.
+
+In Authentication → Email Templates, point the **Invite user** button to
+`{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite` and the
+**Reset password** button to
+`{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery`.
+These server-side links establish the session before opening `/set-password`,
+including when the email is opened in a different browser. Keep the remaining
+email content as desired. Template changes affect newly sent emails only.
+
+Existing invited users should open their invitation email first. If they have
+no password yet, they can select **Invited or forgot your password?** on
+`/sign-in`, enter the same email, open the new email link, and set a password.
+Do not create a second account or assign an admin role just to sign in.
+
 ### Admin-only access
 
 The Admin navigation item is rendered only for an authenticated user whose

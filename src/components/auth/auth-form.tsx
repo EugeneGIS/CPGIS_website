@@ -6,17 +6,22 @@ import { useState, useTransition } from "react";
 import { getBrowserSupabaseClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/env";
 
-export function AuthForm() {
+export function AuthForm({ initialMessage = "" }: { initialMessage?: string }) {
   const router = useRouter();
-  const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
+  const [mode, setMode] = useState<"sign-in" | "sign-up" | "reset">("sign-in");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [isPending, startTransition] = useTransition();
 
   function handleSubmit() {
     setMessage("");
+
+    if (!email.trim() || (mode !== "reset" && !password)) {
+      setMessage(mode === "reset" ? "Enter your email address." : "Enter your email and password.");
+      return;
+    }
 
     if (!isSupabaseConfigured()) {
       setMessage(
@@ -33,9 +38,20 @@ export function AuthForm() {
     }
 
     startTransition(async () => {
+      if (mode === "reset") {
+        const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+          redirectTo: `${window.location.origin}/set-password`,
+        });
+
+        setMessage(error
+          ? error.message
+          : "If this email has an account, a password setup link is on its way. Check your inbox and spam folder.");
+        return;
+      }
+
       if (mode === "sign-up") {
         const { error } = await supabase.auth.signUp({
-          email,
+          email: email.trim(),
           password,
           options: {
             data: {
@@ -56,7 +72,7 @@ export function AuthForm() {
       }
 
       const { error } = await supabase.auth.signInWithPassword({
-        email,
+        email: email.trim(),
         password,
       });
 
@@ -134,7 +150,7 @@ export function AuthForm() {
           />
         </label>
 
-        <label className="block">
+        {mode !== "reset" ? <label className="block">
           <span className="text-sm font-medium text-slate-700">Password</span>
           <input
             value={password}
@@ -143,8 +159,25 @@ export function AuthForm() {
             placeholder="At least 8 characters"
             type="password"
           />
-        </label>
+        </label> : null}
       </div>
+
+      {mode === "sign-in" ? (
+        <button
+          type="button"
+          onClick={() => { setMode("reset"); setMessage(""); }}
+          className="mt-4 text-sm font-semibold text-cyan-700 hover:text-cyan-900"
+        >
+          Invited or forgot your password? Set a password by email
+        </button>
+      ) : mode === "reset" ? (
+        <p className="mt-4 text-sm text-slate-600">
+          Already have a password?{" "}
+          <button type="button" onClick={() => { setMode("sign-in"); setMessage(""); }} className="font-semibold text-cyan-700 hover:text-cyan-900">
+            Back to sign in
+          </button>
+        </p>
+      ) : null}
 
       {message ? (
         <div className="mt-4 rounded-2xl border border-cyan-100 bg-cyan-50 px-4 py-3 text-sm text-cyan-900">
@@ -163,7 +196,9 @@ export function AuthForm() {
             ? "Working…"
             : mode === "sign-in"
               ? "Sign in"
-              : "Create account"}
+              : mode === "sign-up"
+                ? "Create account"
+                : "Email me a password link"}
         </button>
         <Link
           href="/"
